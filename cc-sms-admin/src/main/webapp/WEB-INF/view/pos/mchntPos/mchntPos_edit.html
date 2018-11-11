@@ -1,0 +1,40 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${mchntPos.id}">
+            <input type="hidden" id="mchntTypeHidden" value="${mchntPos.mchntType}">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="posId" name="POS机ID" value="${mchntPos.posId}" underline="true" />
+					<#input id="mchntId" name="商户ID" value="${mchntPos.mchntId}" underline="true" />
+                    <#select id="mchntType" name="商户类型">
+                        <option value="1">普通商户</option>
+                        <option value="2">代理商</option>
+                        <option value="3">代结算商</option>
+                        <option value="4">一级商户</option>
+                        <option value="5">二级商户(景点)</option>
+                        <option value="6">门店</option>
+                    </#select>
+                </div>
+
+                <div class="col-sm-6">
+					<#input id="mchntType" name="商户类型POS机ID" value="${mchntPos.mchntType}" underline="true" />
+					<#input id="installTime" name="POS机安装时间" value="${mchntPos.installTime}" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="MchntPosInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="MchntPosInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/mchntPos/mchntPos_info.js"></script>
+@}

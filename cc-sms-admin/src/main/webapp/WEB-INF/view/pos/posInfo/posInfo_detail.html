@@ -1,0 +1,51 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${posInfo.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input disabled="disabled"  id="posId" name="POS-ID" value="${posInfo.posId}" underline="true" />
+					<#input disabled="disabled"  id="samId" name="SAM-ID" value="${posInfo.samId}" underline="true" />
+					<#input disabled="disabled"  id="posCode" name="POS编码" value="${posInfo.posCode}" underline="true" />
+					<#input disabled="disabled"  id="posDesc" name="POS描述" value="${posInfo.posDesc}" underline="true" />
+					<#input disabled="disabled"  id="longitude" name="经度" value="${posInfo.longitude}" underline="true" />
+					<#input disabled="disabled"  id="latitude" name="纬度" value="${posInfo.latitude}" underline="true" />
+					<#input disabled="disabled"  id="locDesc" name="位置描述" value="${posInfo.locDesc}" underline="true" />
+					<#input disabled="disabled"  id="state" name="状态" value="${posInfo.state}" underline="true" />
+					<#input disabled="disabled"  id="version" name="POS版本号" value="${posInfo.version}" underline="true" />
+					<#input disabled="disabled"  id="firmVersion" name="固件版本号" value="${posInfo.firmVersion}" underline="true" />
+					<#input disabled="disabled"  id="blacklistVersion" name="黑名单版本号" value="${posInfo.blacklistVersion}" underline="true" />
+					<#input disabled="disabled"  id="termVersion" name="终端参数版本号" value="${posInfo.termVersion}" underline="true" />
+					<#input disabled="disabled"  id="cardtypeVersion" name="卡类型版本号" value="${posInfo.cardtypeVersion}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+					<#input disabled="disabled"  id="reason" name="故障原因" value="${posInfo.reason}" underline="true" />
+					<#input disabled="disabled"  id="lineVersion" name="线路版本" value="${posInfo.lineVersion}" underline="true" />
+					<#input disabled="disabled"  id="incrBlackVer" name="实体卡增量黑名单版本号" value="${posInfo.incrBlackVer}" underline="true" />
+					<#input disabled="disabled"  id="qrBlackVer" name="二维码黑名单版本号" value="${posInfo.qrBlackVer}" underline="true" />
+					<#input disabled="disabled"  id="incQrBlackVer" name="二维码黑名单增量版本号" value="${posInfo.incQrBlackVer}" underline="true" />
+					<#input disabled="disabled"  id="htBlackVer" name="互通卡黑名单版本号" value="${posInfo.htBlackVer}" underline="true" />
+					<#input disabled="disabled"  id="htIncBlackVer" name="互通卡增量黑名单版本号" value="${posInfo.htIncBlackVer}" underline="true" />
+					<#input disabled="disabled"  id="priVer" name="票价表文件版本号" value="${posInfo.priVer}" underline="true" />
+					<#input disabled="disabled"  id="milesVer" name="折扣率文件版本号" value="${posInfo.milesVer}" underline="true" />
+					<#input disabled="disabled"  id="htWhiteVer" name="互通卡白名单版本号" value="${posInfo.htWhiteVer}" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PosInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PosInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/posInfo/posInfo_info.js"></script>
+@}

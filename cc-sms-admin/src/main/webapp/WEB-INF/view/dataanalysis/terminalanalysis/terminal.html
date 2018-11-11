@@ -1,0 +1,88 @@
+@layout("/common/_container.html"){
+<script src="${ctxPath}/static/js/highcharts.js"></script>
+<script src="${ctxPath}/static/js/DateUtil.js"></script>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>核心数据图表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <select name="graphDataType" id="graphDataType" class="form-control">
+                                    <option value="1">新增线路数</option>
+                                    <option value="2">新增车辆数</option>
+                                    <option value="3">新增终端数</option>
+                                    <option value="4">总线路数</option>
+                                    <option value="5">总车辆数</option>
+                                    <option value="6">总终端数</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="graphLastday" id="graphLastday" class="form-control">
+                                    <option value="1">过去7天</option>
+                                    <option value="2">过去15天</option>
+                                    <option value="3">过去30天</option>
+                                    <option value="4">过去90天</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="graphStartTermTransDate" name="开始时间" isTime="true" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="graphEndTermTransDate" name="结束时间" isTime="true" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="Terminal.loaddata()"/>
+                            </div>
+                        </div>
+                        <div id="graphcontainer" style="height:400px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div  style="display:none;" class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>历史数据报表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <select name="stats_card_attr3" class="form-control">
+                                    <option value="1">过去7天</option>
+                                    <option value="2">过去15天</option>
+                                    <option value="3">过去30天</option>
+                                    <option value="4">过去90天</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="startTermTransDate3" name="开始时间" isTime="true" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTermTransTime3" name="结束时间" isTime="true" pattern="YYYY-MM-DD" />
+                            </div>
+
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="CardOrder.search()"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12" id="CardOrderTableToolbar" role="group">
+                            @if(shiro.hasPermission("/cardOrder/detail")){
+                            <#button name="详情" icon="fa-file-text" clickFun="CardOrder.openDetailCardOrder()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="CardOrderTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/dataanalysis/terminal.js"></script>
+@}

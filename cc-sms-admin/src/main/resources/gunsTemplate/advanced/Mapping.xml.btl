@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${dao.packageName}.${context.bizEnBigName}Dao">
+	<sql id="Base_Column_List">
+		<% for(field in context.fields!){ %>
+	      ${field} as ${field},
+		<% } %>
+	</sql>
+	
+	<select id="select${context.bizEnBigName}s" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from ${context.tableName} where 1 = 1
+		
+		
+		<% for(sfield in context.searchFields!){ %>
+	    	<if test="${sfield} != null and ${sfield} != ''">
+				and ${sfield} like CONCAT('%',#{${sfield}},'%')
+			</if>
+		<% } %>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by \${orderByField} ASC
+					</when>
+					<otherwise>
+						order by \${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by id DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

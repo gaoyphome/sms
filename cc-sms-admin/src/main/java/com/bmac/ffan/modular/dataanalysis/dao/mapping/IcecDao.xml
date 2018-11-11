@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.dataanalysis.dao.IcecDao">
+	<sql id="Base_Column_List">
+	      DATE_FORMAT(dayadd.create_time, "%Y-%m-%d") AS createtime,
+	      COUNT(*) AS dayadd
+	</sql>
+	
+<!--	<select id="selectEcNum" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		FROM     cc_qrcode_token_info dayadd
+		LEFT JOIN (SELECT COUNT(*) AS total
+		FROM   cc_qrcode_token_info
+		<![CDATA[ WHERE  create_time <= #{startTermTransDate}) AS tb_total ]]>
+		ON 1 = 1
+		WHERE    dayadd.create_time BETWEEN #{startTermTransDate} AND #{endTermTransDate}
+		GROUP BY DATE_FORMAT(dayadd.create_time, "%Y-%m-%d"), total
+		ORDER BY createtime ;
+	</select>-->
+
+	<select id="selectEcNum" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		FROM     cc_qrcode_token_info dayadd
+		WHERE    dayadd.create_time BETWEEN #{startTermTransDate} AND #{endTermTransDate}
+		GROUP BY DATE_FORMAT(dayadd.create_time, "%Y-%m-%d")
+		ORDER BY createtime ;
+	</select>
+
+	<select id="selectEcNumCounts" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS total
+		FROM cc_qrcode_token_info
+		<if test="startTermTransDate != null and startTermTransDate != ''">
+			WHERE create_time &lt; #{startTermTransDate}
+		</if>
+	</select>
+
+	<select id="selectEcTransNum" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		FROM     cc_qrcode_ride_trans dayadd
+		WHERE    dayadd.create_time BETWEEN #{startTermTransDate} AND #{endTermTransDate}
+		GROUP BY DATE_FORMAT(dayadd.create_time, "%Y-%m-%d")
+		ORDER BY createtime ;
+	</select>
+
+	<select id="selectEcTransNumCounts" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS total
+		FROM cc_qrcode_ride_trans
+		<if test="startTermTransDate != null and startTermTransDate != ''">
+			WHERE create_time &lt; #{startTermTransDate}
+		</if>
+	</select>
+
+	<select id="selectIcTransNum" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		FROM     cc_card_order dayadd
+		WHERE    dayadd.create_time BETWEEN #{startTermTransDate} AND #{endTermTransDate}
+		GROUP BY DATE_FORMAT(dayadd.create_time, "%Y-%m-%d")
+		ORDER BY createtime ;
+	</select>
+
+	<select id="selectIcTransNumCounts" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS total
+		FROM cc_card_order
+		<if test="startTermTransDate != null and startTermTransDate != ''">
+			WHERE create_time &lt; #{startTermTransDate}
+		</if>
+	</select>
+</mapper>

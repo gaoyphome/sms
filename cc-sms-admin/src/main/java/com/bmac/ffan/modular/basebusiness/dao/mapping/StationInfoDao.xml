@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.basebusiness.dao.StationInfoDao">
+    <sql id="Base_Column_List">
+	      id as id,
+	      line_id as lineId,
+	      name as name,
+	      flag as flag,
+	      num as num,
+	      longitude as longitude,
+	      latitude as latitude,
+	      opera_station_num as operaStationNum,
+	      ic_station_num as icStationNum,
+	      ic_sub_station_num as icSubStationNum,
+	      create_time as createTime,
+	      update_time as updateTime
+	</sql>
+
+    <select id="selectStationInfos" resultType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from cc_station_info where 1 = 1
+
+
+        <if test="name != null and name != ''">
+            and name like CONCAT('%',#{name},'%')
+        </if>
+        <if test="lineId != null and lineId != ''">
+            and line_id like CONCAT('%',#{lineId},'%')
+        </if>
+
+        <choose>
+            <when test="orderByField != null and orderByField !=''">
+                <choose>
+                    <when test="isAsc == true">
+                        order by ${orderByField} ASC
+                    </when>
+                    <otherwise>
+                        order by ${orderByField} DESC
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                order by update_time DESC
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectStationInfosByLineId" resultType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from cc_station_info where 1 = 1
+        <if test="lineId != null and lineId != ''">
+            and line_id = #{lineId}
+        </if>
+        <choose>
+            <when test="flag == 1">
+                and flag = 1 order by num asc;
+            </when>
+            <otherwise>
+                and flag = 0 order by num desc;
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectStationPriceByLineId" resultType="map">
+		select ccsi.line_id as lineId, ccsi.name as name, ccsi.num as num, ccpi.price as price
+        from cc_station_info ccsi left join cc_price_info ccpi
+        on ccsi.line_id = ccpi.line_id and ccsi.flag = ccpi.dir_flag and ccpi.num = ccsi.num
+        where 2 = 2
+        <if test="lineId != null and lineId != ''">
+            and ccsi.line_id = #{lineId}
+        </if>
+        <choose>
+            <when test="flag == 1">
+                and ccsi.flag = 1 order by ccsi.num asc;
+            </when>
+            <otherwise>
+                and ccsi.flag = 0 order by ccsi.num desc;
+            </otherwise>
+        </choose>
+	</select>
+</mapper>

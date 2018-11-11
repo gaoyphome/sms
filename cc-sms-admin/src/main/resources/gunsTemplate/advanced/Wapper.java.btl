@@ -1,0 +1,17 @@
+package com.bmac.ffan.modular.${context.moduleName}.warpper;
+
+import java.util.Map;
+import com.bmac.ffan.core.base.warpper.BaseControllerWarpper;
+
+public class ${context.bizEnBigName}Warpper extends BaseControllerWarpper{
+
+	public ${context.bizEnBigName}Warpper(Object obj) {
+		super(obj);
+	}
+
+	@Override
+	protected void warpTheMap(Map<String, Object> map) {
+		
+	}
+
+}

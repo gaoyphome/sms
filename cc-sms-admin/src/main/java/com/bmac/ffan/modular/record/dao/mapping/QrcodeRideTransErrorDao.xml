@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.record.dao.QrcodeRideTransErrorDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      plt_ssn as pltSsn,
+	      req_ssn as reqSsn,
+	      settle_date_loc as settleDateLoc,
+	      trans_recv_date as transRecvDate,
+	      trans_recv_time as transRecvTime,
+	      trans_code_out as transCodeOut,
+	      trans_code_chnl as transCodeChnl,
+	      trans_code_ch_name as transCodeChName,
+	      mch_code_in as mchCodeIn,
+	      mch_name_out as mchNameOut,
+	      acq_ins_id as acqInsId,
+	      acq_ins_seq as acqInsSeq,
+	      loc_tracs_time as locTracsTime,
+	      loc_tracs_date as locTracsDate,
+	      term_trans_time as termTransTime,
+	      term_trans_date as termTransDate,
+	      card_city as cardCity,
+	      csn as csn,
+	      card_seqNo as cardSeqNo,
+	      card_counter as cardCounter,
+	      card_type as cardType,
+	      card_phy_type as cardPhyType,
+	      order_no as orderNo,
+	      state as state,
+	      card_bramdid as cardBramdid,
+	      card_class as cardClass,
+	      order_type as orderType,
+	      trade_status as tradeStatus,
+	      serial_num as serialNum,
+	      cardno as cardno,
+	      trade_type_flag as tradeTypeFlag,
+	      cpu_counter as cpuCounter,
+	      card_iis_code as cardIisCode,
+	      time_card_type as timeCardType,
+	      mark_time as markTime,
+	      mark_city_code as markCityCode,
+	      mark_iis_code as markIisCode,
+	      mark_cs_code as markCsCode,
+	      mark_line_id as markLineId,
+	      mark_station as markStation,
+	      mark_bus_id as markBusId,
+	      down_cs_code as downCsCode,
+	      down_line_id as downLineId,
+	      down_station as downStation,
+	      down_bus_id as downBusId,
+	      taken_length as takenLength,
+	      dir_flag as dirFlag,
+	      driver_code as driverCode,
+	      sellor_code as sellorCode,
+	      sellor_code2 as sellorCode2,
+	      pos_id as posId,
+	      pos_trade_seq as posTradeSeq,
+	      pos_date as posDate,
+	      tac as tac,
+	      tac_mode as tacMode,
+	      psam_id as psamId,
+	      psam_seq as psamSeq,
+	      charge_actual as chargeActual,
+	      card_balance as cardBalance,
+	      pre_card_balance as preCardBalance,
+	      charge_ideal as chargeIdeal,
+	      key_ver as keyVer,
+	      key_index as keyIndex,
+	      key_req_num as keyReqNum,
+	      auth_seq as authSeq,
+	      check_code as checkCode,
+	      record_type as recordType,
+	      card_flag as cardFlag,
+	      create_time as createTime,
+	      update_time as updateTime,
+	      card_upload as cardUpload,
+	      token_id as tokenId,
+	      user_phone as userPhone,
+	      token_version as tokenVersion,
+	      city_in_length as cityInLength,
+	      city_out_length as cityOutLength,
+	      city_in_rebate as cityInRebate,
+	      city_out_rebate as cityOutRebate,
+	      down_time as downTime,
+	      mark_station_name as markStationName,
+	      down_station_name as downStationName,
+	      city_in_discount as cityInDiscount,
+	      line_name as lineName,
+	      city_out_discount as cityOutDiscount,
+	      nt_order_id as ntOrderId,
+	      channel_type as channelType,
+	      channel_id as channelId,
+	      order_date as orderDate,
+	      trade_type as tradeType,
+	      porder_id as porderId,
+	      pos_mark_trans_seq as posMarkTransSeq,
+	      pos_down_trans_seq as posDownTransSeq,
+	      mark_pasm_id as markPasmId,
+	      down_pasm_id as downPasmId,
+	      mark_pos_id as markPosId,
+	      down_pos_id as downPosId,
+	      mark_token_id as markTokenId,
+	      down_token_id as downTokenId,
+	      trans_state as transState,
+	      third_instid as thirdInstid,
+	      third_channelid as thirdChannelid,
+	      transcode as transcode,
+	      transmsg as transmsg,
+	      err_type as errType,
+	      err_desc as errDesc
+	</sql>
+	
+	<select id="selectQrcodeRideTransErrors" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_qrcode_ride_trans_error where 1 = 1
+		
+		
+	    	<if test="cardno != null and cardno != ''">
+				and cardno like CONCAT('%',#{cardno},'%')
+			</if>
+	    	<if test="order_no != null and order_no != ''">
+				and order_no like CONCAT('%',#{order_no},'%')
+			</if>
+
+		<if test="startTermTransDate != null and startTermTransDate != ''">
+			<![CDATA[ and date_format(create_time, '%Y%m%d %H%i%s') >=  date_format(#{startTermTransDate}, '%Y%m%d %H%i%s') ]]>
+		</if>
+		<if test="endTermTransTime != null and endTermTransTime != ''">
+			<![CDATA[ and date_format(create_time, '%Y%m%d %H%i%s') <=  date_format(#{endTermTransTime}, '%Y%m%d %H%i%s') ]]>
+		</if>
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by id DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

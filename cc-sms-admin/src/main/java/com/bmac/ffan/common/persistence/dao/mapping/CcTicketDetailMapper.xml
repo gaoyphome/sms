@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcTicketDetailMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcTicketDetail">
+		<id column="id" property="id" />
+		<result column="ticket_id" property="ticketId" />
+		<result column="nt_orderid" property="ntOrderid" />
+		<result column="agent_id" property="agentId" />
+		<result column="mchnt_id" property="mchntId" />
+		<result column="spot_id" property="spotId" />
+		<result column="term_id" property="termId" />
+		<result column="sesq" property="sesq" />
+		<result column="total_cnt" property="totalCnt" />
+		<result column="use_cnt" property="useCnt" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+</mapper>

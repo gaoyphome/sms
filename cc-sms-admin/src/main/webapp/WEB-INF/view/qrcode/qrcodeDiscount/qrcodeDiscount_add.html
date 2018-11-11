@@ -1,0 +1,39 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#select id="subCompanyId" name="运营分公司">
+                        @for(bc in busCompanies){
+                            <option value="${bc.companyId}">${bc.companyName}(${bc.companyId})</option>
+                        @}
+                    </#select>
+						<#input id="cardType" name="虚拟卡类型" underline="true" />
+						<#input id="cityInDiscount" name="市内折扣率" underline="true" />
+						<#input id="cityInPreferentialAmount" name="市内优惠额度" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+						<#input id="cityOutDiscount" name="市外折扣率" underline="true" />
+						<#input id="maxPreferentialAmount" name="最大优惠额度" underline="true" />
+						<#input id="cityOutPreferentialAmount" name="市外优惠额度" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="QrcodeDiscountInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="QrcodeDiscountInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/qrcodeDiscount/qrcodeDiscount_info.js"></script>
+@}

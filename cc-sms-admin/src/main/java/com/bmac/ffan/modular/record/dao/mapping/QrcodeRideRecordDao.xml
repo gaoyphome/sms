@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.record.dao.QrcodeRideRecordDao">
+	<sql id="Base_Column_List">
+	    ride.plt_ssn as pltSsn,
+		ride.req_ssn as reqSsn,
+		ride.settle_date_loc as settleDateLoc,
+		ride.trans_recv_date as transRecvDate,
+		ride.trans_recv_time as transRecvTime,
+		ride.trans_code_out as transCodeOut,
+		ride.trans_code_chnl as transCodeChnl,
+		ride.trans_code_ch_name as transCodeChName,
+		ride.mch_code_in as mchCodeIn,
+		ride.mch_name_out as mchNameOut,
+		ride.acq_ins_id as acqInsId,
+		ride.acq_ins_seq as acqInsSeq,
+		ride.loc_tracs_time as locTracsTime,
+		ride.loc_tracs_date as locTracsDate,
+		ride.term_trans_time as termTransTime,
+		ride.term_trans_date as termTransDate,
+		ride.card_city as cardCity,
+		ride.csn as csn,
+		ride.card_seqNo as cardSeqNo,
+		ride.card_counter as cardCounter,
+		ride.card_type as cardType,
+		ride.card_phy_type as cardPhyType,
+		ride.order_no as orderNo,
+		ride.state as state,
+		ride.card_bramdid as cardBramdid,
+		ride.card_class as cardClass,
+		ride.order_type as orderType,
+		ride.trade_status as tradeStatus,
+		ride.serial_num as serialNum,
+		ride.cardno as cardno,
+		ride.trade_type_flag as tradeTypeFlag,
+		ride.cpu_counter as cpuCounter,
+		ride.card_iis_code as cardIisCode,
+		ride.time_card_type as timeCardType,
+		ride.mark_time as markTime,
+		ride.mark_city_code as markCityCode,
+		ride.mark_iis_code as markIisCode,
+		ride.mark_cs_code as markCsCode,
+		ride.mark_line_id as markLineId,
+		ride.mark_station as markStation,
+		ride.mark_bus_id as markBusId,
+		ride.down_cs_code as downCsCode,
+		ride.down_line_id as downLineId,
+		ride.down_station as downStation,
+		ride.down_bus_id as downBusId,
+		ride.taken_length as takenLength,
+		ride.dir_flag as dirFlag,
+		ride.driver_code as driverCode,
+		ride.sellor_code as sellorCode,
+		ride.sellor_code2 as sellorCode2,
+		ride.pos_id as posId,
+		ride.pos_trade_seq as posTradeSeq,
+		ride.pos_date as posDate,
+		ride.tac as tac,
+		ride.tac_mode as tacMode,
+		ride.psam_id as psamId,
+		ride.psam_seq as psamSeq,
+		ride.charge_actual as chargeActual,
+		ride.card_balance as cardBalance,
+		ride.pre_card_balance as preCardBalance,
+		ride.charge_ideal as chargeIdeal,
+		ride.key_ver as keyVer,
+		ride.key_index as keyIndex,
+		ride.key_req_num as keyReqNum,
+		ride.auth_seq as authSeq,
+		ride.check_code as checkCode,
+		ride.record_type as recordType,
+		ride.card_flag as cardFlag,
+		ride.create_time as createTime,
+		ride.update_time as updateTime,
+		ride.card_upload as cardUpload,
+		ride.token_id as tokenId,
+		ride.user_phone as userPhone,
+		ride.mark_bus_name as markBusName,
+		ride.mark_station_name as markStationName,
+		ride.token_version as tokenVersion,
+		ride.line_name as lineName,
+		ride.third_instid as thirdInstid,
+		ride.third_channelid as thirdChannelid
+	</sql>
+	
+	<select id="selectQrcodeRideRecords" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_qrcode_ride_record ride
+		left join cc_line_info markline on ride.mark_line_id = markline.line_id
+		where 1 = 1
+		<if test="companyId != null and companyId != ''">
+			and (markline.company_id = #{companyId} or markline.sub_company_id = #{companyId})
+		</if>
+		
+	    	<if test="startTermTransDate != null and startTermTransDate != ''">
+				<![CDATA[ and date_format(ride.update_time, '%Y%m%d %H%i%s') >=  date_format(#{startTermTransDate}, '%Y%m%d %H%i%s') ]]>
+			</if>
+	    	<if test="endTermTransTime != null and endTermTransTime != ''">
+				<![CDATA[ and date_format(ride.update_time, '%Y%m%d %H%i%s') <=  date_format(#{endTermTransTime}, '%Y%m%d %H%i%s') ]]>
+			</if>
+	    	<if test="cardno != null and cardno != ''">
+				and ride.cardno = #{cardno}
+			</if>
+	    	<if test="userPhone != null and userPhone != ''">
+				and ride.user_phone = #{userPhone}
+			</if>
+	    	<if test="markLineId != null and markLineId != ''">
+				and ride.mark_line_id like CONCAT('%',#{markLineId},'%')
+			</if>
+	    	<if test="downLineId != null and downLineId != ''">
+				and ride.down_line_id like CONCAT('%',#{downLineId},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by ride.plt_ssn DESC
+			</otherwise>
+		</choose>
+	</select>
+
+
+</mapper>

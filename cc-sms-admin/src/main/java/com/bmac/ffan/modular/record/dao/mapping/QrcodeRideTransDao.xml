@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.record.dao.QrcodeRideTransDao">
+	<sql id="Base_Column_List">
+		trans.id as id,
+	    trans.plt_ssn as pltSsn,
+		trans.req_ssn as reqSsn,
+		trans.settle_date_loc as settleDateLoc,
+		trans.trans_recv_date as transRecvDate,
+		trans.trans_recv_time as transRecvTime,
+		trans.trans_code_out as transCodeOut,
+		trans.trans_code_chnl as transCodeChnl,
+		trans.trans_code_ch_name as transCodeChName,
+		trans.mch_code_in as mchCodeIn,
+		trans.mch_name_out as mchNameOut,
+		trans.acq_ins_id as acqInsId,
+		trans.acq_ins_seq as acqInsSeq,
+		trans.loc_tracs_time as locTracsTime,
+		trans.loc_tracs_date as locTracsDate,
+		trans.term_trans_time as termTransTime,
+		trans.term_trans_date as termTransDate,
+		trans.card_city as cardCity,
+		trans.csn as csn,
+		trans.card_seqNo as cardSeqNo,
+		trans.card_counter as cardCounter,
+		trans.card_type as cardType,
+		trans.card_phy_type as cardPhyType,
+		trans.order_no as orderNo,
+		trans.state as state,
+		trans.card_bramdid as cardBramdid,
+		trans.card_class as cardClass,
+		trans.order_type as orderType,
+		trans.trade_status as tradeStatus,
+		trans.serial_num as serialNum,
+		trans.cardno as cardno,
+		trans.trade_type_flag as tradeTypeFlag,
+		trans.cpu_counter as cpuCounter,
+		trans.card_iis_code as cardIisCode,
+		trans.time_card_type as timeCardType,
+		trans.mark_time as markTime,
+		trans.mark_city_code as markCityCode,
+		trans.mark_iis_code as markIisCode,
+		trans.mark_cs_code as markCsCode,
+		trans.mark_line_id as markLineId,
+		trans.mark_station as markStation,
+		trans.mark_bus_id as markBusId,
+		trans.down_cs_code as downCsCode,
+		trans.down_line_id as downLineId,
+		trans.down_station as downStation,
+		trans.down_bus_id as downBusId,
+		trans.taken_length as takenLength,
+		trans.dir_flag as dirFlag,
+		trans.driver_code as driverCode,
+		trans.sellor_code as sellorCode,
+		trans.sellor_code2 as sellorCode2,
+		trans.pos_id as posId,
+		trans.pos_trade_seq as posTradeSeq,
+		trans.pos_date as posDate,
+		trans.tac as tac,
+		trans.tac_mode as tacMode,
+		trans.psam_id as psamId,
+		trans.psam_seq as psamSeq,
+		trans.charge_actual as chargeActual,
+		trans.card_balance as cardBalance,
+		trans.pre_card_balance as preCardBalance,
+		trans.charge_ideal as chargeIdeal,
+		trans.key_ver as keyVer,
+		trans.key_index as keyIndex,
+		trans.key_req_num as keyReqNum,
+		trans.auth_seq as authSeq,
+		trans.check_code as checkCode,
+		trans.record_type as recordType,
+		trans.card_flag as cardFlag,
+		trans.create_time as createTime,
+		trans.update_time as updateTime,
+		trans.card_upload as cardUpload,
+		trans.token_id as tokenId,
+		trans.user_phone as userPhone,
+		trans.token_version as tokenVersion,
+		trans.city_in_length as cityInLength,
+		trans.city_out_length as cityOutLength,
+		trans.city_in_rebate as cityInRebate,
+		trans.city_out_rebate as cityOutRebate,
+		trans.down_time as downTime,
+		trans.mark_station_name as markStationName,
+		trans.down_station_name as downStationName,
+		trans.city_in_discount as cityInDiscount,
+		trans.line_name as lineName,
+		trans.city_out_discount as cityOutDiscount,
+		trans.nt_order_id as ntOrderId,
+		trans.channel_type as channelType,
+		trans.channel_id as channelId,
+		trans.order_date as orderDate,
+		trans.trade_type as tradeType,
+		trans.porder_id as porderId,
+		trans.pos_mark_trans_seq as posMarkTransSeq,
+		trans.pos_down_trans_seq as posDownTransSeq,
+		trans.mark_pasm_id as markPasmId,
+		trans.down_pasm_id as downPasmId,
+		trans.mark_pos_id as markPosId,
+		trans.down_pos_id as downPosId,
+		trans.mark_token_id as markTokenId,
+		trans.down_token_id as downTokenId,
+		trans.trans_state as transState,
+		trans.third_instid as thirdInstid,
+		trans.third_channelid as thirdChannelid
+	</sql>
+	
+	<select id="selectQrcodeRideTranss" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_qrcode_ride_trans trans left join cc_line_info line on trans.mark_line_id = line.line_id
+		where 1 = 1
+		<if test="companyId != null and companyId != ''">
+			and (line.company_id = #{companyId} or line.sub_company_id = #{companyId})
+		</if>
+		<if test="startTermTransDate != null and startTermTransDate != ''">
+			<![CDATA[ and date_format(trans.update_time, '%Y%m%d %H%i%s') >=  date_format(#{startTermTransDate}, '%Y%m%d %H%i%s') ]]>
+		</if>
+		<if test="endTermTransTime != null and endTermTransTime != ''">
+			<![CDATA[ and date_format(trans.update_time, '%Y%m%d %H%i%s') <=  date_format(#{endTermTransTime}, '%Y%m%d %H%i%s') ]]>
+		</if>
+	    	<if test="cardno != null and cardno != ''">
+				and trans.cardno = #{cardno}
+			</if>
+	    	<if test="userPhone != null and userPhone != ''">
+				and trans.user_phone = #{userPhone}
+			</if>
+	    	<if test="lineName != null and lineName != ''">
+				and trans.line_name like CONCAT('%',#{lineName},'%')
+			</if>
+			<if test="state != null and state != ''">
+				and trans.state = #{state}
+			</if>
+		<if test="posId != null and posId != ''">
+			and trans.pos_id = #{posId}
+		</if>
+		<if test="transState != null and transState != ''">
+			and trans.trans_state = #{transState}
+		</if>
+		<if test="tradeStatus != null and tradeStatus != ''">
+			and trans.trade_status = #{tradeStatus}
+		</if>
+		<if test="tradeTypeFlag != null and tradeTypeFlag != ''">
+			and trans.trade_type_flag = #{tradeTypeFlag}
+		</if>
+		<if test="orderNo != null and orderNo != ''">
+			and trans.order_no = #{orderNo}
+		</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by trans.plt_ssn DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="selectQrcodeRideRecordByTrans" resultType="map">
+		select
+		-- 			  trans.id as id,
+		trans.plt_ssn as transPltSsn,
+		-- 			  trans.req_ssn as trans_req_ssn,
+		-- 			  record.plt_ssn as record_plt_ssn,
+		record.trade_type_flag as recordTradeTypeFlag,
+		record.mark_time as recordMarkTime,
+		record.mark_station_name as recordMarkStationName
+		from
+		cc_qrcode_ride_record record,
+		cc_qrcode_ride_trans trans
+		where
+		trans.plt_ssn in
+		<foreach collection="list" item="transPltSsn" index="index"
+				 open="(" close=")" separator=",">
+			#{transPltSsn}
+		</foreach>
+
+		and (trans.plt_ssn = record.plt_ssn  or  trans.req_ssn = record.plt_ssn)
+		order by
+		trans.id,
+		record.mark_time;
+	</select>
+</mapper>

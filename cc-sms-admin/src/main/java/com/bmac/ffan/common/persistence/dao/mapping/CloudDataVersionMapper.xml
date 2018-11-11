@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CloudDataVersionMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CloudDataVersion">
+		<id column="id" property="id" />
+		<result column="merchant_version" property="merchantVersion" />
+		<result column="operate_param_version" property="operateParamVersion" />
+		<result column="cardtype_version" property="cardtypeVersion" />
+		<result column="blacklist_version" property="blacklistVersion" />
+	</resultMap>
+	<!-- 获取终端当前增量全局文件版本 -->
+	<select id="getMaxBlackVersion" resultType="java.util.HashMap">
+		select
+			max(blacklist_version) g1
+		from
+			cloud_data_version	
+	</select>
+</mapper>

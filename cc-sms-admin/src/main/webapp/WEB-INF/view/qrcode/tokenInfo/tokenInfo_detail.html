@@ -1,0 +1,47 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${tokenInfo.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input disabled="disabled"  id="id" name="id" value="${tokenInfo.id}" underline="true" />
+					<#input disabled="disabled"  id="TokenId" name="tokenId" value="${tokenInfo.tokenId}" underline="true" />
+					<#input disabled="disabled"  id="userId" name="用户ID" value="${tokenInfo.userId}" underline="true" />
+					<#input disabled="disabled"  id="tokenType" name="TOKEN类型" value="${tokenInfo.tokenType}" underline="true" />
+					<#input disabled="disabled"  id="startTime" name="生效时间" value="${tokenInfo.startTime}" underline="true" />
+					<#input disabled="disabled"  id="endTime" name="失效时间" value="${tokenInfo.endTime}" underline="true" />
+					<#input disabled="disabled"  id="space" name="应用场景" value="${tokenInfo.space}" underline="true" />
+					<#input disabled="disabled"  id="tokenLevel" name="担保级别" value="${tokenInfo.tokenLevel}" underline="true" />
+					<#input disabled="disabled"  id="ticketId" name="套票ID" value="${tokenInfo.ticketId}" underline="true" />
+					<#input disabled="disabled"  id="ntOrderid" name="订单号" value="${tokenInfo.ntOrderid}" underline="true" />
+
+                </div>
+
+                <div class="col-sm-6">
+					<#input disabled="disabled"  id="ticketType" name="套票类型" value="${tokenInfo.ticketType}" underline="true" />
+					<#input disabled="disabled"  id="tokenInfo" name="附加信息" value="${tokenInfo.tokenInfo}" underline="true" />
+					<#input disabled="disabled"  id="tokenEnc" name="Token密文" value="${tokenInfo.tokenEnc}" underline="true" />
+					<#input disabled="disabled"  id="state" name="状态" value="${tokenInfo.state}" underline="true" />
+					<#input disabled="disabled"  id="useTime" name="使用时间" value="${tokenInfo.useTime}" underline="true" />
+					<#input disabled="disabled"  id="posId" name="POS机ID" value="${tokenInfo.posId}" underline="true" />
+					<#input disabled="disabled"  id="expireType" name="失效方式" value="${tokenInfo.expireType}" underline="true" />
+					<#input disabled="disabled"  id="expireTime" name="失效时间" value="${tokenInfo.expireTime}" underline="true" />
+					<#input disabled="disabled"  id="createTime" name="绑定时间" value="${tokenInfo.createTime}" underline="true" />
+					<#input disabled="disabled"  id="updateTime" name="更新时间" value="${tokenInfo.updateTime}" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="TokenInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/tokenInfo/tokenInfo_info.js"></script>
+@}

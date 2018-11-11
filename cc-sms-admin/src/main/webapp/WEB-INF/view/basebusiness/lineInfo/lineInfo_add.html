@@ -1,0 +1,73 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+						<#input id="lineId" name="线路编号" underline="true" />
+						<#input id="fileId" name="文件编号" underline="true" />
+						<#input id="name" name="线路名称" underline="true" />
+						<#input id="companyId" name="公司编号" underline="true" />
+						<#input id="subCompanyId" name="分公司编号" underline="true" />
+						<#input id="dateEnable" name="生效日期" underline="true" />
+
+						<#select id="localNoMode" name="本地未定义卡">
+							<option value="0">不处理本费率表中未定义的乘客卡类型</option>
+							<option value="1">表示按照01类型用户卡折扣价执行</option>
+							<option value="2">表示按照01类型用户卡无折扣执行</option>
+						</#select>
+						<#select id="offsiteNoModel" name="异地未定义卡">
+							<option value="0">不处理本费率表中未定义的乘客卡类型</option>
+							<option value="1">表示按照01类型用户卡折扣价执行</option>
+							<option value="2">表示按照01类型用户卡无折扣执行</option>
+						</#select>
+					<#select id="busAttr" name="车辆属性">
+						<option value="1">非空调车</option>
+						<option value="2">空调车</option>
+					</#select>
+					<#select id="offsiteTicketModel" name="异地逃补模式">
+						<option value="1">自动补互通卡异地逃票</option>
+						<option value="2">互通卡异地套票时禁止使用</option>
+						<option value="3">不判断异地套票</option>
+					</#select>
+					<#select id="difTicketRule" name="方向不同补票">
+						<option value="1">补票</option>
+						<option value="2">不补票(远端票价)</option>
+						<option value="3">不补票(近端票价)</option>
+					</#select>
+						<#input id="ticketDiscountFlag" name="补票折扣" underline="true" />
+				</div>
+
+				<div class="col-sm-6">
+						<#input id="functionSwitch" name="功能开关" underline="true" />
+						<#input id="cardIssuerNum" name="卡号" underline="true" />
+						<#input id="lineAttr" name="线路属性" underline="true" />
+						<#input id="exchangeTime" name="换乘时限" underline="true" />
+						<#input id="priceBase" name="基本票价" underline="true" />
+						<#input id="cityLeaveUp" name="上行市界起点" underline="true" />
+						<#input id="cityLeaveDown" name="下行市界起点" underline="true" />
+						<#input id="stationsNumUp" name="上行站点数量" underline="true" />
+						<#input id="stationsNumDn" name="下行站点数量" underline="true" />
+						<#input id="fileVersion" name="格式版本号" underline="true" />
+						<#input id="pltLineVersion" name="线路版本号" underline="true" />
+						<#input id="createFlag" name="是否生成" underline="true" />
+                </div>
+
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="LineInfoInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="LineInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/lineInfo/lineInfo_info.js"></script>
+@}

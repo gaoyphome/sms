@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>可用卡类型管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                        	  	<div class="col-sm-3">
+                                	<#NameCon id="mchntcode" name="商户简码" />
+                           	 	</div>
+                        	  	<div class="col-sm-3">
+                                	<#NameCon id="cardAttr" name="卡类型名称" />
+                           	 	</div>
+                        
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="PosCardType.search()"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12" id="PosCardTypeTableToolbar" role="group">
+                            @if(shiro.hasPermission("/posCardType/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="PosCardType.openAddPosCardType()"/>
+                            @}
+                            @if(shiro.hasPermission("/posCardType/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="PosCardType.openPosCardTypeDetail(false)" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/posCardType/detail")){
+                                <#button name="详情" icon="fa-file-text" clickFun="PosCardType.openPosCardTypeDetail(true)" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/posCardType/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="PosCardType.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="PosCardTypeTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/posCardType/posCardType.js"></script>
+@}

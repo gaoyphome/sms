@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.pos.dao.PosCardTypeDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      mchntcode as mchntcode,
+	      card_phy_type as cardPhyType,
+	      card_type as cardType,
+	      card_attr as cardAttr,
+	      cost_type as costType,
+	      min_balance as minBalance,
+	      credit_balance as creditBalance,
+	      max_balance as maxBalance,
+	      max_consume as maxConsume,
+	      in_rate as inRate,
+	      in_limit as inLimit,
+	      out_rate as outRate,
+	      out_limit as outLimit,
+	      reserved as reserved,
+	      create_time as createTime,
+	      update_time as updateTime
+	</sql>
+	
+	<select id="selectPosCardTypes" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_pos_card_type where 1 = 1
+		
+		
+	    	<if test="mchntcode != null and mchntcode != ''">
+				and mchntcode like CONCAT('%',#{mchntcode},'%')
+			</if>
+	    	<if test="cardAttr != null and cardAttr != ''">
+				and card_attr like CONCAT('%',#{cardAttr},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by update_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

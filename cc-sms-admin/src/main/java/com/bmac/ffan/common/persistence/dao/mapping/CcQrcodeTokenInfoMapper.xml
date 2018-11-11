@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcQrcodeTokenInfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcQrcodeTokenInfo">
+		<id column="id" property="id" />
+		<result column="vsir_bmacno" property="vsirBmacno" />
+		<result column="start_time" property="startTime" />
+		<result column="card_check_digit" property="cardCheckDigit" />
+		<result column="end_time" property="endTime" />
+		<result column="token_id" property="tokenId" />
+		<result column="card_type" property="cardType" />
+		<result column="token_type" property="tokenType" />
+		<result column="token_version" property="tokenVersion" />
+		<result column="token_chumid" property="tokenChumid" />
+		<result column="token_enc" property="tokenEnc" />
+		<result column="dislocat_norm" property="dislocatNorm" />
+		<result column="create_time" property="createTime" />
+		<result column="identification" property="identification" />
+		<result column="update_time" property="updateTime" />
+		<result column="expire_type" property="expireType" />
+		<result column="expire_time" property="expireTime" />
+		<result column="space" property="space" />
+		<result column="user_phone" property="userPhone" />
+		<result column="qrcode_sesq" property="qrcodeSesq" />
+		<result column="bar_sesq" property="barSesq" />
+	</resultMap>
+
+</mapper>

@@ -1,0 +1,42 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>实体本地卡折扣设置 管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                        	  	<div class="col-sm-3">
+                                	<#NameCon id="subCompanyId" name="运营公司ID" />
+                           	 	</div>
+                        
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="LocalCardDiscount.search()"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12" id="LocalCardDiscountTableToolbar" role="group">
+                            @if(shiro.hasPermission("/localCardDiscount/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="LocalCardDiscount.openAddLocalCardDiscount()"/>
+                            @}
+                            @if(shiro.hasPermission("/localCardDiscount/update")){
+                                <#button name="修改" icon="fa-plus" clickFun="LocalCardDiscount.openLocalCardDiscountDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/localCardDiscount/delete")){
+                                <#button name="删除" icon="fa-plus" clickFun="LocalCardDiscount.delete()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/localCardDiscount/import")){
+                                <#button name="文件导入" icon="fa-plus" clickFun="LocalCardDiscount.openImport()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="LocalCardDiscountTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/localCardDiscount/localCardDiscount.js"></script>
+@}

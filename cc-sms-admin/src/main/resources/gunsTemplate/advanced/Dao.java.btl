@@ -1,0 +1,25 @@
+package ${dao.packageName};
+
+<% for(import in dao.imports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}Dao
+ *
+ * @author 工具生成
+ * @Date ${tool.currentTime()}
+ */
+public interface ${context.bizEnBigName}Dao {
+
+List<Map<String, Object>> select${context.bizEnBigName}s(
+@Param("page") Page<${context.entityName}> page, 
+
+<% for(sfield in context.searchFields!){ %>
+	@Param("${sfield}") String ${sfield},
+	
+<% } %>
+	@Param("orderByField") String orderByField, 
+
+	@Param("isAsc") boolean isAsc);
+}

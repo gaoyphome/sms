@@ -1,0 +1,39 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>实体卡版本号管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                        	  	<div class="col-sm-3">
+                                	<#NameCon id="subCompanyId" name="子运营公司ID" />
+                           	 	</div>
+                        
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="CardDiscountVersion.search()"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12" id="CardDiscountVersionTableToolbar" role="group">
+                            @if(shiro.hasPermission("/cardDiscountVersion/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="CardDiscountVersion.openAddCardDiscountVersion()"/>
+                            @}
+                            @if(shiro.hasPermission("/cardDiscountVersion/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="CardDiscountVersion.openCardDiscountVersionDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/cardDiscountVersion/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="CardDiscountVersion.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="CardDiscountVersionTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/cardDiscountVersion/cardDiscountVersion.js"></script>
+@}

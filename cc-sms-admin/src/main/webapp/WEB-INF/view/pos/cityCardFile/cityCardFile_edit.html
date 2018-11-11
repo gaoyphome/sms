@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${cityCardFile.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="id" name="id" value="${cityCardFile.id}" underline="true" />
+					<#input id="filename" name="filename" value="${cityCardFile.filename}" underline="true" />
+					<#input id="filesize" name="filesize" value="${cityCardFile.filesize}" underline="true" />
+					<#input id="crc16" name="crc16" value="${cityCardFile.crc16}" underline="true" />
+					<#input id="content" name="content" value="${cityCardFile.content}" underline="true" />
+					<#input id="version" name="version" value="${cityCardFile.version}" underline="true" />
+					<#input id="lineId" name="lineId" value="${cityCardFile.lineId}" underline="true" />
+					<#input id="subCompanyId" name="subCompanyId" value="${cityCardFile.subCompanyId}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CityCardFileInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="CityCardFileInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/cityCardFile/cityCardFile_info.js"></script>
+@}

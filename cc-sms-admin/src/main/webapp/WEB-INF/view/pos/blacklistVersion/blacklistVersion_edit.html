@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${blacklistVersion.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="id" name="id" value="${blacklistVersion.id}" underline="true" />
+					<#input id="upgradeType" name="upgradeType" value="${blacklistVersion.upgradeType}" underline="true" />
+					<#input id="listVersion" name="listVersion" value="${blacklistVersion.listVersion}" underline="true" />
+					<#input id="fileId" name="fileId" value="${blacklistVersion.fileId}" underline="true" />
+					<#input id="content" name="content" value="${blacklistVersion.content}" underline="true" />
+					<#input id="type" name="type" value="${blacklistVersion.type}" underline="true" />
+					<#input id="lineId" name="lineId" value="${blacklistVersion.lineId}" underline="true" />
+					<#input id="posId" name="posId" value="${blacklistVersion.posId}" underline="true" />
+					<#input id="createTime" name="createTime" value="${blacklistVersion.createTime}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${blacklistVersion.updateTime}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BlacklistVersionInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BlacklistVersionInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/blacklistVersion/blacklistVersion_info.js"></script>
+@}

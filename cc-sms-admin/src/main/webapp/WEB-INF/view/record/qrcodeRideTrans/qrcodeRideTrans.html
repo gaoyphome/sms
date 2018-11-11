@@ -1,0 +1,110 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>二维码乘车交易记录管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#TimeCon id="startTermTransDate" name="开始时间" isTime="true" pattern="YYYY-MM-DD hh:mm:ss" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTermTransTime" name="结束时间" isTime="true" pattern="YYYY-MM-DD hh:mm:ss" />
+                            </div>
+                        	  	<div class="col-sm-3">
+                                	<#NameCon id="lineName" name="线路名称" />
+                           	 	</div>
+                                <div class="col-sm-3">
+                                    <#NameCon id="posId" name="POS-ID" />
+                                </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="cardno" name="卡号"  placeholder="请输入完整卡号" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="userPhone" name="用户手机号" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="orderNo" name="交易单号" placeholder="请输入完整单号"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#SelectCon id="state" name="支付状态">
+                                    <option value="">全部</option>
+                                    <option value="0">未扣款（单边交易）</option>
+                                    <option value="1">扣款成功</option>
+                                    <option value="6">扣款失败</option>
+                                    <option value="7">补扣款成功</option>
+                                    <option value="8">扣费超时</option>
+                                </#SelectCon>
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <#SelectCon id="tradeStatus" name="补票交易状态">
+                                    <option value="">全部</option>
+                                    <option value="0">正常交易</option>
+                                    <option value="1">人工补票</option>
+                                    <option value="2">强制扣款</option>
+                                </#SelectCon>
+                            </div>-->
+                            <div class="col-sm-3">
+                                <#SelectCon id="transState" name="交易状态">
+                                    <option value="">全部</option>
+                                    <option value="1">系统自动匹配</option>
+                                    <option value="2">未处理单边交易</option>
+                                    <option value="3">人工补单</option>
+                                    <option value="4">系统自动补单</option>
+                                    <option value="5">未处理故障车超时</option>
+                                    <option value="9">故障车作废交易</option>
+                                </#SelectCon>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <#SelectCon id="tradeTypeFlag" name="交易类型标识">
+                                    <option value="">全部</option>
+                                    <option value="0">默认</option>
+                                    <option value="8">人工补单</option>
+                                    <option value="9">系统自动补单（超时）</option>
+                                    <option value="10">系统自动补单（超次）</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="QrcodeRideTrans.search()"/>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-md-12" id="QrcodeRideTransTableToolbar" role="group">
+
+                            @if(shiro.hasPermission("/qrcodeRideTrans/detail")){
+                                <#button name="详情" icon="fa-file-text" clickFun="QrcodeRideTrans.openQrcodeRideTransDetail()"/>
+                            @}
+                            @if(shiro.hasPermission("/qrcodeRideTrans/recordDetail")){
+                            <#button name="乘车详情" icon="fa-file-text" clickFun="QrcodeRideTrans.openQrcodeRideTransRecordDetail()"/>
+                            @}
+                            <!--
+                                                        @if(shiro.hasPermission("/qrcodeRideTrans/add")){
+                                                            <#button name="添加" icon="fa-plus" clickFun="QrcodeRideTrans.openAddQrcodeRideTrans()"/>
+                                                        @}
+                                                        @if(shiro.hasPermission("/qrcodeRideTrans/update")){
+                                                            <#button name="修改" icon="fa-edit" clickFun="QrcodeRideTrans.openQrcodeRideTransDetail()" space="true"/>
+                                                        @}
+                                                        @if(shiro.hasPermission("/qrcodeRideTrans/delete")){
+                                                            <#button name="删除" icon="fa-remove" clickFun="QrcodeRideTrans.delete()" space="true"/>
+                                                        @}
+                                                        -->
+                        </div>
+                        <#table id="QrcodeRideTransTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/qrcodeRideTrans/qrcodeRideTrans.js"></script>
+@}

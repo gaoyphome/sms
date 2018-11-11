@@ -1,0 +1,85 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${ticketOrder.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="pltSsn" name="pltSsn" value="${ticketOrder.pltSsn}" underline="true" />
+					<#input id="reqSsn" name="reqSsn" value="${ticketOrder.reqSsn}" underline="true" />
+					<#input id="settleDateLoc" name="settleDateLoc" value="${ticketOrder.settleDateLoc}" underline="true" />
+					<#input id="transRecvDate" name="transRecvDate" value="${ticketOrder.transRecvDate}" underline="true" />
+					<#input id="transRecvTime" name="transRecvTime" value="${ticketOrder.transRecvTime}" underline="true" />
+					<#input id="transCodeOut" name="transCodeOut" value="${ticketOrder.transCodeOut}" underline="true" />
+					<#input id="transCodeChnl" name="transCodeChnl" value="${ticketOrder.transCodeChnl}" underline="true" />
+					<#input id="transCodeChName" name="transCodeChName" value="${ticketOrder.transCodeChName}" underline="true" />
+					<#input id="mchCodeIn" name="mchCodeIn" value="${ticketOrder.mchCodeIn}" underline="true" />
+					<#input id="mchNameOut" name="mchNameOut" value="${ticketOrder.mchNameOut}" underline="true" />
+					<#input id="acqInsId" name="acqInsId" value="${ticketOrder.acqInsId}" underline="true" />
+					<#input id="acqInsSeq" name="acqInsSeq" value="${ticketOrder.acqInsSeq}" underline="true" />
+					<#input id="locTracsTime" name="locTracsTime" value="${ticketOrder.locTracsTime}" underline="true" />
+					<#input id="locTracsDate" name="locTracsDate" value="${ticketOrder.locTracsDate}" underline="true" />
+					<#input id="termTransTime" name="termTransTime" value="${ticketOrder.termTransTime}" underline="true" />
+					<#input id="termTransDate" name="termTransDate" value="${ticketOrder.termTransDate}" underline="true" />
+					<#input id="cardCity" name="cardCity" value="${ticketOrder.cardCity}" underline="true" />
+					<#input id="txnToken" name="txnToken" value="${ticketOrder.txnToken}" underline="true" />
+					<#input id="orderNo" name="orderNo" value="${ticketOrder.orderNo}" underline="true" />
+					<#input id="state" name="state" value="${ticketOrder.state}" underline="true" />
+					<#input id="ntorderid" name="ntorderid" value="${ticketOrder.ntorderid}" underline="true" />
+					<#input id="userId" name="userId" value="${ticketOrder.userId}" underline="true" />
+					<#input id="orderType" name="orderType" value="${ticketOrder.orderType}" underline="true" />
+					<#input id="txnType" name="txnType" value="${ticketOrder.txnType}" underline="true" />
+					<#input id="ticketId" name="ticketId" value="${ticketOrder.ticketId}" underline="true" />
+					<#input id="cardno" name="cardno" value="${ticketOrder.cardno}" underline="true" />
+					<#input id="agentId" name="agentId" value="${ticketOrder.agentId}" underline="true" />
+					<#input id="mchntId" name="mchntId" value="${ticketOrder.mchntId}" underline="true" />
+					<#input id="spotId" name="spotId" value="${ticketOrder.spotId}" underline="true" />
+					<#input id="termId" name="termId" value="${ticketOrder.termId}" underline="true" />
+					<#input id="sesq" name="sesq" value="${ticketOrder.sesq}" underline="true" />
+					<#input id="totalCnt" name="totalCnt" value="${ticketOrder.totalCnt}" underline="true" />
+					<#input id="useCnt" name="useCnt" value="${ticketOrder.useCnt}" underline="true" />
+					<#input id="posId" name="posId" value="${ticketOrder.posId}" underline="true" />
+					<#input id="posTradeSeq" name="posTradeSeq" value="${ticketOrder.posTradeSeq}" underline="true" />
+					<#input id="posDate" name="posDate" value="${ticketOrder.posDate}" underline="true" />
+					<#input id="tac" name="tac" value="${ticketOrder.tac}" underline="true" />
+					<#input id="tacMode" name="tacMode" value="${ticketOrder.tacMode}" underline="true" />
+					<#input id="psamId" name="psamId" value="${ticketOrder.psamId}" underline="true" />
+					<#input id="psamSeq" name="psamSeq" value="${ticketOrder.psamSeq}" underline="true" />
+					<#input id="keyVer" name="keyVer" value="${ticketOrder.keyVer}" underline="true" />
+					<#input id="keyIndex" name="keyIndex" value="${ticketOrder.keyIndex}" underline="true" />
+					<#input id="keyReqNum" name="keyReqNum" value="${ticketOrder.keyReqNum}" underline="true" />
+					<#input id="authSeq" name="authSeq" value="${ticketOrder.authSeq}" underline="true" />
+					<#input id="createTime" name="createTime" value="${ticketOrder.createTime}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${ticketOrder.updateTime}" underline="true" />
+					<#input id="chargeActual" name="chargeActual" value="${ticketOrder.chargeActual}" underline="true" />
+					<#input id="cardBalance" name="cardBalance" value="${ticketOrder.cardBalance}" underline="true" />
+					<#input id="cardCounter" name="cardCounter" value="${ticketOrder.cardCounter}" underline="true" />
+					<#input id="cardType" name="cardType" value="${ticketOrder.cardType}" underline="true" />
+					<#input id="cardPhyType" name="cardPhyType" value="${ticketOrder.cardPhyType}" underline="true" />
+					<#input id="preCardBalance" name="preCardBalance" value="${ticketOrder.preCardBalance}" underline="true" />
+					<#input id="serialNum" name="serialNum" value="${ticketOrder.serialNum}" underline="true" />
+					<#input id="cpuCounter" name="cpuCounter" value="${ticketOrder.cpuCounter}" underline="true" />
+					<#input id="chargeIdeal" name="chargeIdeal" value="${ticketOrder.chargeIdeal}" underline="true" />
+					<#input id="ticketUpload" name="ticketUpload" value="${ticketOrder.ticketUpload}" underline="true" />
+					<#input id="productCode" name="productCode" value="${ticketOrder.productCode}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TicketOrderInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TicketOrderInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/ticketOrder/ticketOrder_info.js"></script>
+@}

@@ -1,0 +1,100 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${cardOrder.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="pltSsn" name="pltSsn" value="${cardOrder.pltSsn}" underline="true" />
+					<#input id="reqSsn" name="reqSsn" value="${cardOrder.reqSsn}" underline="true" />
+					<#input id="settleDateLoc" name="settleDateLoc" value="${cardOrder.settleDateLoc}" underline="true" />
+					<#input id="transRecvDate" name="transRecvDate" value="${cardOrder.transRecvDate}" underline="true" />
+					<#input id="transRecvTime" name="transRecvTime" value="${cardOrder.transRecvTime}" underline="true" />
+					<#input id="transCodeOut" name="transCodeOut" value="${cardOrder.transCodeOut}" underline="true" />
+					<#input id="transCodeChnl" name="transCodeChnl" value="${cardOrder.transCodeChnl}" underline="true" />
+					<#input id="transCodeChName" name="transCodeChName" value="${cardOrder.transCodeChName}" underline="true" />
+					<#input id="mchCodeIn" name="mchCodeIn" value="${cardOrder.mchCodeIn}" underline="true" />
+					<#input id="mchNameOut" name="mchNameOut" value="${cardOrder.mchNameOut}" underline="true" />
+					<#input id="acqInsId" name="acqInsId" value="${cardOrder.acqInsId}" underline="true" />
+					<#input id="acqInsSeq" name="acqInsSeq" value="${cardOrder.acqInsSeq}" underline="true" />
+					<#input id="locTracsTime" name="locTracsTime" value="${cardOrder.locTracsTime}" underline="true" />
+					<#input id="locTracsDate" name="locTracsDate" value="${cardOrder.locTracsDate}" underline="true" />
+					<#input id="termTransTime" name="termTransTime" value="${cardOrder.termTransTime}" underline="true" />
+					<#input id="termTransDate" name="termTransDate" value="${cardOrder.termTransDate}" underline="true" />
+					<#input id="cardCity" name="cardCity" value="${cardOrder.cardCity}" underline="true" />
+					<#input id="csn" name="csn" value="${cardOrder.csn}" underline="true" />
+					<#input id="cardSeqNo" name="cardSeqNo" value="${cardOrder.cardSeqNo}" underline="true" />
+					<#input id="cardCounter" name="cardCounter" value="${cardOrder.cardCounter}" underline="true" />
+					<#input id="cardType" name="cardType" value="${cardOrder.cardType}" underline="true" />
+					<#input id="cardPhyType" name="cardPhyType" value="${cardOrder.cardPhyType}" underline="true" />
+					<#input id="orderNo" name="orderNo" value="${cardOrder.orderNo}" underline="true" />
+					<#input id="state" name="state" value="${cardOrder.state}" underline="true" />
+					<#input id="cardBramdid" name="cardBramdid" value="${cardOrder.cardBramdid}" underline="true" />
+					<#input id="cardClass" name="cardClass" value="${cardOrder.cardClass}" underline="true" />
+					<#input id="orderType" name="orderType" value="${cardOrder.orderType}" underline="true" />
+					<#input id="tradeStatus" name="tradeStatus" value="${cardOrder.tradeStatus}" underline="true" />
+					<#input id="serialNum" name="serialNum" value="${cardOrder.serialNum}" underline="true" />
+					<#input id="cardno" name="cardno" value="${cardOrder.cardno}" underline="true" />
+					<#input id="tradeTypeFlag" name="tradeTypeFlag" value="${cardOrder.tradeTypeFlag}" underline="true" />
+					<#input id="cpuCounter" name="cpuCounter" value="${cardOrder.cpuCounter}" underline="true" />
+					<#input id="cardIisCode" name="cardIisCode" value="${cardOrder.cardIisCode}" underline="true" />
+					<#input id="timeCardType" name="timeCardType" value="${cardOrder.timeCardType}" underline="true" />
+					<#input id="markTime" name="markTime" value="${cardOrder.markTime}" underline="true" />
+					<#input id="markCityCode" name="markCityCode" value="${cardOrder.markCityCode}" underline="true" />
+					<#input id="markIisCode" name="markIisCode" value="${cardOrder.markIisCode}" underline="true" />
+					<#input id="markCsCode" name="markCsCode" value="${cardOrder.markCsCode}" underline="true" />
+					<#input id="markLineId" name="markLineId" value="${cardOrder.markLineId}" underline="true" />
+					<#input id="markStation" name="markStation" value="${cardOrder.markStation}" underline="true" />
+					<#input id="markBusId" name="markBusId" value="${cardOrder.markBusId}" underline="true" />
+					<#input id="downCsCode" name="downCsCode" value="${cardOrder.downCsCode}" underline="true" />
+					<#input id="downLineId" name="downLineId" value="${cardOrder.downLineId}" underline="true" />
+					<#input id="downStation" name="downStation" value="${cardOrder.downStation}" underline="true" />
+					<#input id="downBusId" name="downBusId" value="${cardOrder.downBusId}" underline="true" />
+					<#input id="takenLength" name="takenLength" value="${cardOrder.takenLength}" underline="true" />
+					<#input id="dirFlag" name="dirFlag" value="${cardOrder.dirFlag}" underline="true" />
+					<#input id="driverCode" name="driverCode" value="${cardOrder.driverCode}" underline="true" />
+					<#input id="sellorCode" name="sellorCode" value="${cardOrder.sellorCode}" underline="true" />
+					<#input id="sellorCode2" name="sellorCode2" value="${cardOrder.sellorCode2}" underline="true" />
+					<#input id="posId" name="posId" value="${cardOrder.posId}" underline="true" />
+					<#input id="posTradeSeq" name="posTradeSeq" value="${cardOrder.posTradeSeq}" underline="true" />
+					<#input id="posDate" name="posDate" value="${cardOrder.posDate}" underline="true" />
+					<#input id="tac" name="tac" value="${cardOrder.tac}" underline="true" />
+					<#input id="tacMode" name="tacMode" value="${cardOrder.tacMode}" underline="true" />
+					<#input id="psamId" name="psamId" value="${cardOrder.psamId}" underline="true" />
+					<#input id="psamSeq" name="psamSeq" value="${cardOrder.psamSeq}" underline="true" />
+					<#input id="chargeActual" name="chargeActual" value="${cardOrder.chargeActual}" underline="true" />
+					<#input id="cardBalance" name="cardBalance" value="${cardOrder.cardBalance}" underline="true" />
+					<#input id="preCardBalance" name="preCardBalance" value="${cardOrder.preCardBalance}" underline="true" />
+					<#input id="chargeIdeal" name="chargeIdeal" value="${cardOrder.chargeIdeal}" underline="true" />
+					<#input id="keyVer" name="keyVer" value="${cardOrder.keyVer}" underline="true" />
+					<#input id="keyIndex" name="keyIndex" value="${cardOrder.keyIndex}" underline="true" />
+					<#input id="keyReqNum" name="keyReqNum" value="${cardOrder.keyReqNum}" underline="true" />
+					<#input id="authSeq" name="authSeq" value="${cardOrder.authSeq}" underline="true" />
+					<#input id="checkCode" name="checkCode" value="${cardOrder.checkCode}" underline="true" />
+					<#input id="recordType" name="recordType" value="${cardOrder.recordType}" underline="true" />
+					<#input id="cardFlag" name="cardFlag" value="${cardOrder.cardFlag}" underline="true" />
+					<#input id="createTime" name="createTime" value="${cardOrder.createTime}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${cardOrder.updateTime}" underline="true" />
+					<#input id="cardUpload" name="cardUpload" value="${cardOrder.cardUpload}" underline="true" />
+					<#input id="reservedType" name="reservedType" value="${cardOrder.reservedType}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CardOrderInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="CardOrderInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/cardOrder/cardOrder_info.js"></script>
+@}

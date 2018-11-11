@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.pos.dao.BusPosDao">
+	<sql id="Base_Column_List">
+		  pos.id as id,
+		  pos.pos_vendor as posVendor,
+		  pos.bus_id as busId,
+		   --   pos_id as posId,
+		  pos.sam_id as samId,
+		  pos.state as state,
+		  pos.firm_version as firmVersion,
+		  pos.reason as reason,
+		  pos.remark as remark,
+		  pos.create_time as createTime,
+		  pos.update_time as updateTime,
+		  pos.heartbeat_time as heartbeatTime,
+		  pos.line_version as lineVersion,
+		  pos.incr_black_ver as incrBlackVer,
+		  pos.qr_black_ver as qrBlackVer,
+		  pos.inc_qr_black_ver as incQrBlackVer,
+		  pos.ht_black_ver as htBlackVer,
+		  pos.ht_inc_black_ver as htIncBlackVer,
+		  pos.pri_ver as priVer,
+		  pos.miles_ver as milesVer,
+		  pos.ht_white_ver as htWhiteVer,
+		  pos.ht_two_ver as htTwoVer,
+		  line.line_id as lineId,
+		  line.name as lineName,
+		  bus.bus_id as busId,
+		  bus.plate_number as plateNumber,
+		  conv(pos.pos_id,10,16) posId
+	</sql>
+	
+	<select id="selectBusPoss" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_bus_pos pos, cc_bus_info bus, cc_line_info line
+		where 1 = 1
+		and pos.bus_id = bus.bus_id
+		AND bus.line_id = line.line_id
+
+		<if test="companyId != null and companyId != ''">
+			and (line.company_id = #{companyId} OR line.sub_company_id = #{companyId})
+		</if>
+
+		<if test="posId != null and posId != ''">
+			and pos_id like CONCAT('%',#{posId},'%')
+		</if>
+
+		<if test="lineName != null and lineName != ''">
+			and line.name like CONCAT('%',#{lineName},'%')
+		</if>
+
+		<if test="plateNumber != null and plateNumber != ''">
+			and bus.plate_number like CONCAT('%',#{plateNumber},'%')
+		</if>
+
+		ORDER BY line.line_id, bus.bus_id, pos.pos_id
+	</select>
+	   
+   <!-- 更新长时间未通讯的POS状态 -->
+	<update id="updateNonCommunicationEquipment">
+	    update cc_bus_pos set state = '0' where heartbeat_time - #{intervalDateTime} <![CDATA[<]]> 0
+	</update>
+
+	<select id="getLineIdByPosId" resultType="string">
+		<if test="posId != null and posId != ''">
+			select line.line_id
+			from cc_bus_pos pos, cc_bus_info bus, cc_line_info line
+			where 1 = 1
+			and pos.bus_id = bus.bus_id
+			and bus.line_id = line.line_id
+			and pos.pos_id = #{posId}
+		</if>
+	</select>
+
+</mapper>

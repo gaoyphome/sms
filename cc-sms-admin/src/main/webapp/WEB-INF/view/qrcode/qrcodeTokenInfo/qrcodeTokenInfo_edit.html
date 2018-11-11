@@ -1,0 +1,49 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${qrcodeTokenInfo.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="id" name="id" value="${qrcodeTokenInfo.id}" underline="true" />
+					<#input id="vsirBmacno" name="vsirBmacno" value="${qrcodeTokenInfo.vsirBmacno}" underline="true" />
+					<#input id="startTime" name="startTime" value="${qrcodeTokenInfo.startTime}" underline="true" />
+					<#input id="cardCheckDigit" name="cardCheckDigit" value="${qrcodeTokenInfo.cardCheckDigit}" underline="true" />
+					<#input id="endTime" name="endTime" value="${qrcodeTokenInfo.endTime}" underline="true" />
+					<#input id="tokenId" name="tokenId" value="${qrcodeTokenInfo.tokenId}" underline="true" />
+					<#input id="cardType" name="cardType" value="${qrcodeTokenInfo.cardType}" underline="true" />
+					<#input id="tokenType" name="tokenType" value="${qrcodeTokenInfo.tokenType}" underline="true" />
+					<#input id="tokenVersion" name="tokenVersion" value="${qrcodeTokenInfo.tokenVersion}" underline="true" />
+					<#input id="tokenChumid" name="tokenChumid" value="${qrcodeTokenInfo.tokenChumid}" underline="true" />
+					<#input id="tokenEnc" name="tokenEnc" value="${qrcodeTokenInfo.tokenEnc}" underline="true" />
+					<#input id="dislocatNorm" name="dislocatNorm" value="${qrcodeTokenInfo.dislocatNorm}" underline="true" />
+					<#input id="createTime" name="createTime" value="${qrcodeTokenInfo.createTime}" underline="true" />
+					<#input id="identification" name="identification" value="${qrcodeTokenInfo.identification}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${qrcodeTokenInfo.updateTime}" underline="true" />
+					<#input id="expireType" name="expireType" value="${qrcodeTokenInfo.expireType}" underline="true" />
+					<#input id="expireTime" name="expireTime" value="${qrcodeTokenInfo.expireTime}" underline="true" />
+					<#input id="space" name="space" value="${qrcodeTokenInfo.space}" underline="true" />
+					<#input id="userPhone" name="userPhone" value="${qrcodeTokenInfo.userPhone}" underline="true" />
+					<#input id="qrcodeSesq" name="qrcodeSesq" value="${qrcodeTokenInfo.qrcodeSesq}" underline="true" />
+					<#input id="barSesq" name="barSesq" value="${qrcodeTokenInfo.barSesq}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="QrcodeTokenInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="QrcodeTokenInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/qrcodeTokenInfo/qrcodeTokenInfo_info.js"></script>
+@}

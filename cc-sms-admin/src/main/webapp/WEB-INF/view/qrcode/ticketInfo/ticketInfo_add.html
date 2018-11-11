@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+						<#input id="id" name="id" underline="true" />
+						<#input id="ticketId" name="ticketId" underline="true" />
+						<#input id="userId" name="userId" underline="true" />
+						<#input id="ticketName" name="ticketName" underline="true" />
+						<#input id="ticketType" name="ticketType" underline="true" />
+						<#input id="ticketDesc" name="ticketDesc" underline="true" />
+						<#input id="cardno" name="cardno" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+						<#input id="ntOrderid" name="ntOrderid" underline="true" />
+						<#input id="saleDate" name="saleDate" underline="true" />
+						<#input id="expireType" name="expireType" underline="true" />
+						<#input id="startDate" name="startDate" underline="true" />
+						<#input id="endDate" name="endDate" underline="true" />
+						<#input id="createTime" name="createTime" underline="true" />
+						<#input id="updateTime" name="updateTime" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TicketInfoInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TicketInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/ticketInfo/ticketInfo_info.js"></script>
+@}

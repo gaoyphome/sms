@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcNetworkMchntAllMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcNetworkMchntAll">
+		<id column="id" property="id" />
+		<result column="mchnt_id" property="mchntId" />
+		<result column="mchntname" property="mchntname" />
+		<result column="mchntcode" property="mchntcode" />
+		<result column="mchnt_type" property="mchntType" />
+		<result column="father_id" property="fatherId" />
+		<result column="low_season" property="lowSeason" />
+		<result column="low_price" property="lowPrice" />
+		<result column="mid_season" property="midSeason" />
+		<result column="mid_price" property="midPrice" />
+		<result column="telphone" property="telphone" />
+		<result column="email" property="email" />
+		<result column="contacts" property="contacts" />
+		<result column="contacts_mobile" property="contactsMobile" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+</mapper>

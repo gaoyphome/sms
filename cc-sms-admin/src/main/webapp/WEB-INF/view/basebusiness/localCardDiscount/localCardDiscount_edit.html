@@ -1,0 +1,44 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${localCardDiscount.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="id" name="id" value="${localCardDiscount.id}" underline="true" />
+					<#input id="subCompanyId" name="subCompanyId" value="${localCardDiscount.subCompanyId}" underline="true" />
+					<#input id="cardPhyType" name="cardPhyType" value="${localCardDiscount.cardPhyType}" underline="true" />
+					<#input id="cardType" name="cardType" value="${localCardDiscount.cardType}" underline="true" />
+					<#input id="cardAttr" name="cardAttr" value="${localCardDiscount.cardAttr}" underline="true" />
+					<#input id="chargeMode" name="chargeMode" value="${localCardDiscount.chargeMode}" underline="true" />
+					<#input id="maxConsume" name="maxConsume" value="${localCardDiscount.maxConsume}" underline="true" />
+					<#input id="creditBalance" name="creditBalance" value="${localCardDiscount.creditBalance}" underline="true" />
+					<#input id="minBalance" name="minBalance" value="${localCardDiscount.minBalance}" underline="true" />
+					<#input id="maxBalance" name="maxBalance" value="${localCardDiscount.maxBalance}" underline="true" />
+					<#input id="inRate" name="inRate" value="${localCardDiscount.inRate}" underline="true" />
+					<#input id="inLimit" name="inLimit" value="${localCardDiscount.inLimit}" underline="true" />
+					<#input id="outRate" name="outRate" value="${localCardDiscount.outRate}" underline="true" />
+					<#input id="outLimit" name="outLimit" value="${localCardDiscount.outLimit}" underline="true" />
+					<#input id="createTime" name="createTime" value="${localCardDiscount.createTime}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${localCardDiscount.updateTime}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="LocalCardDiscountInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="LocalCardDiscountInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/localCardDiscount/localCardDiscount_info.js"></script>
+@}

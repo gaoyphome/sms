@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcTicketOrderMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcTicketOrder">
+		<id column="plt_ssn" property="pltSsn" />
+		<result column="req_ssn" property="reqSsn" />
+		<result column="settle_date_loc" property="settleDateLoc" />
+		<result column="trans_recv_date" property="transRecvDate" />
+		<result column="trans_recv_time" property="transRecvTime" />
+		<result column="trans_code_out" property="transCodeOut" />
+		<result column="trans_code_chnl" property="transCodeChnl" />
+		<result column="trans_code_ch_name" property="transCodeChName" />
+		<result column="mch_code_in" property="mchCodeIn" />
+		<result column="mch_name_out" property="mchNameOut" />
+		<result column="acq_ins_id" property="acqInsId" />
+		<result column="acq_ins_seq" property="acqInsSeq" />
+		<result column="loc_tracs_time" property="locTracsTime" />
+		<result column="loc_tracs_date" property="locTracsDate" />
+		<result column="term_trans_time" property="termTransTime" />
+		<result column="term_trans_date" property="termTransDate" />
+		<result column="card_city" property="cardCity" />
+		<result column="txn_token" property="txnToken" />
+		<result column="order_no" property="orderNo" />
+		<result column="state" property="state" />
+		<result column="ntorderid" property="ntorderid" />
+		<result column="user_id" property="userId" />
+		<result column="order_type" property="orderType" />
+		<result column="txn_type" property="txnType" />
+		<result column="ticket_id" property="ticketId" />
+		<result column="cardno" property="cardno" />
+		<result column="agent_id" property="agentId" />
+		<result column="mchnt_id" property="mchntId" />
+		<result column="spot_id" property="spotId" />
+		<result column="term_id" property="termId" />
+		<result column="sesq" property="sesq" />
+		<result column="total_cnt" property="totalCnt" />
+		<result column="use_cnt" property="useCnt" />
+		<result column="pos_id" property="posId" />
+		<result column="pos_trade_seq" property="posTradeSeq" />
+		<result column="pos_date" property="posDate" />
+		<result column="tac" property="tac" />
+		<result column="tac_mode" property="tacMode" />
+		<result column="psam_id" property="psamId" />
+		<result column="psam_seq" property="psamSeq" />
+		<result column="key_ver" property="keyVer" />
+		<result column="key_index" property="keyIndex" />
+		<result column="key_req_num" property="keyReqNum" />
+		<result column="auth_seq" property="authSeq" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="charge_actual" property="chargeActual" />
+		<result column="card_balance" property="cardBalance" />
+		<result column="card_counter" property="cardCounter" />
+		<result column="card_type" property="cardType" />
+		<result column="card_phy_type" property="cardPhyType" />
+		<result column="pre_card_balance" property="preCardBalance" />
+		<result column="serial_num" property="serialNum" />
+		<result column="cpu_counter" property="cpuCounter" />
+		<result column="charge_ideal" property="chargeIdeal" />
+		<result column="ticket_upload" property="ticketUpload" />
+		<result column="product_code" property="productCode" />
+	</resultMap>
+
+</mapper>

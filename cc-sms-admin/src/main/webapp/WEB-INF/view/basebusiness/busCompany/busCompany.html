@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>运营公司管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="companyId" name="公司编码" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="companyName" name="公司名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="BusCompany.search()"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-12" id="BusCompanyTableToolbar" role="group">
+                            @if(shiro.hasPermission("/busCompany/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="BusCompany.openAddBusCompany()"/>
+                            @}
+                            @if(shiro.hasPermission("/busCompany/edit")){
+                                <#button name="修改" icon="fa-edit" clickFun="BusCompany.openBusCompanyDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/busCompany/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="BusCompany.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="BusCompanyTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/busCompany/busCompany.js"></script>
+@}

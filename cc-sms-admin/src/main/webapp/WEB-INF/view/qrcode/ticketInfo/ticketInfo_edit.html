@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${ticketInfo.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="id" name="id" value="${ticketInfo.id}" underline="true" />
+					<#input id="ticketId" name="ticketId" value="${ticketInfo.ticketId}" underline="true" />
+					<#input id="userId" name="userId" value="${ticketInfo.userId}" underline="true" />
+					<#input id="ticketName" name="ticketName" value="${ticketInfo.ticketName}" underline="true" />
+					<#input id="ticketType" name="ticketType" value="${ticketInfo.ticketType}" underline="true" />
+					<#input id="ticketDesc" name="ticketDesc" value="${ticketInfo.ticketDesc}" underline="true" />
+					<#input id="cardno" name="cardno" value="${ticketInfo.cardno}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+					<#input id="ntOrderid" name="ntOrderid" value="${ticketInfo.ntOrderid}" underline="true" />
+					<#input id="saleDate" name="saleDate" value="${ticketInfo.saleDate}" underline="true" />
+					<#input id="expireType" name="expireType" value="${ticketInfo.expireType}" underline="true" />
+					<#input id="startDate" name="startDate" value="${ticketInfo.startDate}" underline="true" />
+					<#input id="endDate" name="endDate" value="${ticketInfo.endDate}" underline="true" />
+					<#input id="createTime" name="createTime" value="${ticketInfo.createTime}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${ticketInfo.updateTime}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TicketInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TicketInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/ticketInfo/ticketInfo_info.js"></script>
+@}

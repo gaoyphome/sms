@@ -1,0 +1,47 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#input id="posVendor" name="POS机厂商编号" underline="true" />
+                    <#input id="busId" name="公交车编号" underline="true" />
+                    <#input id="posId" name="POS-ID" underline="true" />
+                    <#input id="samId" name="SAM-ID" underline="true" />
+                    <#input id="state" name="POS机状态" underline="true" />
+                    <#input id="firmVersion" name="固件版本号" underline="true" />
+                    <#input id="reason" name="故障原因" underline="true" />
+                    <#input id="remark" name="备注" underline="true" />
+                    <#input id="heartbeatTime" name="心跳更新时间" underline="true" />
+                    <#input id="lineVersion" name="线路版本" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                    <#input id="incrBlackVer" name="实体卡增量黑名单版本号" underline="true" />
+                    <#input id="qrBlackVer" name="二维码黑名单版本号" underline="true" />
+                    <#input id="incQrBlackVer" name="二维码黑名单增量版本号" underline="true" />
+                    <#input id="htBlackVer" name="互通卡黑名单版本号" underline="true" />
+                    <#input id="htIncBlackVer" name="互通卡增量黑名单版本号" underline="true" />
+                    <#input id="priVer" name="票价表文件版本号" underline="true" />
+                    <#input id="milesVer" name="折扣率文件版本号" underline="true" />
+                    <#input id="htWhiteVer" name="互通卡白名单版本号" underline="true" />
+                    <#input id="htTwoVer" name="费率卡二次发行信息版本号" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BusPosInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BusPosInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/busPos/busPos_info.js"></script>
+@}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.qrcode.dao.QrcodeDiscountDao">
+	<sql id="Extend_Column_List">
+	      disc.sub_company_id as subCompanyId,
+	      comp.company_name as companyName,
+	      disc.card_type as cardType,
+	      disc.city_in_discount as cityInDiscount,
+	      disc.city_in_preferential_amount as cityInPreferentialAmount,
+	      disc.city_out_discount	 as cityOutDiscount,
+	      disc.max_preferential_amount as maxPreferentialAmount,
+	      disc.city_out_preferential_amount as cityOutPreferentialAmount
+	</sql>
+	
+	<select id="selectQrcodeDiscounts" resultType="map">
+		select
+		<include refid="Extend_Column_List" />
+		from cc_qrcode_discount disc left join cc_bus_company comp on disc.sub_company_id=comp.company_id
+		where 1 = 1
+
+	    	<if test="subCompanyId != null and subCompanyId != ''">
+				and sub_company_id like CONCAT('%',#{subCompanyId},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by sub_company_id DESC
+			</otherwise>
+		</choose>
+	</select>
+
+
+	<sql id="Base_Column_List">
+		sub_company_id as subCompanyId,
+		'' as companyName,
+		card_type as cardType,
+		city_in_discount as cityInDiscount,
+		city_in_preferential_amount as cityInPreferentialAmount,
+		city_out_discount	 as cityOutDiscount,
+		max_preferential_amount as maxPreferentialAmount,
+		city_out_preferential_amount as cityOutPreferentialAmount
+	</sql>
+
+	<select id="selectQrcodeDiscountsById" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_qrcode_discount where 1 = 1
+
+		<if test="subCompanyId != null and subCompanyId != ''">
+			and sub_company_id = #{subCompanyId}
+		</if>
+	</select>
+</mapper>

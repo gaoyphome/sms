@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcCityCardFileMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcCityCardFile">
+		<id column="id" property="id" />
+		<result column="filename" property="filename" />
+		<result column="filesize" property="filesize" />
+		<result column="crc16" property="crc16" />
+		<result column="content" property="content" />
+		<result column="version" property="version" />
+		<result column="line_id" property="lineId" />
+		<result column="sub_company_id" property="subCompanyId" />
+	</resultMap>
+
+</mapper>

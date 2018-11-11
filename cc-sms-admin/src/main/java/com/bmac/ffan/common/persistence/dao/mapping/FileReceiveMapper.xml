@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.scheme.dao.FileReceiveMapper">
+	<sql id="Base_Column_List">
+	      file_name as fileName,
+	      file_size as fileSize,
+	      file_path as filePath,
+	      md5_code as md5Code,
+	      deal_flag as dealFlag,
+	      create_time as createTime,
+	      update_time as updateTime
+	</sql>
+	
+	<select id="selectFileReceiveInfos" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_file_receive
+		where deal_flag = '00'
+		order by bus.create_time
+	</select>
+	
+</mapper>

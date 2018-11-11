@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcPosFileUpdateMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcPosFileUpdate">
+		<id column="id" property="id" />
+		<result column="line_version" property="lineVersion" />
+		<result column="linefile" property="linefile" />
+		<result column="incr_blacklist_file" property="incrBlacklistFile" />
+		<result column="qr_blacklist_file" property="qrBlacklistFile" />
+		<result column="qr_incr_blacklist_file" property="qrIncrBlacklistFile" />
+		<result column="ht_blacklist_file" property="htBlacklistFile" />
+		<result column="ht_incr_blacklist_file" property="htIncrBlacklistFile" />
+		<result column="ht_whitelist" property="htWhitelist" />
+		<result column="available_card_file" property="availableCardFile" />
+		<result column="admission_file" property="admissionFile" />
+		<result column="mileage_file" property="mileageFile" />
+	</resultMap>
+
+</mapper>

@@ -1,0 +1,72 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-6">
+                    <#select id="filename" name="升级类型">
+                        <option value="1:/W1">1:/W1</option>
+                        <option value="1:/G1">1:/G1</option>
+                        <option value="1:/G4">1:/G4</option>
+                        <option value="1:/G6">1:/G6</option>
+                        <option value="1:/G7">1:/G7</option>
+                        <option value="1:/G10">1:/G10</option>
+                    </#select>
+
+
+
+                    <div id="listVersionBlackDiv">
+                        <#select id="listVersionBlack" name="版本号(黑名单)">
+                            @for(lg in listG){
+                            <option value="${lg.version}">${lg.version}</option>
+                            @}
+                        </#select>
+                    </div>
+
+                    <div id="listVersionWriteDiv">
+                        <#select id="listVersionWrite" name="版本号(白名单)">
+                            @for(lw in listW){
+                            <option value="${lw.version}">${lw.version}</option>
+                            @}
+                        </#select>
+                    </div>
+
+                    <div id="listVersionG6Div">
+                        <#select id="listVersionG6" name="版本号(G6)">
+                            @for(lg6 in listG6){
+                            <option value="${lg6.version}">${lg6.version}</option>
+                            @}
+                        </#select>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+
+                    <#select id="type" name="升级方式">
+                        <option value="0">所有POS机</option>
+                        <option value="1">特定线路</option>
+                        <option value="2">特定POS机</option>
+                    </#select>
+
+                <div id="lineIdDiv" style="display:none;">
+                    <#input  id="lineId" name="线路ID" underline="true" />
+                </div>
+                <div id="posIdDiv" style="display:none;">
+                    <#input id="posId" name="POS-ID" underline="true" />
+                </div>
+                    <#input id="content" name="版本描述" underline="true" />
+        </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BlacklistVersionInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BlacklistVersionInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/blacklistVersion/blacklistVersion_info.js"></script>
+@}

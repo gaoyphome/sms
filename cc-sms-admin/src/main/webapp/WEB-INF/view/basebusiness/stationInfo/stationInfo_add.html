@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+						<#input id="lineId" name="线路编号" underline="true" />
+						<#input id="name" name="站点名称" underline="true" />
+						<#input id="flag" name="上/下行" underline="true" />
+						<#input id="num" name="站点序号" underline="true" />
+						<#input id="longitude" name="经度" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+						<#input id="latitude" name="纬度" underline="true" />
+						<#input id="operaStationNum" name="站点顺序号" underline="true" />
+						<#input id="icStationNum" name="IC卡站点号" underline="true" />
+						<#input id="icSubStationNum" name="IC卡招呼站点号" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="StationInfoInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="StationInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/stationInfo/stationInfo_info.js"></script>
+@}

@@ -1,0 +1,80 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#select id="subCompanyId" name="运营分公司名称">
+                        @for(bc in ccBusCompanies){
+                            <option value="${bc.companyId}">${bc.companyName}(${bc.companyId})</option>
+                        @}
+                    </#select>
+
+                    <#select id="cardPhyType" name="物理类型">
+                        <option value="0" selected="">未知 (00)</option>
+                        <option value="1">MifareI(S50)卡 (01)</option>
+                        <option value="2">MifarePro(或兼容)卡 (02)</option>
+                        <option value="3">Ultra-Light (03)</option>
+                        <option value="5">MifareI(S70)卡 (05)</option>
+                    </#select>
+                    <#select id="cardType" name="逻辑类型">
+                        <option value="1">非记名普通储值卡 (01)</option>
+                        <option value="2">公交管理卡 (02)</option>
+                        <option value="3">记名普通储值卡 (03)</option>
+                        <option value="4">定值卡 (04)</option>
+                        <option value="5">福利卡 (05)</option>
+                        <option value="6">纪念卡 (06)</option>
+                        <option value="7">企业员工卡 (07)</option>
+                        <option value="10">老年人卡 (10)</option>
+                        <option value="11">测试卡 (11)</option>
+                        <option value="12">学生卡1 (12)</option>
+                        <option value="13">学生卡2 (13)</option>
+                        <option value="14">学生卡3 (14)</option>
+                        <option value="20">地铁计次卡 (20)</option>
+                        <option value="22">预留 (22)</option>
+                        <option value="24">车站工作卡 (24)</option>
+                        <option value="40">出租司机卡 (40)</option>
+                        <option value="51">残疾人卡 (51)</option>
+                        <option value="52">见义勇为卡 (52)</option>
+                        <option value="53">公交员工卡 (53)</option>
+                        <option value="54">地铁员工卡 (54)</option>
+
+                    </#select>
+
+                    <#select id="cardAttr" name="卡片属性">
+                        <option value="1">普通储值卡 (01)</option>
+                        <option value="2">计次卡 (02)</option>
+                        <option value="3">定期卡 (03)</option>
+                        <option value="4">特殊储值卡 (04)</option>
+                    </#select>
+                    <#input id="chargeMode" name="收费模式(16进制)" underline="true" />
+                    <#input id="maxConsume" name="最大扣款额度(元)" underline="true" />
+                    <#input id="creditBalance" name="最大透支额度(元)" underline="true" />
+
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="minBalance" name="最小余额限制(元)" underline="true" />
+                    <#input id="maxBalance" name="最大余额限制(元)" underline="true" />
+                    <#input id="inRate" name="界内优惠率(%)" underline="true" />
+                    <#input id="inLimit" name="界内优惠额度(元)" underline="true" />
+                    <#input id="outRate" name="界外优惠率(%)" underline="true" />
+                    <#input id="outLimit" name="界外优惠额度(元)" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="LocalCardDiscountInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="LocalCardDiscountInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/localCardDiscount/localCardDiscount_info.js"></script>
+@}

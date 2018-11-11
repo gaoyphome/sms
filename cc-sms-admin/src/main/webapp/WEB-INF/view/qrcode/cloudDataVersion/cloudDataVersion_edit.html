@@ -1,0 +1,32 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${cloudDataVersion.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="merchantVersion" name="商户信息版本" value="${cloudDataVersion.merchantVersion}" underline="true" />
+					<#input id="operateParamVersion" name="运营参数版本" value="${cloudDataVersion.operateParamVersion}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="cardtypeVersion" name="可用卡类型版本号" value="${cloudDataVersion.cardtypeVersion}" underline="true" />
+					<#input id="blacklistVersion" name="黑名单版本号" value="${cloudDataVersion.blacklistVersion}" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CloudDataVersionInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="CloudDataVersionInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/cloudDataVersion/cloudDataVersion_info.js"></script>
+@}

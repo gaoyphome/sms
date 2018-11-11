@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.pos.dao.BlacklistVersionDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      filename as filename,
+	      list_version as listVersion,
+	      file_id as fileId,
+	      content as content,
+	      type as type,
+	      line_id as lineId,
+	      pos_id as posId,
+	      create_time as createTime,
+	      update_time as updateTime
+	</sql>
+	
+	<select id="selectBlacklistVersions" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_blacklist_version where 1 = 1
+		
+		
+	    	<if test="listVersion != null and listVersion != ''">
+				and listVersion like CONCAT('%',#{listVersion},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by id DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="selectMaxVersion" resultType="java.lang.Integer">
+		select max(CAST(list_version AS UNSIGNED)) as maxVersion
+		from cc_blacklist_version where 1=1
+		<if test="filename != null and filename != ''">
+			and filename = #{filename}
+		</if>
+
+		<if test="type != null and type != ''">
+			and type = #{type}
+			<choose>
+				<when test="type == 1">
+					and line_id = #{lineId}
+				</when>
+				<when test="type == 2">
+					and pos_id = #{posId}
+				</when>
+			</choose>
+		</if>
+	</select>
+</mapper>

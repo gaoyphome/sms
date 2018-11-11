@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.qrcode.dao.QrcodeTokenDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      vsir_bmacno as vsirBmacno,
+	      user_id as userId,
+	      create_time as createTime,
+	      update_time as updateTime,
+	      card_check_digit as cardCheckDigit,
+	      third_instid as thirdInstid,
+	      third_channelid as thirdChannelid
+	</sql>
+	
+	<select id="selectQrcodeTokens" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_qrcode_token where 1 = 1
+		
+		
+	    	<if test="vsirBmacno != null and vsirBmacno != ''">
+				and vsir_bmacno like CONCAT('%',#{vsirBmacno},'%')
+			</if>
+	    	<if test="userId != null and userId != ''">
+				and user_id like CONCAT('%',#{userId},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by update_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

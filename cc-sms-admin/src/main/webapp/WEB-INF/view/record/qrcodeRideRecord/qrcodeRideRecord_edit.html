@@ -1,0 +1,107 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${qrcodeRideRecord.pltSsn}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="pltSsn" name="pltSsn" value="${qrcodeRideRecord.pltSsn}" underline="true" />
+					<#input id="reqSsn" name="reqSsn" value="${qrcodeRideRecord.reqSsn}" underline="true" />
+					<#input id="settleDateLoc" name="settleDateLoc" value="${qrcodeRideRecord.settleDateLoc}" underline="true" />
+					<#input id="transRecvDate" name="transRecvDate" value="${qrcodeRideRecord.transRecvDate}" underline="true" />
+					<#input id="transRecvTime" name="transRecvTime" value="${qrcodeRideRecord.transRecvTime}" underline="true" />
+					<#input id="transCodeOut" name="transCodeOut" value="${qrcodeRideRecord.transCodeOut}" underline="true" />
+					<#input id="transCodeChnl" name="transCodeChnl" value="${qrcodeRideRecord.transCodeChnl}" underline="true" />
+					<#input id="transCodeChName" name="transCodeChName" value="${qrcodeRideRecord.transCodeChName}" underline="true" />
+					<#input id="mchCodeIn" name="mchCodeIn" value="${qrcodeRideRecord.mchCodeIn}" underline="true" />
+					<#input id="mchNameOut" name="mchNameOut" value="${qrcodeRideRecord.mchNameOut}" underline="true" />
+					<#input id="acqInsId" name="acqInsId" value="${qrcodeRideRecord.acqInsId}" underline="true" />
+					<#input id="acqInsSeq" name="acqInsSeq" value="${qrcodeRideRecord.acqInsSeq}" underline="true" />
+					<#input id="locTracsTime" name="locTracsTime" value="${qrcodeRideRecord.locTracsTime}" underline="true" />
+					<#input id="locTracsDate" name="locTracsDate" value="${qrcodeRideRecord.locTracsDate}" underline="true" />
+					<#input id="termTransTime" name="termTransTime" value="${qrcodeRideRecord.termTransTime}" underline="true" />
+					<#input id="termTransDate" name="termTransDate" value="${qrcodeRideRecord.termTransDate}" underline="true" />
+					<#input id="cardCity" name="cardCity" value="${qrcodeRideRecord.cardCity}" underline="true" />
+					<#input id="csn" name="csn" value="${qrcodeRideRecord.csn}" underline="true" />
+					<#input id="cardSeqNo" name="cardSeqNo" value="${qrcodeRideRecord.cardSeqNo}" underline="true" />
+					<#input id="cardCounter" name="cardCounter" value="${qrcodeRideRecord.cardCounter}" underline="true" />
+					<#input id="cardType" name="cardType" value="${qrcodeRideRecord.cardType}" underline="true" />
+					<#input id="cardPhyType" name="cardPhyType" value="${qrcodeRideRecord.cardPhyType}" underline="true" />
+					<#input id="orderNo" name="orderNo" value="${qrcodeRideRecord.orderNo}" underline="true" />
+					<#input id="state" name="state" value="${qrcodeRideRecord.state}" underline="true" />
+					<#input id="cardBramdid" name="cardBramdid" value="${qrcodeRideRecord.cardBramdid}" underline="true" />
+					<#input id="cardClass" name="cardClass" value="${qrcodeRideRecord.cardClass}" underline="true" />
+					<#input id="orderType" name="orderType" value="${qrcodeRideRecord.orderType}" underline="true" />
+					<#input id="tradeStatus" name="tradeStatus" value="${qrcodeRideRecord.tradeStatus}" underline="true" />
+					<#input id="serialNum" name="serialNum" value="${qrcodeRideRecord.serialNum}" underline="true" />
+					<#input id="cardno" name="cardno" value="${qrcodeRideRecord.cardno}" underline="true" />
+					<#input id="tradeTypeFlag" name="tradeTypeFlag" value="${qrcodeRideRecord.tradeTypeFlag}" underline="true" />
+					<#input id="cpuCounter" name="cpuCounter" value="${qrcodeRideRecord.cpuCounter}" underline="true" />
+					<#input id="cardIisCode" name="cardIisCode" value="${qrcodeRideRecord.cardIisCode}" underline="true" />
+					<#input id="timeCardType" name="timeCardType" value="${qrcodeRideRecord.timeCardType}" underline="true" />
+					<#input id="markTime" name="markTime" value="${qrcodeRideRecord.markTime}" underline="true" />
+					<#input id="markCityCode" name="markCityCode" value="${qrcodeRideRecord.markCityCode}" underline="true" />
+					<#input id="markIisCode" name="markIisCode" value="${qrcodeRideRecord.markIisCode}" underline="true" />
+					<#input id="markCsCode" name="markCsCode" value="${qrcodeRideRecord.markCsCode}" underline="true" />
+					<#input id="markLineId" name="markLineId" value="${qrcodeRideRecord.markLineId}" underline="true" />
+					<#input id="markStation" name="markStation" value="${qrcodeRideRecord.markStation}" underline="true" />
+					<#input id="markBusId" name="markBusId" value="${qrcodeRideRecord.markBusId}" underline="true" />
+					<#input id="downCsCode" name="downCsCode" value="${qrcodeRideRecord.downCsCode}" underline="true" />
+					<#input id="downLineId" name="downLineId" value="${qrcodeRideRecord.downLineId}" underline="true" />
+					<#input id="downStation" name="downStation" value="${qrcodeRideRecord.downStation}" underline="true" />
+					<#input id="downBusId" name="downBusId" value="${qrcodeRideRecord.downBusId}" underline="true" />
+					<#input id="takenLength" name="takenLength" value="${qrcodeRideRecord.takenLength}" underline="true" />
+					<#input id="dirFlag" name="dirFlag" value="${qrcodeRideRecord.dirFlag}" underline="true" />
+					<#input id="driverCode" name="driverCode" value="${qrcodeRideRecord.driverCode}" underline="true" />
+					<#input id="sellorCode" name="sellorCode" value="${qrcodeRideRecord.sellorCode}" underline="true" />
+					<#input id="sellorCode2" name="sellorCode2" value="${qrcodeRideRecord.sellorCode2}" underline="true" />
+					<#input id="posId" name="posId" value="${qrcodeRideRecord.posId}" underline="true" />
+					<#input id="posTradeSeq" name="posTradeSeq" value="${qrcodeRideRecord.posTradeSeq}" underline="true" />
+					<#input id="posDate" name="posDate" value="${qrcodeRideRecord.posDate}" underline="true" />
+					<#input id="tac" name="tac" value="${qrcodeRideRecord.tac}" underline="true" />
+					<#input id="tacMode" name="tacMode" value="${qrcodeRideRecord.tacMode}" underline="true" />
+					<#input id="psamId" name="psamId" value="${qrcodeRideRecord.psamId}" underline="true" />
+					<#input id="psamSeq" name="psamSeq" value="${qrcodeRideRecord.psamSeq}" underline="true" />
+					<#input id="chargeActual" name="chargeActual" value="${qrcodeRideRecord.chargeActual}" underline="true" />
+					<#input id="cardBalance" name="cardBalance" value="${qrcodeRideRecord.cardBalance}" underline="true" />
+					<#input id="preCardBalance" name="preCardBalance" value="${qrcodeRideRecord.preCardBalance}" underline="true" />
+					<#input id="chargeIdeal" name="chargeIdeal" value="${qrcodeRideRecord.chargeIdeal}" underline="true" />
+					<#input id="keyVer" name="keyVer" value="${qrcodeRideRecord.keyVer}" underline="true" />
+					<#input id="keyIndex" name="keyIndex" value="${qrcodeRideRecord.keyIndex}" underline="true" />
+					<#input id="keyReqNum" name="keyReqNum" value="${qrcodeRideRecord.keyReqNum}" underline="true" />
+					<#input id="authSeq" name="authSeq" value="${qrcodeRideRecord.authSeq}" underline="true" />
+					<#input id="checkCode" name="checkCode" value="${qrcodeRideRecord.checkCode}" underline="true" />
+					<#input id="recordType" name="recordType" value="${qrcodeRideRecord.recordType}" underline="true" />
+					<#input id="cardFlag" name="cardFlag" value="${qrcodeRideRecord.cardFlag}" underline="true" />
+					<#input id="createTime" name="createTime" value="${qrcodeRideRecord.createTime}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${qrcodeRideRecord.updateTime}" underline="true" />
+					<#input id="cardUpload" name="cardUpload" value="${qrcodeRideRecord.cardUpload}" underline="true" />
+					<#input id="tokenId" name="tokenId" value="${qrcodeRideRecord.tokenId}" underline="true" />
+					<#input id="userPhone" name="userPhone" value="${qrcodeRideRecord.userPhone}" underline="true" />
+					<#input id="markBusName" name="markBusName" value="${qrcodeRideRecord.markBusName}" underline="true" />
+					<#input id="markStationName" name="markStationName" value="${qrcodeRideRecord.markStationName}" underline="true" />
+					<#input id="tokenVersion" name="tokenVersion" value="${qrcodeRideRecord.tokenVersion}" underline="true" />
+					<#input id="lineName" name="lineName" value="${qrcodeRideRecord.lineName}" underline="true" />
+					<#input id="thirdInstid" name="thirdInstid" value="${qrcodeRideRecord.thirdInstid}" underline="true" />
+					<#input id="thirdChannelid" name="thirdChannelid" value="${qrcodeRideRecord.thirdChannelid}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="QrcodeRideRecordInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="QrcodeRideRecordInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/qrcodeRideRecord/qrcodeRideRecord_info.js"></script>
+@}

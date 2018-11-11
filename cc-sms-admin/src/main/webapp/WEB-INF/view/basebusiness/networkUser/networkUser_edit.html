@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="networkUserInfoForm">
+
+            <input type="hidden" id="id" value="${networkUser.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="userId" name="用户ID" value="${networkUser.userId}" underline="true" />
+					<#input id="username" name="用户名" value="${networkUser.username}" underline="true" />
+					<#input id="password" name="密码" value="${networkUser.password}" underline="true" />
+					<#input id="userType" name="用户类型" value="${networkUser.userType}" underline="true" />
+					<#input id="nickname" name="微信昵称" value="${networkUser.nickname}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="sex" name="性别" value="${networkUser.sex}" underline="true" />
+					<#input id="birthday" name="生日" value="${networkUser.birthday}" underline="true" />
+					<#input id="mobile" name="手机号" value="${networkUser.mobile}" underline="true" />
+					<#input id="email" name="邮箱" value="${networkUser.email}" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="NetworkUserInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="NetworkUserInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/networkUser/networkUser_info.js"></script>
+@}

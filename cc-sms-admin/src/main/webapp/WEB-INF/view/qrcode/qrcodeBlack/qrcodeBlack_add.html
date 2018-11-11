@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+						<#input id="tokenId" name="TokenId" underline="true" />
+						<#input id="vsirBmacno" name="虚拟卡号" underline="true" />
+						<#input id="reason" name="原因" underline="true" />
+						<#input id="blackCount" name="拉黑次数" underline="true" />
+						<#input id="operatePerson" name="操作人姓名" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+						<#input id="operatePersonId" name="操作人ID" underline="true" />
+						<#input id="state" name="下发状态" underline="true" />
+						<#input id="flag" name="拉黑状态" underline="true" />
+						<#input id="failTime" name="失效时间" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="QrcodeBlackInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="QrcodeBlackInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/qrcodeBlack/qrcodeBlack_info.js"></script>
+@}

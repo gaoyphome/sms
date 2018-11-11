@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.pos.dao.PosFileBlacklistDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      filename as filename,
+	      filesize as filesize,
+	      crc16 as crc16,
+	    --  content as content,
+	      version as version
+	</sql>
+	
+	<select id="selectPosFileBlacklists" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_pos_file_blacklist where 1 = 1
+		
+		
+	    	<if test="filename != null and filename != ''">
+				and filename like CONCAT('%',#{filename},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by id DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="selectMaxVersion" resultType="java.lang.Integer">
+		select max(version) from cc_pos_file_blacklist where 1=1
+		<if test="filename != null and filename != ''">
+			and filename = #{filename}
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,42 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#input id="firmVersion" name="版本号" underline="true" />
+                    <#input id="fileId" name="固件文件索引" underline="true" />
+                    <#input id="content" name="版本描述" underline="true" />
+                    <#input id="path" name="下载路径" underline="true" />
+                </div>
+                <div class="col-sm-6">
+                    <#select id="type" name="升级方式">
+                        <option value="00">自动升级</option>
+                        <option value="01">手动升级</option>
+                    </#select>
+                    <#select id="upgradeType" name="升级类型">
+                        <option value="0">所有POS机</option>
+                        <option value="1">商户POS机</option>
+                        <option value="2">特定POS机</option>
+                    </#select>
+                    <#input id="mchntId" name="商户ID" underline="true" />
+                    <#input id="posId" name="POS机ID" underline="true" />
+                    <#input id="filecontent" name="文件" underline="true" type="file" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PosVersionInfoDlg.importfileSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PosVersionInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/posVersion/posVersion_info.js"></script>
+@}

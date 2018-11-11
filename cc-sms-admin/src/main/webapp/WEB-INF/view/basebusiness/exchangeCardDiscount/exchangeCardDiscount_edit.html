@@ -1,0 +1,43 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${exchangeCardDiscount.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="id" name="id" value="${exchangeCardDiscount.id}" underline="true" />
+					<#input id="subCompanyId" name="subCompanyId" value="${exchangeCardDiscount.subCompanyId}" underline="true" />
+					<#input id="iin" name="iin" value="${exchangeCardDiscount.iin}" underline="true" />
+					<#input id="cardType" name="cardType" value="${exchangeCardDiscount.cardType}" underline="true" />
+					<#input id="chargeMode" name="chargeMode" value="${exchangeCardDiscount.chargeMode}" underline="true" />
+					<#input id="creditBalance" name="creditBalance" value="${exchangeCardDiscount.creditBalance}" underline="true" />
+					<#input id="maxConsume" name="maxConsume" value="${exchangeCardDiscount.maxConsume}" underline="true" />
+					<#input id="maxBalance" name="maxBalance" value="${exchangeCardDiscount.maxBalance}" underline="true" />
+					<#input id="minBalance" name="minBalance" value="${exchangeCardDiscount.minBalance}" underline="true" />
+					<#input id="inRate" name="inRate" value="${exchangeCardDiscount.inRate}" underline="true" />
+					<#input id="inLimit" name="inLimit" value="${exchangeCardDiscount.inLimit}" underline="true" />
+					<#input id="outRate" name="outRate" value="${exchangeCardDiscount.outRate}" underline="true" />
+					<#input id="outLimit" name="outLimit" value="${exchangeCardDiscount.outLimit}" underline="true" />
+					<#input id="createTime" name="createTime" value="${exchangeCardDiscount.createTime}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${exchangeCardDiscount.updateTime}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ExchangeCardDiscountInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ExchangeCardDiscountInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/exchangeCardDiscount/exchangeCardDiscount_info.js"></script>
+@}

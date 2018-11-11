@@ -1,0 +1,510 @@
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/CcsmsApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/CcsmsApplication.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/CcsmsApplication.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -1,6 +1,6 @@
+ package com.bmac.ffan;
+ 
+-import com.bmac.ffan.config.properties.GunsProperties;
++import com.bmac.ffan.config.properties.BmacProperties;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ import org.springframework.beans.factory.annotation.Autowired;
+@@ -21,14 +21,14 @@
+     protected final static Logger logger = LoggerFactory.getLogger(CcsmsApplication.class);
+ 
+     @Autowired
+-    GunsProperties gunsProperties;
++    BmacProperties bmacProperties;
+ 
+     /**
+      * 增加swagger的支持
+      */
+     @Override
+     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+-        if(gunsProperties.getSwaggerOpen()){
++        if(bmacProperties.getSwaggerOpen()){
+             registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+             registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+         }
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/config/MybatisPlusConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/config/MybatisPlusConfig.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/config/MybatisPlusConfig.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -58,7 +58,7 @@
+      * 单数据源连接池配置
+      */
+     @Bean
+-    @ConditionalOnProperty(prefix = "guns", name = "muti-datasource-open", havingValue = "false")
++    @ConditionalOnProperty(prefix = "ffan", name = "muti-datasource-open", havingValue = "false")
+     public DruidDataSource singleDatasource() {
+         return dataSourceGuns();
+     }
+@@ -67,7 +67,7 @@
+      * 多数据源连接池配置
+      */
+     @Bean
+-    @ConditionalOnProperty(prefix = "guns", name = "muti-datasource-open", havingValue = "true")
++    @ConditionalOnProperty(prefix = "ffan", name = "muti-datasource-open", havingValue = "true")
+     public DynamicDataSource mutiDataSource() {
+ 
+         DruidDataSource dataSourceGuns = dataSourceGuns();
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/config/SpringSessionConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/config/SpringSessionConfig.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/config/SpringSessionConfig.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -9,7 +9,7 @@
+  * @date 2017-07-13 21:05
+  */
+ //@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1800)  //session过期时间  如果部署多机环境,需要打开注释
+-@ConditionalOnProperty(prefix = "guns", name = "spring-session-open", havingValue = "true")
++@ConditionalOnProperty(prefix = "bmac", name = "spring-session-open", havingValue = "true")
+ public class SpringSessionConfig {
+ 
+ 
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/config/SwaggerConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/config/SwaggerConfig.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/config/SwaggerConfig.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -20,7 +20,7 @@
+  */
+ @Configuration
+ @EnableSwagger2
+-@ConditionalOnProperty(prefix = "guns", name = "swagger-open", havingValue = "true")
++@ConditionalOnProperty(prefix = "bmac", name = "swagger-open", havingValue = "true")
+ public class SwaggerConfig{
+ 
+     @Bean
+@@ -36,10 +36,10 @@
+ 
+     private ApiInfo apiInfo() {
+         return new ApiInfoBuilder()
+-                .title("Guns Doc")
+-                .description("Guns Api文档")
+-                .termsOfServiceUrl("http://git.oschina.net/naan1993/guns")
+-                .contact("stylefeng")
++                .title("Bmac Doc")
++                .description("Bmac Api文档")
++                .termsOfServiceUrl("http://git.oschina.net/bmac")
++                .contact("xuzf")
+                 .version("2.0")
+                 .build();
+     }
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/config/properties/GunsProperties.java
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/config/properties/GunsProperties.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/config/properties/BmacProperties.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -15,10 +15,10 @@
+  * @Date 2017/5/23 22:31
+  */
+ @Component
+-@ConfigurationProperties(prefix = GunsProperties.PREFIX)
+-public class GunsProperties {
++@ConfigurationProperties(prefix = BmacProperties.PREFIX)
++public class BmacProperties {
+ 
+-    public static final String PREFIX = "guns";
++    public static final String PREFIX = "bmac";
+ 
+     private Boolean kaptchaOpen = false;
+ 
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/config/web/ShiroConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/config/web/ShiroConfig.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/config/web/ShiroConfig.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -1,6 +1,6 @@
+ package com.bmac.ffan.config.web;
+ 
+-import com.bmac.ffan.config.properties.GunsProperties;
++import com.bmac.ffan.config.properties.BmacProperties;
+ import com.bmac.ffan.core.shiro.ShiroDbRealm;
+ import org.apache.shiro.cache.CacheManager;
+ import org.apache.shiro.cache.ehcache.EhCacheManager;
+@@ -51,7 +51,7 @@
+      * spring session管理器（多机环境）
+      */
+     @Bean
+-    @ConditionalOnProperty(prefix = "guns", name = "spring-session-open", havingValue = "true")
++    @ConditionalOnProperty(prefix = "bmac", name = "spring-session-open", havingValue = "true")
+     public ServletContainerSessionManager servletContainerSessionManager() {
+         return new ServletContainerSessionManager();
+     }
+@@ -60,12 +60,12 @@
+      * session管理器(单机环境)
+      */
+     @Bean
+-    @ConditionalOnProperty(prefix = "guns", name = "spring-session-open", havingValue = "false")
+-    public DefaultWebSessionManager defaultWebSessionManager(CacheManager cacheShiroManager, GunsProperties gunsProperties) {
++    @ConditionalOnProperty(prefix = "bmac", name = "spring-session-open", havingValue = "false")
++    public DefaultWebSessionManager defaultWebSessionManager(CacheManager cacheShiroManager, BmacProperties bmacProperties) {
+         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+         sessionManager.setCacheManager(cacheShiroManager);
+-        sessionManager.setSessionValidationInterval(gunsProperties.getSessionValidationInterval() * 1000);
+-        sessionManager.setGlobalSessionTimeout(gunsProperties.getSessionInvalidateTime() * 1000);
++        sessionManager.setSessionValidationInterval(bmacProperties.getSessionValidationInterval() * 1000);
++        sessionManager.setGlobalSessionTimeout(bmacProperties.getSessionInvalidateTime() * 1000);
+         sessionManager.setDeleteInvalidSessions(true);
+         sessionManager.setSessionValidationSchedulerEnabled(true);
+         Cookie cookie = new SimpleCookie(ShiroHttpSession.DEFAULT_SESSION_ID_NAME);
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/core/intercept/SessionTimeoutInterceptor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/core/intercept/SessionTimeoutInterceptor.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/core/intercept/SessionTimeoutInterceptor.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -19,7 +19,7 @@
+  */
+ @Aspect
+ @Component
+-@ConditionalOnProperty(prefix = "guns", name = "session-open", havingValue = "true")
++@ConditionalOnProperty(prefix = "bmac", name = "session-open", havingValue = "true")
+ public class SessionTimeoutInterceptor extends BaseController {
+ 
+     @Pointcut("execution(* com.bmac.ffan.*..controller.*.*(..))")
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ContextConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ContextConfig.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ContextConfig.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -11,7 +11,7 @@
+ public class ContextConfig {
+ 
+     private String templatePrefixPath = "gunsTemplate/advanced";
+-    private String projectPath = "D:\\ideaSpace\\guns";//模板输出的项目目录
++    private String projectPath = "D:\\ideaSpace\\sms";//模板输出的项目目录
+     private String bizChName;   //业务名称
+     private String bizEnName;   //业务英文名称
+     private String bizEnBigName;//业务英文名称(大写)
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ControllerConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ControllerConfig.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ControllerConfig.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -32,7 +32,7 @@
+         imports.add("com.bmac.ffan.modular." + contextConfig.getModuleName() + ".service" + ".I" + contextConfig.getBizEnBigName() + "Service");
+         this.imports = imports;
+         this.packageName = "com.bmac.ffan.modular." + contextConfig.getModuleName() + ".controller";
+-        this.controllerPathTemplate = "\\src\\main\\java\\com\\stylefeng\\guns\\modular\\" + contextConfig.getModuleName() + "\\controller\\{}Controller.java";
++        this.controllerPathTemplate = "\\src\\main\\java\\com\\bmac\\ffan\\modular\\" + contextConfig.getModuleName() + "\\controller\\{}Controller.java";
+     }
+ 
+     public String getPackageName() {
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/DaoConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/DaoConfig.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/DaoConfig.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -16,8 +16,8 @@
+     private String packageName;
+ 
+     public void init() {
+-        this.daoPathTemplate = "\\src\\main\\java\\com\\stylefeng\\guns\\modular\\" + contextConfig.getModuleName() + "\\dao\\{}Dao.java";
+-        this.xmlPathTemplate = "\\src\\main\\java\\com\\stylefeng\\guns\\modular\\" + contextConfig.getModuleName() + "\\dao\\mapping\\{}Dao.xml";
++        this.daoPathTemplate = "\\src\\main\\java\\com\\bmac\\ffan\\modular\\" + contextConfig.getModuleName() + "\\dao\\{}Dao.java";
++        this.xmlPathTemplate = "\\src\\main\\java\\com\\bmac\\ffan\\modular\\" + contextConfig.getModuleName() + "\\dao\\mapping\\{}Dao.xml";
+         this.packageName = "com.bmac.ffan.modular." + contextConfig.getModuleName() + ".dao";
+     }
+ 
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ServiceConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ServiceConfig.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/core/template/config/ServiceConfig.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -35,8 +35,8 @@
+         interfaceImports.add(contextConfig.getModelPackageName() + "." + contextConfig.getEntityName());
+         this.serviceInterfaceImports = interfaceImports;
+ 
+-        this.servicePathTemplate = "\\src\\main\\java\\com\\stylefeng\\guns\\modular\\" + contextConfig.getModuleName() + "\\service\\I{}Service.java";
+-        this.serviceImplPathTemplate = "\\src\\main\\java\\com\\stylefeng\\guns\\modular\\" + contextConfig.getModuleName() + "\\service\\impl\\{}ServiceImpl.java";
++        this.servicePathTemplate = "\\src\\main\\java\\com\\bmac\\ffan\\modular\\" + contextConfig.getModuleName() + "\\service\\I{}Service.java";
++        this.serviceImplPathTemplate = "\\src\\main\\java\\com\\bmac\\ffan\\modular\\" + contextConfig.getModuleName() + "\\service\\impl\\{}ServiceImpl.java";
+         this.packageName = "com.bmac.ffan.modular." + contextConfig.getModuleName() + ".service";
+     }
+ 
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/core/util/ApiMenuFilter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/core/util/ApiMenuFilter.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/core/util/ApiMenuFilter.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -1,7 +1,7 @@
+ package com.bmac.ffan.core.util;
+ 
+ import com.bmac.ffan.common.constant.Const;
+-import com.bmac.ffan.config.properties.GunsProperties;
++import com.bmac.ffan.config.properties.BmacProperties;
+ import com.bmac.ffan.core.node.MenuNode;
+ 
+ import java.util.ArrayList;
+@@ -19,8 +19,8 @@
+     public static List<MenuNode> build(List<MenuNode> nodes) {
+ 
+         //如果关闭了接口文档,则不显示接口文档菜单
+-        GunsProperties gunsProperties = SpringContextHolder.getBean(GunsProperties.class);
+-        if (!gunsProperties.getSwaggerOpen()) {
++        BmacProperties bmacProperties = SpringContextHolder.getBean(BmacProperties.class);
++        if (!bmacProperties.getSwaggerOpen()) {
+             List<MenuNode> menuNodesCopy = new ArrayList<>();
+             for (MenuNode menuNode : nodes) {
+                 if (Const.API_MENU_NAME.equals(menuNode.getName())) {
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/core/util/KaptchaUtil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/core/util/KaptchaUtil.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/core/util/KaptchaUtil.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -1,6 +1,6 @@
+ package com.bmac.ffan.core.util;
+ 
+-import com.bmac.ffan.config.properties.GunsProperties;
++import com.bmac.ffan.config.properties.BmacProperties;
+ 
+ /**
+  * 验证码工具类
+@@ -14,6 +14,6 @@
+      * @Date 2017/5/23 22:34
+      */
+     public static Boolean getKaptchaOnOff() {
+-        return SpringContextHolder.getBean(GunsProperties.class).getKaptchaOpen();
++        return SpringContextHolder.getBean(BmacProperties.class).getKaptchaOpen();
+     }
+ }
+\ No newline at end of file
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/KaptchaController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/KaptchaController.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/KaptchaController.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -2,7 +2,7 @@
+ 
+ import com.google.code.kaptcha.Constants;
+ import com.google.code.kaptcha.Producer;
+-import com.bmac.ffan.config.properties.GunsProperties;
++import com.bmac.ffan.config.properties.BmacProperties;
+ import com.bmac.ffan.core.util.FileUtil;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Controller;
+@@ -29,7 +29,7 @@
+ public class KaptchaController {
+ 
+     @Resource
+-    private GunsProperties gunsProperties;
++    private BmacProperties bmacProperties;
+ 
+     @Autowired
+     Producer producer;
+@@ -99,7 +99,7 @@
+      */
+     @RequestMapping("/{pictureId}")
+     public void renderPicture(@PathVariable("pictureId") String pictureId, HttpServletResponse response) {
+-        String path = gunsProperties.getFileUploadPath() + pictureId + ".jpg";
++        String path = bmacProperties.getFileUploadPath() + pictureId + ".jpg";
+         try {
+             byte[] bytes = FileUtil.toByteArray(path);
+             response.getOutputStream().write(bytes);
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/LogController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/LogController.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/LogController.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -82,7 +82,7 @@
+     @Permission(Const.ADMIN_NAME)
+     @ResponseBody
+     public Object delLog() {
+-        SqlRunner.db().delete("delete from operation_log");
++        SqlRunner.db().delete("delete from cc_sys_operation_log");
+         return super.SUCCESS_TIP;
+     }
+ }
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/LoginLogController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/LoginLogController.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/LoginLogController.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -63,7 +63,7 @@
+     @Permission(Const.ADMIN_NAME)
+     @ResponseBody
+     public Object delLog() {
+-        SqlRunner.db().delete("delete from login_log");
++        SqlRunner.db().delete("delete from cc_sys_login_log");
+         return super.SUCCESS_TIP;
+     }
+ }
+Index: cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/UserMgrController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/UserMgrController.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/com/bmac/ffan/modular/system/controller/UserMgrController.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -10,7 +10,7 @@
+ import com.bmac.ffan.common.exception.BussinessException;
+ import com.bmac.ffan.common.persistence.dao.CcSysUserMapper;
+ import com.bmac.ffan.common.persistence.model.CcSysUser;
+-import com.bmac.ffan.config.properties.GunsProperties;
++import com.bmac.ffan.config.properties.BmacProperties;
+ import com.bmac.ffan.core.base.controller.BaseController;
+ import com.bmac.ffan.core.base.tips.Tip;
+ import com.bmac.ffan.core.datascope.DataScope;
+@@ -51,7 +51,7 @@
+     private static String PREFIX = "/system/user/";
+ 
+     @Resource
+-    private GunsProperties gunsProperties;
++    private BmacProperties bmacProperties;
+ 
+     @Resource
+     private UserMgrDao managerDao;
+@@ -344,7 +344,7 @@
+     public String upload(@RequestPart("file") MultipartFile picture) {
+         String pictureName = UUID.randomUUID().toString() + ".jpg";
+         try {
+-            String fileSavePath = gunsProperties.getFileUploadPath();
++            String fileSavePath = bmacProperties.getFileUploadPath();
+             picture.transferTo(new File(fileSavePath + pictureName));
+         } catch (Exception e) {
+             throw new BussinessException(BizExceptionEnum.UPLOAD_ERROR);
+Index: cc-sms-admin/src/main/java/generator/MyBatisPlusGenerator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/java/generator/MyBatisPlusGenerator.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/java/generator/MyBatisPlusGenerator.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -28,7 +28,7 @@
+ 
+         // 全局配置
+         GlobalConfig gc = new GlobalConfig();
+-        gc.setOutputDir("/Users/stylefeng/work/ideaSpace/guns/guns-admin/src/main/java");//这里写你自己的java目录
++        gc.setOutputDir("/Users/xzf/IdeaProjects/sms/cc-sms-admin/src/main/java");//这里写你自己的java目录
+         gc.setFileOverride(true);//是否覆盖
+         gc.setActiveRecord(true);
+         gc.setEnableCache(false);// XML 二级缓存
+@@ -50,7 +50,7 @@
+         dsc.setDriverName("com.mysql.jdbc.Driver");
+         dsc.setUsername("root");
+         dsc.setPassword("root");
+-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/guns?characterEncoding=utf8");
++        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/sms-db?characterEncoding=utf8");
+         mpg.setDataSource(dsc);
+ 
+         // 策略配置
+Index: cc-sms-admin/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/main/resources/application.yml	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/main/resources/application.yml	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -3,7 +3,7 @@
+ ##########################################################
+ 
+ ###################  sms配置  ###################
+-guns:
++bmac:
+   swagger-open: true #是否开启swagger (true/false)
+   kaptcha-open: false #是否开启登录时验证码 (true/false)
+   session-open: false #是否开启session超时验证（受影响的类SessionTimeoutInterceptor） (true/false)
+@@ -81,7 +81,7 @@
+       filters: log4j,wall,mergeStat
+ 
+ #多数据源
+-guns:
++ffan:
+   muti-datasource:
+     default-dataSource-name: dataSourceGuns #默认的数据源名称
+     url: jdbc:mysql://127.0.0.1:3306/biz?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+@@ -102,7 +102,7 @@
+ spring:
+   profiles: produce
+   datasource:
+-      url: jdbc:mysql://127.0.0.1:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
++      url: jdbc:mysql://127.0.0.1:3306/sms-db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+       username: root
+       password: root
+       filters: log4j,wall,mergeStat
+Index: cc-sms-admin/src/test/java/com/bmac/ffan/shiro/Base64Test.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/src/test/java/com/bmac/ffan/shiro/Base64Test.java	(revision 0ca19a0eba48d1bd32d59893b5c660ebab39d605)
++++ cc-sms-admin/src/test/java/com/bmac/ffan/shiro/Base64Test.java	(revision 161e71e7719b32759ab79034270d9ec0c0a93937)
+@@ -12,7 +12,7 @@
+      */
+     public static void main(String[] args) {
+     	
+-        String keyStr = "guns";
++        String keyStr = "ffan";
+         
+         byte[] keys;
+ 		try {
+Index: cc-sms-admin/target/classes/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cc-sms-admin/target/classes/application.yml	(date 1509331708000)
++++ cc-sms-admin/target/classes/application.yml	(date 1509419886000)
+@@ -3,9 +3,9 @@
+ ##########################################################
+ 
+ ###################  sms配置  ###################
+-guns:
++bmac:
+   swagger-open: true #是否开启swagger (true/false)
+-  kaptcha-open: false #是否开启登录时验证码 (true/false)
++  kaptcha-open: true #是否开启登录时验证码 (true/false)
+   session-open: false #是否开启session超时验证（受影响的类SessionTimeoutInterceptor） (true/false)
+   #file-upload-path: d:/tmp  #文件上传目录(不配置的话为java.io.tmpdir目录)
+   muti-datasource-open: false #是否开启多数据源(true/false)
+@@ -81,7 +81,7 @@
+       filters: log4j,wall,mergeStat
+ 
+ #多数据源
+-guns:
++ffan:
+   muti-datasource:
+     default-dataSource-name: dataSourceGuns #默认的数据源名称
+     url: jdbc:mysql://127.0.0.1:3306/biz?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+@@ -102,7 +102,7 @@
+ spring:
+   profiles: produce
+   datasource:
+-      url: jdbc:mysql://127.0.0.1:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
++      url: jdbc:mysql://127.0.0.1:3306/sms-db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+       username: root
+       password: root
+       filters: log4j,wall,mergeStat

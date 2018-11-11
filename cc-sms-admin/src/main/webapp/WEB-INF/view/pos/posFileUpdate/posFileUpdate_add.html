@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#input id="id" name="设备ID" underline="true" />
+						<#input id="lineVersion" name="线路版本" underline="true" />
+						<#input id="linefile" name="文件ID" underline="true" />
+						<#input id="incrBlacklistFile" name="实体卡增量文件ID" underline="true" />
+						<#input id="qrBlacklistFile" name="二维码文件ID" underline="true" />
+						<#input id="qrIncrBlacklistFile" name="二维码增量文件ID" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="htBlacklistFile" name="互通卡文件ID" underline="true" />
+                    <#input id="htIncrBlacklistFile" name="互通卡增量文件ID" underline="true" />
+                    <#input id="htWhitelist" name="互通卡白名单" underline="true" />
+                    <#input id="availableCardFile" name="可用卡文件ID" underline="true" />
+                    <#input id="admissionFile" name="票价表文件ID" underline="true" />
+                    <#input id="mileageFile" name="折扣率文件ID" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PosFileUpdateInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PosFileUpdateInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/posFileUpdate/posFileUpdate_info.js"></script>
+@}

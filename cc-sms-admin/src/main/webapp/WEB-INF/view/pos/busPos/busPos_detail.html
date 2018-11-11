@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${busPos.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input disabled="disabled" id="posVendor" name="POS机厂商编号" value="${busPos.posVendor}" underline="true" />
+					<#input disabled="disabled" id="busId" name="公交车编号" value="${busPos.busId}" underline="true" />
+					<#input disabled="disabled" id="posId" name="POS-ID" value="${busPos.posId}" underline="true" />
+					<#input disabled="disabled" id="samId" name="SAM-ID" value="${busPos.samId}" underline="true" />
+					<#input disabled="disabled" id="state" name="POS机状态" value="${busPos.state}" underline="true" />
+					<#input disabled="disabled" id="firmVersion" name="固件版本号" value="${busPos.firmVersion}" underline="true" />
+					<#input disabled="disabled" id="reason" name="故障原因" value="${busPos.reason}" underline="true" />
+					<#input disabled="disabled" id="remark" name="备注" value="${busPos.remark}" underline="true" />
+					<#input disabled="disabled" id="heartbeatTime" name="心跳更新时间" value="${busPos.heartbeatTime}" underline="true" />
+					<#input disabled="disabled" id="lineVersion" name="线路版本" underline="true" />
+				</div>
+
+                <div class="col-sm-6">
+					<#input disabled="disabled" id="incrBlackVer" name="实体卡增量黑名单版本号" value="${busPos.incrBlackVer}" underline="true" />
+					<#input disabled="disabled" id="qrBlackVer" name="二维码黑名单版本号" value="${busPos.qrBlackVer}" underline="true" />
+					<#input disabled="disabled" id="incQrBlackVer" name="二维码黑名单增量版本号" value="${busPos.incQrBlackVer}" underline="true" />
+					<#input disabled="disabled" id="htBlackVer" name="互通卡黑名单版本号" value="${busPos.htBlackVer}" underline="true" />
+					<#input disabled="disabled" id="htIncBlackVer" name="互通卡增量黑名单版本号" value="${busPos.htIncBlackVer}" underline="true" />
+					<#input disabled="disabled" id="priVer" name="票价表文件版本号" value="${busPos.priVer}" underline="true" />
+					<#input disabled="disabled" id="milesVer" name="折扣率文件版本号" value="${busPos.milesVer}" underline="true" />
+					<#input disabled="disabled" id="htWhiteVer" name="互通卡白名单版本号" value="${busPos.htWhiteVer}" underline="true" />
+					<#input disabled="disabled" id="htTwoVer" name="费率卡二次发行信息版本号" value="${busPos.htTwoVer}" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="BusPosInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/busPos/busPos_info.js"></script>
+@}

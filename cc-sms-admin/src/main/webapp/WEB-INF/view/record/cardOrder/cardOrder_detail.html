@@ -1,0 +1,95 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input disabled="disabled" id="pltSsn" name="平台流水号" value="${cardOrder.pltSsn}" underline="true" />
+					<#input disabled="disabled" id="reqSsn" name="请求方流水号" value="${cardOrder.reqSsn}" underline="true" />
+					<#input disabled="disabled" id="settleDateLoc" name="本地清算日期" value="${cardOrder.settleDateLoc}" underline="true" />
+					<#input disabled="disabled" id="transRecvDate" name="接收日期" value="${cardOrder.transRecvDate}" underline="true" />
+					<#input disabled="disabled" id="transRecvTime" name="接收时间" value="${cardOrder.transRecvTime}" underline="true" />
+					<#input disabled="disabled" id="transCodeOut" name="外部交易代码" value="${cardOrder.transCodeOut}" underline="true" />
+					<#input disabled="disabled" id="transCodeChnl" name="渠道交易代码" value="${cardOrder.transCodeChnl}" underline="true" />
+					<#input disabled="disabled" id="transCodeChName" name="交易代码名称" value="${cardOrder.transCodeChName}" underline="true" />
+					<#input disabled="disabled" id="mchCodeIn" name="商户代码" value="${cardOrder.mchCodeIn}" underline="true" />
+					<#input disabled="disabled" id="mchNameOut" name="商户名称" value="${cardOrder.mchNameOut}" underline="true" />
+					<#input disabled="disabled" id="acqInsId" name="受理机构" value="${cardOrder.acqInsId}" underline="true" />
+					<#input disabled="disabled" id="acqInsSeq" name="受理机构流水号" value="${cardOrder.acqInsSeq}" underline="true" />
+					<#input disabled="disabled" id="locTracsTime" name="本地交易时间" value="${cardOrder.locTracsTime}" underline="true" />
+					<#input disabled="disabled" id="locTracsDate" name="本地交易日期" value="${cardOrder.locTracsDate}" underline="true" />
+					<#input disabled="disabled" id="termTransTime" name="终端交易时间" value="${cardOrder.termTransTime}" underline="true" />
+					<#input disabled="disabled" id="termTransDate" name="终端交易日期" value="${cardOrder.termTransDate}" underline="true" />
+					<#input disabled="disabled" id="cardCity" name="城市代码" value="${cardOrder.cardCity}" underline="true" />
+					<#input disabled="disabled" id="csn" name="CSN" value="${cardOrder.csn}" underline="true" />
+					<#input disabled="disabled" id="cardSeqNo" name="卡序列号" value="${cardOrder.cardSeqNo}" underline="true" />
+					<#input disabled="disabled" id="cardCounter" name="卡累计交易次数" value="${cardOrder.cardCounter}" underline="true" />
+					<#input disabled="disabled" id="cardType" name="交易卡类型" value="${cardOrder.cardType}" underline="true" />
+					<#input disabled="disabled" id="cardPhyType" name="卡物理类型" value="${cardOrder.cardPhyType}" underline="true" />
+					<#input disabled="disabled" id="orderNo" name="平台订单号" value="${cardOrder.orderNo}" underline="true" />
+					<#input disabled="disabled" id="state" name="订单状态" value="${cardOrder.state}" underline="true" />
+					<#input disabled="disabled" id="cardBramdid" name="卡行业代码" value="${cardOrder.cardBramdid}" underline="true" />
+					<#input disabled="disabled" id="cardClass" name="用户ID" value="${cardOrder.cardClass}" underline="true" />
+					<#input disabled="disabled" id="orderType" name="交易类型" value="${cardOrder.orderType}" underline="true" />
+					<#input disabled="disabled" id="tradeStatus" name="补票交易状态" value="${cardOrder.tradeStatus}" underline="true" />
+					<#input disabled="disabled" id="serialNum" name="记录顺序编号" value="${cardOrder.serialNum}" underline="true" />
+					<#input disabled="disabled" id="cardno" name="套票绑定的卡号" value="${cardOrder.cardno}" underline="true" />
+					<#input disabled="disabled" id="tradeTypeFlag" name="交易类型标识" value="${cardOrder.tradeTypeFlag}" underline="true" />
+					<#input disabled="disabled" id="cpuCounter" name="脱机交易序号" value="${cardOrder.cpuCounter}" underline="true" />
+					<#input disabled="disabled" id="cardIisCode" name="发卡机构代码" value="${cardOrder.cardIisCode}" underline="true" />
+					<#input disabled="disabled" id="timeCardType" name="时间票类型" value="${cardOrder.timeCardType}" underline="true" />
+					<#input disabled="disabled" id="markTime" name="上车时间" value="${cardOrder.markTime}" underline="true" />
+					<#input disabled="disabled" id="markCityCode" name="上车城市代码" value="${cardOrder.markCityCode}" underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<#input disabled="disabled" id="markIisCode" name="上车受理机构代码" value="${cardOrder.markIisCode}" underline="true" />
+					<#input disabled="disabled" id="markCsCode" name="上车运营商代码" value="${cardOrder.markCsCode}" underline="true" />
+					<#input disabled="disabled" id="markLineId" name="上车线路" value="${cardOrder.markLineId}" underline="true" />
+					<#input disabled="disabled" id="markStation" name="上车站" value="${cardOrder.markStation}" underline="true" />
+					<#input disabled="disabled" id="markBusId" name="上车车辆号" value="${cardOrder.markBusId}" underline="true" />
+					<#input disabled="disabled" id="downCsCode" name="下车运营商代码" value="${cardOrder.downCsCode}" underline="true" />
+					<#input disabled="disabled" id="downLineId" name="下车线路" value="${cardOrder.downLineId}" underline="true" />
+					<#input disabled="disabled" id="downStation" name="下车站" value="${cardOrder.downStation}" underline="true" />
+					<#input disabled="disabled" id="downBusId" name="下车车辆号" value="${cardOrder.downBusId}" underline="true" />
+					<#input disabled="disabled" id="takenLength" name="乘车里程" value="${cardOrder.takenLength}" underline="true" />
+					<#input disabled="disabled" id="dirFlag" name="上下行标志" value="${cardOrder.dirFlag}" underline="true" />
+					<#input disabled="disabled" id="driverCode" name="司机ID" value="${cardOrder.driverCode}" underline="true" />
+					<#input disabled="disabled" id="sellorCode" name="监票员ID" value="${cardOrder.sellorCode}" underline="true" />
+					<#input disabled="disabled" id="sellorCode2" name="监票员ID2" value="${cardOrder.sellorCode2}" underline="true" />
+					<#input disabled="disabled" id="posId" name="支付提供方代码" value="${cardOrder.posId}" underline="true" />
+					<#input disabled="disabled" id="posTradeSeq" name="POS机交易流水号" value="${cardOrder.posTradeSeq}" underline="true" />
+					<#input disabled="disabled" id="posDate" name="POS机交易时间" value="${cardOrder.posDate}" underline="true" />
+					<#input disabled="disabled" id="tac" name="交易TAC" value="${cardOrder.tac}" underline="true" />
+					<#input disabled="disabled" id="tacMode" name="TAC算法标识" value="${cardOrder.tacMode}" underline="true" />
+					<#input disabled="disabled" id="psamId" name="PSAM ID" value="${cardOrder.psamId}" underline="true" />
+					<#input disabled="disabled" id="psamSeq" name="PSAM交易流水号" value="${cardOrder.psamSeq}" underline="true" />
+					<#input disabled="disabled" id="chargeActual" name="交易金额" value="${cardOrder.chargeActual}" underline="true" />
+					<#input disabled="disabled" id="cardBalance" name="卡内余额" value="${cardOrder.cardBalance}" underline="true" />
+					<#input disabled="disabled" id="preCardBalance" name="交易前卡内余额" value="${cardOrder.preCardBalance}" underline="true" />
+					<#input disabled="disabled" id="chargeIdeal" name="应收金额" value="${cardOrder.chargeIdeal}" underline="true" />
+					<#input disabled="disabled" id="keyVer" name="密钥版本号" value="${cardOrder.keyVer}" underline="true" />
+					<#input disabled="disabled" id="keyIndex" name="密钥索引号" value="${cardOrder.keyIndex}" underline="true" />
+					<#input disabled="disabled" id="keyReqNum" name="密钥请求次数" value="${cardOrder.keyReqNum}" underline="true" />
+					<#input disabled="disabled" id="authSeq" name="密钥授权流水号" value="${cardOrder.authSeq}" underline="true" />
+					<#input disabled="disabled" id="checkCode" name="记录检验码" value="${cardOrder.checkCode}" underline="true" />
+					<#input disabled="disabled" id="recordType" name="收费记录格式" value="${cardOrder.recordType}" underline="true" />
+					<#input disabled="disabled" id="cardFlag" name="卡片标识" value="${cardOrder.cardFlag}" underline="true" />
+					<#input disabled="disabled" id="createTime" name="创建时间" value="${cardOrder.createTime}" underline="true" />
+					<#input disabled="disabled" id="updateTime" name="更新时间" value="${cardOrder.updateTime}" underline="true" />
+					<#input disabled="disabled" id="cardUpload" name="cardUpload" value="${cardOrder.cardUpload}" underline="true" />
+					<#input disabled="disabled" id="reservedType" name="交易记录类型" value="${cardOrder.reservedType}" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="CardOrderInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/cardOrder/cardOrder_info.js"></script>
+@}

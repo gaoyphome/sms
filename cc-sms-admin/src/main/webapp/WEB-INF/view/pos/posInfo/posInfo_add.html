@@ -1,0 +1,50 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+						<#input id="posId" name="POS-ID" underline="true" />
+						<#input id="samId" name="SAM-ID" underline="true" />
+						<#input id="posCode" name="POS编码" underline="true" />
+						<#input id="posDesc" name="POS描述" underline="true" />
+						<#input id="longitude" name="经度" underline="true" />
+						<#input id="latitude" name="纬度" underline="true" />
+						<#input id="locDesc" name="位置描述" underline="true" />
+						<#input id="state" name="状态" underline="true" />
+						<#input id="version" name="POS版本号" underline="true" />
+						<#input id="firmVersion" name="固件版本号" underline="true" />
+						<#input id="blacklistVersion" name="黑名单版本号" underline="true" />
+						<#input id="termVersion" name="终端参数版本号" underline="true" />
+						<#input id="cardtypeVersion" name="卡类型版本号" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+					<#input id="reason" name="故障原因" underline="true" />
+					<#input id="lineVersion" name="线路版本" underline="true" />
+					<#input id="incrBlackVer" name="实体卡增量黑名单版本号" underline="true" />
+					<#input id="qrBlackVer" name="二维码黑名单版本号" underline="true" />
+					<#input id="incQrBlackVer" name="二维码黑名单增量版本号" underline="true" />
+					<#input id="htBlackVer" name="互通卡黑名单版本号" underline="true" />
+					<#input id="htIncBlackVer" name="互通卡增量黑名单版本号" underline="true" />
+					<#input id="priVer" name="票价表文件版本号" underline="true" />
+					<#input id="milesVer" name="折扣率文件版本号" underline="true" />
+					<#input id="htWhiteVer" name="互通卡白名单版本号" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PosInfoInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PosInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/posInfo/posInfo_info.js"></script>
+@}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcQrcodeBlackMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcQrcodeBlack">
+		<result column="token_id" property="tokenId" />
+		<result column="vsir_bmacno" property="vsirBmacno" />
+		<result column="reason" property="reason" />
+		<result column="create_time" property="createTime" />
+		<result column="black_count" property="blackCount" />
+		<result column="operate_person" property="operatePerson" />
+		<result column="operate_person_id" property="operatePersonId" />
+		<result column="state" property="state" />
+		<result column="flag" property="flag" />
+		<result column="fail_time" property="failTime" />
+	</resultMap>
+
+</mapper>

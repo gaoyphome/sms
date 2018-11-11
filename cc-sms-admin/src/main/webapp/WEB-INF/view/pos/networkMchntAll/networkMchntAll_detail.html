@@ -1,0 +1,47 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${networkMchntAll.id}">
+            <input type="hidden" id="mchntTypeHidden" value="${networkMchntAll.mchntType}">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#input disabled="disabled"  id="mchntId" name="商户ID" value="${networkMchntAll.mchntId}" underline="true" />
+                    <#input disabled="disabled"  id="mchntname" name="商户名" value="${networkMchntAll.mchntname}" underline="true" />
+                    <#input disabled="disabled"  id="mchntcode" name="商户简码" value="${networkMchntAll.mchntcode}" underline="true" />
+                    <#select id="mchntType" name="商户类型">
+                        <option value="1">普通商户</option>
+                        <option value="2">代理商</option>
+                        <option value="3">代结算商</option>
+                        <option value="4">一级商户</option>
+                        <option value="5">二级商户(景点)</option>
+                        <option value="6">门店</option>
+                    </#select>
+                    <#input disabled="disabled"  id="fatherId" name="上级商户ID" value="${networkMchntAll.fatherId}" underline="true" />
+                    <#input disabled="disabled"  id="lowSeason" name="淡季时间范围" value="${networkMchntAll.lowSeason}" underline="true" />
+                    <#input disabled="disabled"  id="lowPrice" name="淡季票价" value="${networkMchntAll.lowPrice}" underline="true" />
+
+                </div>
+
+                <div class="col-sm-6">
+                    <#input disabled="disabled"  id="midSeason" name="旺季时间范围" value="${networkMchntAll.midSeason}" underline="true" />
+                    <#input disabled="disabled"  id="midPrice" name="旺季票价" value="${networkMchntAll.midPrice}" underline="true" />
+                    <#input disabled="disabled"  id="telphone" name="固定电话" value="${networkMchntAll.telphone}" underline="true" />
+                    <#input disabled="disabled"  id="email" name="Email" value="${networkMchntAll.email}" underline="true" />
+                    <#input disabled="disabled"  id="contacts" name="联系人" value="${networkMchntAll.contacts}" underline="true" />
+                    <#input disabled="disabled"  id="contactsMobile" name="联系人电话" value="${networkMchntAll.contactsMobile}" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="NetworkMchntAllInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/networkMchntAll/networkMchntAll_info.js"></script>
+@}

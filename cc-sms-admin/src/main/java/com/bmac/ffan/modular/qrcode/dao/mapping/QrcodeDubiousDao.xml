@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.qrcode.dao.QrcodeDubiousDao">
+	<sql id="Base_Column_List">
+	      vsir_bmacno as vsirBmacno,
+	      reason as reason,
+	      token_id as tokenId,
+	      dubious_count as dubiousCount
+	</sql>
+	
+	<select id="selectQrcodeDubiouss" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_qrcode_dubious where 1 = 1
+		
+		
+	    	<if test="vsirBmacno != null and vsirBmacno != ''">
+				and vsir_bmacno like CONCAT('%',#{vsirBmacno},'%')
+			</if>
+	    	<if test="tokenId != null and tokenId != ''">
+				and token_id like CONCAT('%',#{tokenId},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by vsir_bmacno DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<insert id="insertQrcodeDubious" parameterType="com.bmac.ffan.common.persistence.model.CcQrcodeDubious">
+		insert into cc_qrcode_dubious (vsir_bmacno, reason, token_id, dubious_count)
+		values (#{qrcodeDubious.vsirBmacno},#{qrcodeDubious.reason},
+		#{qrcodeDubious.tokenId},#{qrcodeDubious.dubiousCount})
+	</insert>
+</mapper>

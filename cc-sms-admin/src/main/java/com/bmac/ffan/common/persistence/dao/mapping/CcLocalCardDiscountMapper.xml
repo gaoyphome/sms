@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcLocalCardDiscountMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcLocalCardDiscount">
+		<id column="id" property="id" />
+		<result column="sub_company_id" property="subCompanyId" />
+		<result column="card_phy_type" property="cardPhyType" />
+		<result column="card_type" property="cardType" />
+		<result column="card_attr" property="cardAttr" />
+		<result column="charge_mode" property="chargeMode" />
+		<result column="max_consume" property="maxConsume" />
+		<result column="credit_balance" property="creditBalance" />
+		<result column="min_balance" property="minBalance" />
+		<result column="max_balance" property="maxBalance" />
+		<result column="in_rate" property="inRate" />
+		<result column="in_limit" property="inLimit" />
+		<result column="out_rate" property="outRate" />
+		<result column="out_limit" property="outLimit" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+</mapper>

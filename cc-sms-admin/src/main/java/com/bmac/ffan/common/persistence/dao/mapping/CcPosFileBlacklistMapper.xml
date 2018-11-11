@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcPosFileBlacklistMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcPosFileBlacklist">
+		<id column="id" property="id" />
+		<result column="filename" property="filename" />
+		<result column="filesize" property="filesize" />
+		<result column="crc16" property="crc16" />
+		<result column="content" property="content" />
+		<result column="version" property="version" />
+	</resultMap>
+	
+	 <!-- 获取中心黑白名单文件版本+1 -->
+  	<select id="getCenterFileListVersion" resultType="java.util.HashMap">
+		select
+			IFNULL(max(if (type = 'w1', version, null))+1,1) w1_version,
+			IFNULL(max(if (type = 'g1', version, null))+1,1) g1_version,
+			IFNULL(max(if (type = 'g4', version, null))+1,1) g4_version,
+			IFNULL(max(if (type = 'g6', version, null))+1,1) g6_version,
+			IFNULL(max(if (type = 'g7', version, null))+1,1) g7_version,
+			IFNULL(max(if (type = 'g10', version, null))+1,1) g10_version
+		from (
+			select 'w1' type, version from cc_pos_file_blacklist where filename = '1:/W1'
+			union
+			select 'g1' type, blacklist_version from cloud_data_version
+			union
+			select 'g4' type, version from cc_pos_file_blacklist where filename = '1:/G4'
+			union
+			select 'g6' type, version from cc_pos_file_blacklist where filename = '1:/G6'
+			union
+			select 'g7' type, version from cc_pos_file_blacklist where filename = '1:/G7'
+			union
+			select 'g10' type, version from cc_pos_file_blacklist where filename = '1:/G10'
+		) t
+		having count(1) > 0
+  	</select>
+</mapper>

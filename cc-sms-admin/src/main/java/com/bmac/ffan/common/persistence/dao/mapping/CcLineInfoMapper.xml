@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcLineInfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcLineInfo">
+		<id column="id" property="id" />
+		<result column="line_id" property="lineId" />
+		<result column="file_id" property="fileId" />
+		<result column="name" property="name" />
+		<result column="company_id" property="companyId" />
+		<result column="sub_company_id" property="subCompanyId" />
+		<result column="date_enable" property="dateEnable" />
+		<result column="local_no_mode" property="localNoMode" />
+		<result column="offsite_no_model" property="offsiteNoModel" />
+		<result column="bus_attr" property="busAttr" />
+		<result column="offsite_ticket_model" property="offsiteTicketModel" />
+		<result column="dif_ticket_rule" property="difTicketRule" />
+		<result column="ticket_discount_flag" property="ticketDiscountFlag" />
+		<result column="function_switch" property="functionSwitch" />
+		<result column="card_issuer_num" property="cardIssuerNum" />
+		<result column="line_attr" property="lineAttr" />
+		<result column="exchange_time" property="exchangeTime" />
+		<result column="price_base" property="priceBase" />
+		<result column="city_leave_up" property="cityLeaveUp" />
+		<result column="city_leave_down" property="cityLeaveDown" />
+		<result column="stations_num_up" property="stationsNumUp" />
+		<result column="stations_num_dn" property="stationsNumDn" />
+		<result column="file_version" property="fileVersion" />
+		<result column="plt_line_version" property="pltLineVersion" />
+		<result column="create_flag" property="createFlag" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+</mapper>

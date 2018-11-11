@@ -1,0 +1,32 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${sysConfig.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="category" name="分类" value="${sysConfig.category}" underline="true" />
+					<#input id="paramKey" name="参数名称" value="${sysConfig.paramKey}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="paramValue" name="参数值" value="${sysConfig.paramValue}" underline="true" />
+					<#input id="remark" name="备注" value="${sysConfig.remark}" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="SysConfigInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="SysConfigInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/sysConfig/sysConfig_info.js"></script>
+@}

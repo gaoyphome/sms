@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcCardOrderMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcCardOrder">
+		<id column="plt_ssn" property="pltSsn" />
+		<result column="req_ssn" property="reqSsn" />
+		<result column="settle_date_loc" property="settleDateLoc" />
+		<result column="trans_recv_date" property="transRecvDate" />
+		<result column="trans_recv_time" property="transRecvTime" />
+		<result column="trans_code_out" property="transCodeOut" />
+		<result column="trans_code_chnl" property="transCodeChnl" />
+		<result column="trans_code_ch_name" property="transCodeChName" />
+		<result column="mch_code_in" property="mchCodeIn" />
+		<result column="mch_name_out" property="mchNameOut" />
+		<result column="acq_ins_id" property="acqInsId" />
+		<result column="acq_ins_seq" property="acqInsSeq" />
+		<result column="loc_tracs_time" property="locTracsTime" />
+		<result column="loc_tracs_date" property="locTracsDate" />
+		<result column="term_trans_time" property="termTransTime" />
+		<result column="term_trans_date" property="termTransDate" />
+		<result column="card_city" property="cardCity" />
+		<result column="csn" property="csn" />
+		<result column="card_seqNo" property="cardSeqNo" />
+		<result column="card_counter" property="cardCounter" />
+		<result column="card_type" property="cardType" />
+		<result column="card_phy_type" property="cardPhyType" />
+		<result column="order_no" property="orderNo" />
+		<result column="state" property="state" />
+		<result column="card_bramdid" property="cardBramdid" />
+		<result column="card_class" property="cardClass" />
+		<result column="order_type" property="orderType" />
+		<result column="trade_status" property="tradeStatus" />
+		<result column="serial_num" property="serialNum" />
+		<result column="cardno" property="cardno" />
+		<result column="trade_type_flag" property="tradeTypeFlag" />
+		<result column="cpu_counter" property="cpuCounter" />
+		<result column="card_iis_code" property="cardIisCode" />
+		<result column="time_card_type" property="timeCardType" />
+		<result column="mark_time" property="markTime" />
+		<result column="mark_city_code" property="markCityCode" />
+		<result column="mark_iis_code" property="markIisCode" />
+		<result column="mark_cs_code" property="markCsCode" />
+		<result column="mark_line_id" property="markLineId" />
+		<result column="mark_station" property="markStation" />
+		<result column="mark_bus_id" property="markBusId" />
+		<result column="down_cs_code" property="downCsCode" />
+		<result column="down_line_id" property="downLineId" />
+		<result column="down_station" property="downStation" />
+		<result column="down_bus_id" property="downBusId" />
+		<result column="taken_length" property="takenLength" />
+		<result column="dir_flag" property="dirFlag" />
+		<result column="driver_code" property="driverCode" />
+		<result column="sellor_code" property="sellorCode" />
+		<result column="sellor_code2" property="sellorCode2" />
+		<result column="pos_id" property="posId" />
+		<result column="pos_trade_seq" property="posTradeSeq" />
+		<result column="pos_date" property="posDate" />
+		<result column="tac" property="tac" />
+		<result column="tac_mode" property="tacMode" />
+		<result column="psam_id" property="psamId" />
+		<result column="psam_seq" property="psamSeq" />
+		<result column="charge_actual" property="chargeActual" />
+		<result column="card_balance" property="cardBalance" />
+		<result column="pre_card_balance" property="preCardBalance" />
+		<result column="charge_ideal" property="chargeIdeal" />
+		<result column="key_ver" property="keyVer" />
+		<result column="key_index" property="keyIndex" />
+		<result column="key_req_num" property="keyReqNum" />
+		<result column="auth_seq" property="authSeq" />
+		<result column="check_code" property="checkCode" />
+		<result column="record_type" property="recordType" />
+		<result column="card_flag" property="cardFlag" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="card_upload" property="cardUpload" />
+		<result column="reserved_type" property="reservedType" />
+	</resultMap>
+
+</mapper>

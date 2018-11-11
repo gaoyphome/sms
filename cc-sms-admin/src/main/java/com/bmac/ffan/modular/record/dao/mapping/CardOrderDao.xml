@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.record.dao.CardOrderDao">
+	<sql id="Base_Column_List">
+	      card.plt_ssn as pltSsn,
+		card.req_ssn as reqSsn,
+		card.settle_date_loc as settleDateLoc,
+		card.trans_recv_date as transRecvDate,
+		card.trans_recv_time as transRecvTime,
+		card.trans_code_out as transCodeOut,
+		card.trans_code_chnl as transCodeChnl,
+		card.trans_code_ch_name as transCodeChName,
+		card.mch_code_in as mchCodeIn,
+		card.mch_name_out as mchNameOut,
+		card.acq_ins_id as acqInsId,
+		card.acq_ins_seq as acqInsSeq,
+		card.loc_tracs_time as locTracsTime,
+		card.loc_tracs_date as locTracsDate,
+		card.term_trans_time as termTransTime,
+		card.term_trans_date as termTransDate,
+		card.card_city as cardCity,
+		card.csn as csn,
+		card.card_seqNo as cardSeqNo,
+		card.card_counter as cardCounter,
+		card.card_type as cardType,
+		card.card_phy_type as cardPhyType,
+		card.order_no as orderNo,
+		card.state as state,
+		card.card_bramdid as cardBramdid,
+		card.card_class as cardClass,
+		card.order_type as orderType,
+		card.trade_status as tradeStatus,
+		card.serial_num as serialNum,
+		card.cardno as cardno,
+		card.trade_type_flag as tradeTypeFlag,
+		card.cpu_counter as cpuCounter,
+		card.card_iis_code as cardIisCode,
+		card.time_card_type as timeCardType,
+		card.mark_time as markTime,
+		card.mark_city_code as markCityCode,
+		card.mark_iis_code as markIisCode,
+		card.mark_cs_code as markCsCode,
+		card.mark_line_id as markLineId,
+		card.mark_station as markStation,
+		card.mark_bus_id as markBusId,
+		card.down_cs_code as downCsCode,
+		card.down_line_id as downLineId,
+		card.down_station as downStation,
+		card.down_bus_id as downBusId,
+		card.taken_length as takenLength,
+		card.dir_flag as dirFlag,
+		card.driver_code as driverCode,
+		card.sellor_code as sellorCode,
+		card.sellor_code2 as sellorCode2,
+		card.pos_id as posId,
+		card.pos_trade_seq as posTradeSeq,
+		card.pos_date as posDate,
+		card.tac as tac,
+		card.tac_mode as tacMode,
+		card.psam_id as psamId,
+		card.psam_seq as psamSeq,
+		card.charge_actual as chargeActual,
+		card.card_balance as cardBalance,
+		card.pre_card_balance as preCardBalance,
+		card.charge_ideal as chargeIdeal,
+		card.key_ver as keyVer,
+		card.key_index as keyIndex,
+		card.key_req_num as keyReqNum,
+		card.auth_seq as authSeq,
+		card.check_code as checkCode,
+		card.record_type as recordType,
+		card.card_flag as cardFlag,
+		card.create_time as createTime,
+		card.update_time as updateTime,
+		card.card_upload as cardUpload,
+card.reserved_type as reservedType
+	</sql>
+	
+	<select id="selectCardOrders" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_card_order card
+		where 1 = 1
+
+		<if test="startTermTransDate != null and startTermTransDate != ''">
+			<![CDATA[ and card.trans_recv_date >=  #{startTermTransDate} ]]>
+		</if>
+		<if test="endTermTransTime != null and endTermTransTime != ''">
+			<![CDATA[ and card.trans_recv_date <=  #{endTermTransTime} ]]>
+		</if>
+	    	<if test="cardno != null and cardno != ''">
+				and card.cardno = #{cardno}
+			</if>
+	    	<if test="orderNo != null and orderNo != ''">
+				and card.order_no = #{orderNo}
+			</if>
+	    	<if test="markLineId != null and markLineId != ''">
+				and card.mark_line_id like CONCAT('%',#{markLineId},'%')
+			</if>
+	    	<if test="downLineId != null and downLineId != ''">
+				and card.down_line_id like CONCAT('%',#{downLineId},'%')
+			</if>
+		<if test="posId != null and posId != ''">
+			and card.pos_id  = #{posId}
+		</if>
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by card.plt_ssn DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

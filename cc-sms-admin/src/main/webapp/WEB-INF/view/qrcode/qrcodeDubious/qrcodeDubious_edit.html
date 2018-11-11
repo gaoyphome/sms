@@ -1,0 +1,32 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="vsirBmacno" value="${qrcodeDubious.vsirBmacno}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="vsirBmacno" name="虚拟卡号" value="${qrcodeDubious.vsirBmacno}" underline="true" />
+					<#input id="reason" name="原因" value="${qrcodeDubious.reason}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+					<#input id="tokenId" name="TokenId" value="${qrcodeDubious.tokenId}" underline="true" />
+					<#input id="dubiousCount" name="可疑操作次数" value="${qrcodeDubious.dubiousCount}" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="QrcodeDubiousInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="QrcodeDubiousInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/qrcodeDubious/qrcodeDubious_info.js"></script>
+@}

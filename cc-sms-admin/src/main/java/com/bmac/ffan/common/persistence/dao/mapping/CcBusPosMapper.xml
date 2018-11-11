@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.common.persistence.dao.CcBusPosMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.bmac.ffan.common.persistence.model.CcBusPos">
+		<id column="id" property="id" />
+		<result column="pos_vendor" property="posVendor" />
+		<result column="bus_id" property="busId" />
+		<result column="pos_id" property="posId" />
+		<result column="sam_id" property="samId" />
+		<result column="state" property="state" />
+		<result column="firm_version" property="firmVersion" />
+		<result column="reason" property="reason" />
+		<result column="remark" property="remark" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="heartbeat_time" property="heartbeatTime" />
+		<result column="line_version" property="lineVersion" />
+		<result column="incr_black_ver" property="incrBlackVer" />
+		<result column="qr_black_ver" property="qrBlackVer" />
+		<result column="inc_qr_black_ver" property="incQrBlackVer" />
+		<result column="ht_black_ver" property="htBlackVer" />
+		<result column="ht_inc_black_ver" property="htIncBlackVer" />
+		<result column="pri_ver" property="priVer" />
+		<result column="miles_ver" property="milesVer" />
+		<result column="ht_white_ver" property="htWhiteVer" />
+		<result column="ht_two_ver" property="htTwoVer" />
+	</resultMap>
+
+</mapper>

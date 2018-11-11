@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.record.dao.TicketOrderDao">
+	<sql id="Base_Column_List">
+	      plt_ssn as pltSsn,
+req_ssn as reqSsn,
+settle_date_loc as settleDateLoc,
+trans_recv_date as transRecvDate,
+trans_recv_time as transRecvTime,
+trans_code_out as transCodeOut,
+trans_code_chnl as transCodeChnl,
+trans_code_ch_name as transCodeChName,
+mch_code_in as mchCodeIn,
+mch_name_out as mchNameOut,
+acq_ins_id as acqInsId,
+acq_ins_seq as acqInsSeq,
+loc_tracs_time as locTracsTime,
+loc_tracs_date as locTracsDate,
+term_trans_time as termTransTime,
+term_trans_date as termTransDate,
+card_city as cardCity,
+txn_token as txnToken,
+order_no as orderNo,
+state as state,
+ntorderid as ntorderid,
+user_id as userId,
+order_type as orderType,
+txn_type as txnType,
+ticket_id as ticketId,
+cardno as cardno,
+agent_id as agentId,
+mchnt_id as mchntId,
+spot_id as spotId,
+term_id as termId,
+sesq as sesq,
+total_cnt as totalCnt,
+use_cnt as useCnt,
+pos_id as posId,
+pos_trade_seq as posTradeSeq,
+pos_date as posDate,
+tac as tac,
+tac_mode as tacMode,
+psam_id as psamId,
+psam_seq as psamSeq,
+key_ver as keyVer,
+key_index as keyIndex,
+key_req_num as keyReqNum,
+auth_seq as authSeq,
+create_time as createTime,
+update_time as updateTime,
+charge_actual as chargeActual,
+card_balance as cardBalance,
+card_counter as cardCounter,
+card_type as cardType,
+card_phy_type as cardPhyType,
+pre_card_balance as preCardBalance,
+serial_num as serialNum,
+cpu_counter as cpuCounter,
+charge_ideal as chargeIdeal,
+ticket_upload as ticketUpload,
+product_code as productCode
+	</sql>
+	
+	<select id="selectTicketOrders" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_ticket_order where 1 = 1
+
+
+		<if test="startTermTransDate != null and startTermTransDate != ''">
+			<![CDATA[ and date_format(create_time, '%Y%m%d %H%i%s') >=  date_format(#{startTermTransDate}, '%Y%m%d %H%i%s') ]]>
+		</if>
+		<if test="endTermTransTime != null and endTermTransTime != ''">
+			<![CDATA[ and date_format(create_time, '%Y%m%d %H%i%s') <=  date_format(#{endTermTransTime}, '%Y%m%d %H%i%s') ]]>
+		</if>
+	    	<if test="cardno != null and cardno != ''">
+				and cardno = #{cardno}
+			</if>
+	    	<if test="orderNo != null and orderNo != ''">
+				and order_no like CONCAT('%',#{orderNo},'%')
+			</if>
+	    	<if test="termId != null and termId != ''">
+				and term_id like CONCAT('%',#{termId},'%')
+			</if>
+	    	<if test="productCode != null and productCode != ''">
+				and product_code like CONCAT('%',#{productCode},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by plt_ssn DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

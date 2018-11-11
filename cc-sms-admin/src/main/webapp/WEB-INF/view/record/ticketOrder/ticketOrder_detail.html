@@ -1,0 +1,81 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input disabled="disabled" id="pltSsn" name="平台流水号" value="${ticketOrder.pltSsn}" underline="true" />
+					<#input disabled="disabled" id="reqSsn" name="请求方流水号" value="${ticketOrder.reqSsn}" underline="true" />
+					<#input disabled="disabled" id="settleDateLoc" name="本地清算日期" value="${ticketOrder.settleDateLoc}" underline="true" />
+					<#input disabled="disabled" id="transRecvDate" name="接收日期" value="${ticketOrder.transRecvDate}" underline="true" />
+					<#input disabled="disabled" id="transRecvTime" name="接收时间" value="${ticketOrder.transRecvTime}" underline="true" />
+					<#input disabled="disabled" id="transCodeOut" name="外部交易代码" value="${ticketOrder.transCodeOut}" underline="true" />
+					<#input disabled="disabled" id="transCodeChnl" name="渠道交易代码" value="${ticketOrder.transCodeChnl}" underline="true" />
+					<#input disabled="disabled" id="transCodeChName" name="交易代码名称" value="${ticketOrder.transCodeChName}" underline="true" />
+					<#input disabled="disabled" id="mchCodeIn" name="商户代码" value="${ticketOrder.mchCodeIn}" underline="true" />
+					<#input disabled="disabled" id="mchNameOut" name="商户名称" value="${ticketOrder.mchNameOut}" underline="true" />
+					<#input disabled="disabled" id="acqInsId" name="受理机构" value="${ticketOrder.acqInsId}" underline="true" />
+					<#input disabled="disabled" id="acqInsSeq" name="受理机构流水号" value="${ticketOrder.acqInsSeq}" underline="true" />
+					<#input disabled="disabled" id="locTracsTime" name="本地交易时间" value="${ticketOrder.locTracsTime}" underline="true" />
+					<#input disabled="disabled" id="locTracsDate" name="本地交易日期" value="${ticketOrder.locTracsDate}" underline="true" />
+					<#input disabled="disabled" id="termTransTime" name="终端交易时间" value="${ticketOrder.termTransTime}" underline="true" />
+					<#input disabled="disabled" id="termTransDate" name="终端交易日期" value="${ticketOrder.termTransDate}" underline="true" />
+					<#input disabled="disabled" id="cardCity" name="城市代码" value="${ticketOrder.cardCity}" underline="true" />
+					<#input disabled="disabled" id="txnToken" name="交易TOKEN" value="${ticketOrder.txnToken}" underline="true" />
+					<#input disabled="disabled" id="orderNo" name="平台订单号" value="${ticketOrder.orderNo}" underline="true" />
+					<#input disabled="disabled" id="state" name="订单状态" value="${ticketOrder.state}" underline="true" />
+					<#input disabled="disabled" id="ntorderid" name="网络平台订单号" value="${ticketOrder.ntorderid}" underline="true" />
+					<#input disabled="disabled" id="userId" name="用户ID" value="${ticketOrder.userId}" underline="true" />
+					<#input disabled="disabled" id="orderType" name="订单交易类型" value="${ticketOrder.orderType}" underline="true" />
+					<#input disabled="disabled" id="txnType" name="交易类型" value="${ticketOrder.txnType}" underline="true" />
+					<#input disabled="disabled" id="ticketId" name="套票ID" value="${ticketOrder.ticketId}" underline="true" />
+					<#input disabled="disabled" id="cardno" name="套票绑定的卡号" value="${ticketOrder.cardno}" underline="true" />
+					<#input disabled="disabled" id="agentId" name="代理商ID" value="${ticketOrder.agentId}" underline="true" />
+					<#input disabled="disabled" id="mchntId" name="套票商户ID" value="${ticketOrder.mchntId}" underline="true" />
+					<#input disabled="disabled" id="spotId" name="套票景点ID" value="${ticketOrder.spotId}" underline="true" />
+				</div>
+
+				<div class="col-sm-6">
+					<#input disabled="disabled" id="termId" name="景点门店ID" value="${ticketOrder.termId}" underline="true" />
+					<#input disabled="disabled" id="sesq" name="流水号" value="${ticketOrder.sesq}" underline="true" />
+					<#input disabled="disabled" id="totalCnt" name="总次数" value="${ticketOrder.totalCnt}" underline="true" />
+					<#input disabled="disabled" id="useCnt" name="已使用次数" value="${ticketOrder.useCnt}" underline="true" />
+					<#input disabled="disabled" id="posId" name="支付提供方代码" value="${ticketOrder.posId}" underline="true" />
+					<#input disabled="disabled" id="posTradeSeq" name="POS机交易流水号" value="${ticketOrder.posTradeSeq}" underline="true" />
+					<#input disabled="disabled" id="posDate" name="POS机交易时间" value="${ticketOrder.posDate}" underline="true" />
+					<#input disabled="disabled" id="tac" name="交易TAC" value="${ticketOrder.tac}" underline="true" />
+					<#input disabled="disabled" id="tacMode" name="TAC算法标识" value="${ticketOrder.tacMode}" underline="true" />
+					<#input disabled="disabled" id="psamId" name="PSAM ID" value="${ticketOrder.psamId}" underline="true" />
+					<#input disabled="disabled" id="psamSeq" name="PSAM交易流水号" value="${ticketOrder.psamSeq}" underline="true" />
+					<#input disabled="disabled" id="keyVer" name="密钥版本号" value="${ticketOrder.keyVer}" underline="true" />
+					<#input disabled="disabled" id="keyIndex" name="密钥索引号" value="${ticketOrder.keyIndex}" underline="true" />
+					<#input disabled="disabled" id="keyReqNum" name="密钥请求次数" value="${ticketOrder.keyReqNum}" underline="true" />
+					<#input disabled="disabled" id="authSeq" name="密钥授权流水号" value="${ticketOrder.authSeq}" underline="true" />
+					<#input disabled="disabled" id="createTime" name="创建时间" value="${ticketOrder.createTime}" underline="true" />
+					<#input disabled="disabled" id="updateTime" name="更新时间" value="${ticketOrder.updateTime}" underline="true" />
+					<#input disabled="disabled" id="chargeActual" name="交易金额" value="${ticketOrder.chargeActual}" underline="true" />
+					<#input disabled="disabled" id="cardBalance" name="卡内余额" value="${ticketOrder.cardBalance}" underline="true" />
+					<#input disabled="disabled" id="cardCounter" name="卡交易计数" value="${ticketOrder.cardCounter}" underline="true" />
+					<#input disabled="disabled" id="cardType" name="卡类型" value="${ticketOrder.cardType}" underline="true" />
+					<#input disabled="disabled" id="cardPhyType" name="卡物理类型" value="${ticketOrder.cardPhyType}" underline="true" />
+					<#input disabled="disabled" id="preCardBalance" name="交易前余额" value="${ticketOrder.preCardBalance}" underline="true" />
+					<#input disabled="disabled" id="serialNum" name="记录序号" value="${ticketOrder.serialNum}" underline="true" />
+					<#input disabled="disabled" id="cpuCounter" name="钱包交易序号" value="${ticketOrder.cpuCounter}" underline="true" />
+					<#input disabled="disabled" id="chargeIdeal" name="票价" value="${ticketOrder.chargeIdeal}" underline="true" />
+					<#input disabled="disabled" id="ticketUpload" name="ticketUpload" value="${ticketOrder.ticketUpload}" underline="true" />
+					<#input disabled="disabled" id="productCode" name="旅游产品编码" value="${ticketOrder.productCode}" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="TicketOrderInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/ticketOrder/ticketOrder_info.js"></script>
+@}

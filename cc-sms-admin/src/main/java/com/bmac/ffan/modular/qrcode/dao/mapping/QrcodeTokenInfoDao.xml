@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.qrcode.dao.QrcodeTokenInfoDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      vsir_bmacno as vsirBmacno,
+	      start_time as startTime,
+	      card_check_digit as cardCheckDigit,
+	      end_time as endTime,
+	      token_id as tokenId,
+	      card_type as cardType,
+	      token_type as tokenType,
+	      token_version as tokenVersion,
+	      token_chumid as tokenChumid,
+	      token_enc as tokenEnc,
+	      dislocat_norm as dislocatNorm,
+	      create_time as createTime,
+	      identification as identification,
+	      update_time as updateTime,
+	      expire_type as expireType,
+	      expire_time as expireTime,
+	      space as space,
+	      user_phone as userPhone,
+	      qrcode_sesq as qrcodeSesq,
+	      bar_sesq as barSesq
+	</sql>
+	
+	<select id="selectQrcodeTokenInfos" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_qrcode_token_info where 1 = 1
+		
+		
+	    	<if test="vsirBmacno != null and vsirBmacno != ''">
+				and vsir_bmacno like CONCAT('%',#{vsirBmacno},'%')
+			</if>
+	    	<if test="userPhone != null and userPhone != ''">
+				and user_phone like CONCAT('%',#{userPhone},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by update_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

@@ -1,0 +1,57 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+				<table id="managerTableHead" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -41px;">
+					<thead>
+					<tr>
+						<th style="text-align: center; vertical-align: middle; " data-field="account">
+							<div class="th-inner sortable both">
+								数据名称
+							</div>
+							<div class="fht-cell"></div></th>
+						<th style="text-align: center; vertical-align: middle; " data-field="name">
+							<div class="th-inner sortable both">
+								当前内容
+							</div>
+							<div class="fht-cell"></div></th>
+						<th style="text-align: center; vertical-align: middle; " data-field="sexName">
+							<div class="th-inner sortable both">
+								文件内容
+							</div>
+							<div class="fht-cell"></div></th>
+					</tr>
+					</thead>
+				</table>
+
+				<div class="ibox-title">
+					<h5>部分不同参数(请确认其他参数)</h5>
+				</div>
+				<div class="form-group">
+					<table id="managerTable" data-mobile-responsive="true" data-click-to-select="true" class="table table-hover table-striped" style="margin-top: -41px;">
+						<tbody>
+						@for(info in compareInfos){
+						<tr data-index="0">
+							<td style="text-align: center; vertical-align: middle; ">${info.filedName}</td>
+							<td style="text-align: center; vertical-align: middle; ">${info.filedValueOld}</td>
+							<td style="text-align: center; vertical-align: middle; ">${info.filedValueNew}</td>
+						</tr>
+						@}
+						</tbody>
+					</table>
+				</div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="LineInfoInfoDlg.confirmSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="LineInfoInfoDlg.closeSubmit()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/basebusiness/lineInfo/lineInfo_info.js"></script>
+@}

@@ -1,0 +1,200 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins" style="overflow:scroll; overflow-x: auto">
+	<div class="tabs-wrapper">
+		<ul id="switchfalg" class="nav nav-tabs">
+
+			<li class="active">
+				<a href="javascript:void(0);" onclick="QrcodeRideTransInfoDlg.swithPrice(true)">上车记录</a>
+			</li>
+			@if(!isSingle){
+			<li>
+				<a href="javascript:void(0);" onclick="QrcodeRideTransInfoDlg.swithPrice(false)">下车记录</a>
+			</li>
+			@}
+		</ul>
+	</div>
+    <div class="ibox-content">
+        <div class="form-horizontal">
+			<div id="recordmark" class="row">
+				<div class="col-sm-6 b-r">
+					<#input disabled="disabled" id="pltSsn" name="平台流水号" value="${recordStart.pltSsn}" underline="true" />
+					<#input disabled="disabled" id="tradeStatus" name="补票交易状态" value="${recordStart.tradeStatus}" underline="true" />
+					<#input disabled="disabled" id="tradeTypeFlag" name="交易类型标识" value="${recordStart.tradeTypeFlag}" underline="true" />
+					<#input disabled="disabled" id="state" name="订单状态" value="${recordStart.state}" underline="true" />
+					<#input disabled="disabled" id="markTime" name="上车时间" value="${recordStart.markTime}" underline="true" />
+					<#input disabled="disabled" id="reqSsn" name="请求方流水号" value="${recordStart.reqSsn}" underline="true" />
+					<#input disabled="disabled" id="settleDateLoc" name="本地清算日期" value="${recordStart.settleDateLoc}" underline="true" />
+					<#input disabled="disabled" id="transRecvDate" name="接收日期" value="${recordStart.transRecvDate}" underline="true" />
+					<#input disabled="disabled" id="transRecvTime" name="接收时间" value="${recordStart.transRecvTime}" underline="true" />
+					<#input disabled="disabled" id="transCodeOut" name="外部交易代码" value="${recordStart.transCodeOut}" underline="true" />
+					<#input disabled="disabled" id="transCodeChnl" name="渠道交易代码" value="${recordStart.transCodeChnl}" underline="true" />
+					<#input disabled="disabled" id="transCodeChName" name="交易代码名称" value="${recordStart.transCodeChName}" underline="true" />
+					<#input disabled="disabled" id="mchCodeIn" name="商户代码" value="${recordStart.mchCodeIn}" underline="true" />
+					<#input disabled="disabled" id="mchNameOut" name="商户名称" value="${recordStart.mchNameOut}" underline="true" />
+					<#input disabled="disabled" id="acqInsId" name="受理机构" value="${recordStart.acqInsId}" underline="true" />
+					<#input disabled="disabled" id="acqInsSeq" name="受理机构流水号" value="${recordStart.acqInsSeq}" underline="true" />
+					<#input disabled="disabled" id="locTracsTime" name="本地交易时间" value="${recordStart.locTracsTime}" underline="true" />
+					<#input disabled="disabled" id="locTracsDate" name="本地交易日期" value="${recordStart.locTracsDate}" underline="true" />
+					<#input disabled="disabled" id="termTransTime" name="终端交易时间" value="${recordStart.termTransTime}" underline="true" />
+					<#input disabled="disabled" id="termTransDate" name="终端交易日期" value="${recordStart.termTransDate}" underline="true" />
+					<#input disabled="disabled" id="cardCity" name="城市代码" value="${recordStart.cardCity}" underline="true" />
+					<#input disabled="disabled" id="csn" name="CSN" value="${recordStart.csn}" underline="true" />
+					<#input disabled="disabled" id="cardSeqNo" name="卡序列号" value="${recordStart.cardSeqNo}" underline="true" />
+					<#input disabled="disabled" id="cardCounter" name="卡累计交易次数" value="${recordStart.cardCounter}" underline="true" />
+					<#input disabled="disabled" id="cardType" name="交易卡类型" value="${recordStart.cardType}" underline="true" />
+					<#input disabled="disabled" id="cardPhyType" name="卡物理类型" value="${recordStart.cardPhyType}" underline="true" />
+					<#input disabled="disabled" id="orderNo" name="平台订单号" value="${recordStart.orderNo}" underline="true" />
+					<#input disabled="disabled" id="cardBramdid" name="卡行业代码" value="${recordStart.cardBramdid}" underline="true" />
+					<#input disabled="disabled" id="cardClass" name="用户ID" value="${recordStart.cardClass}" underline="true" />
+					<#input disabled="disabled" id="orderType" name="交易类型" value="${recordStart.orderType}" underline="true" />
+					<#input disabled="disabled" id="serialNum" name="记录顺序编号" value="${recordStart.serialNum}" underline="true" />
+					<#input disabled="disabled" id="cardno" name="套票绑定的卡号" value="${recordStart.cardno}" underline="true" />
+					<#input disabled="disabled" id="cpuCounter" name="脱机交易序号" value="${recordStart.cpuCounter}" underline="true" />
+					<#input disabled="disabled" id="cardIisCode" name="发卡机构代码" value="${recordStart.cardIisCode}" underline="true" />
+					<#input disabled="disabled" id="timeCardType" name="时间票类型" value="${recordStart.timeCardType}" underline="true" />
+					<#input disabled="disabled" id="markCityCode" name="上车城市代码" value="${recordStart.markCityCode}" underline="true" />
+					<#input disabled="disabled" id="markIisCode" name="上车受理机构代码" value="${recordStart.markIisCode}" underline="true" />
+					<#input disabled="disabled" id="markCsCode" name="上车运营商代码" value="${recordStart.markCsCode}" underline="true" />
+					<#input disabled="disabled" id="markLineId" name="上车线路" value="${recordStart.markLineId}" underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<#input disabled="disabled" id="markStationName" name="上车站名" value="${recordStart.markStationName}" underline="true" />
+					<#input disabled="disabled" id="lineName" name="线路名称" value="${recordStart.lineName}" underline="true" />
+					<#input disabled="disabled" id="chargeActual" name="交易金额" value="${recordStart.chargeActual}" underline="true" />
+					<#input disabled="disabled" id="cardBalance" name="卡内余额" value="${recordStart.cardBalance}" underline="true" />
+					<#input disabled="disabled" id="preCardBalance" name="交易前卡内余额" value="${recordStart.preCardBalance}" underline="true" />
+					<#input disabled="disabled" id="chargeIdeal" name="应收金额" value="${recordStart.chargeIdeal}" underline="true" />
+					<#input disabled="disabled" id="tokenVersion" name="Token版本号" value="${recordStart.tokenVersion}" underline="true" />
+					<#input disabled="disabled" id="markStation" name="上车站" value="${recordStart.markStation}" underline="true" />
+					<#input disabled="disabled" id="markBusId" name="上车车辆号" value="${recordStart.markBusId}" underline="true" />
+					<#input disabled="disabled" id="downCsCode" name="下车运营商代码" value="${recordStart.downCsCode}" underline="true" />
+					<#input disabled="disabled" id="downLineId" name="下车线路" value="${recordStart.downLineId}" underline="true" />
+					<#input disabled="disabled" id="downStation" name="下车站" value="${recordStart.downStation}" underline="true" />
+					<#input disabled="disabled" id="downBusId" name="下车车辆号" value="${recordStart.downBusId}" underline="true" />
+					<#input disabled="disabled" id="takenLength" name="乘车里程" value="${recordStart.takenLength}" underline="true" />
+					<#input disabled="disabled" id="dirFlag" name="上下行标志" value="${recordStart.dirFlag}" underline="true" />
+					<#input disabled="disabled" id="driverCode" name="司机ID" value="${recordStart.driverCode}" underline="true" />
+					<#input disabled="disabled" id="sellorCode" name="监票员ID" value="${recordStart.sellorCode}" underline="true" />
+					<#input disabled="disabled" id="sellorCode2" name="监票员ID2" value="${recordStart.sellorCode2}" underline="true" />
+					<#input disabled="disabled" id="posId" name="支付提供方代码" value="${recordStart.posId}" underline="true" />
+					<#input disabled="disabled" id="posTradeSeq" name="POS机交易流水号" value="${recordStart.posTradeSeq}" underline="true" />
+					<#input disabled="disabled" id="posDate" name="POS机交易时间" value="${recordStart.posDate}" underline="true" />
+					<#input disabled="disabled" id="tac" name="交易TAC" value="${recordStart.tac}" underline="true" />
+					<#input disabled="disabled" id="tacMode" name="TAC算法标识" value="${recordStart.tacMode}" underline="true" />
+					<#input disabled="disabled" id="psamId" name="PSAM ID" value="${recordStart.psamId}" underline="true" />
+					<#input disabled="disabled" id="psamSeq" name="PSAM交易流水号" value="${recordStart.psamSeq}" underline="true" />
+					<#input disabled="disabled" id="keyVer" name="密钥版本号" value="${recordStart.keyVer}" underline="true" />
+					<#input disabled="disabled" id="keyIndex" name="密钥索引号" value="${recordStart.keyIndex}" underline="true" />
+					<#input disabled="disabled" id="keyReqNum" name="密钥请求次数" value="${recordStart.keyReqNum}" underline="true" />
+					<#input disabled="disabled" id="authSeq" name="密钥授权流水号" value="${recordStart.authSeq}" underline="true" />
+					<#input disabled="disabled" id="checkCode" name="记录检验码" value="${recordStart.checkCode}" underline="true" />
+					<#input disabled="disabled" id="recordType" name="交易记录类型" value="${recordStart.recordType}" underline="true" />
+					<#input disabled="disabled" id="cardFlag" name="卡片标识" value="${recordStart.cardFlag}" underline="true" />
+					<#input disabled="disabled" id="createTime" name="创建时间" value="${recordStart.createTime}" underline="true" />
+					<#input disabled="disabled" id="updateTime" name="更新时间" value="${recordStart.updateTime}" underline="true" />
+					<#input disabled="disabled" id="cardUpload" name="cardUpload" value="${recordStart.cardUpload}" underline="true" />
+					<#input disabled="disabled" id="tokenId" name="TokenId" value="${recordStart.tokenId}" underline="true" />
+					<#input disabled="disabled" id="userPhone" name="用户手机号" value="${recordStart.userPhone}" underline="true" />
+					<#input disabled="disabled" id="markBusName" name="markBusName" value="${recordStart.markBusName}" underline="true" />
+					<#input disabled="disabled" id="thirdInstid" name="thirdInstid" value="${recordStart.thirdInstid}" underline="true" />
+					<#input disabled="disabled" id="thirdChannelid" name="thirdChannelid" value="${recordStart.thirdChannelid}" underline="true" />
+				</div>
+            </div>
+			@if(!isSingle){
+			<div style="display:none" id="recorddown" class="row">
+				<div class="col-sm-6 b-r">
+					<#input disabled="disabled" id="pltSsn" name="平台流水号" value="${recordEnd.pltSsn}" underline="true" />
+					<#input disabled="disabled" id="tradeStatus" name="补票交易状态" value="${recordEnd.tradeStatus}" underline="true" />
+					<#input disabled="disabled" id="tradeTypeFlag" name="交易类型标识" value="${recordEnd.tradeTypeFlag}" underline="true" />
+					<#input disabled="disabled" id="state" name="订单状态" value="${recordEnd.state}" underline="true" />
+					<#input disabled="disabled" id="markTime" name="上车时间" value="${recordEnd.markTime}" underline="true" />
+					<#input disabled="disabled" id="reqSsn" name="请求方流水号" value="${recordEnd.reqSsn}" underline="true" />
+					<#input disabled="disabled" id="settleDateLoc" name="本地清算日期" value="${recordEnd.settleDateLoc}" underline="true" />
+					<#input disabled="disabled" id="transRecvDate" name="接收日期" value="${recordEnd.transRecvDate}" underline="true" />
+					<#input disabled="disabled" id="transRecvTime" name="接收时间" value="${recordEnd.transRecvTime}" underline="true" />
+					<#input disabled="disabled" id="transCodeOut" name="外部交易代码" value="${recordEnd.transCodeOut}" underline="true" />
+					<#input disabled="disabled" id="transCodeChnl" name="渠道交易代码" value="${recordEnd.transCodeChnl}" underline="true" />
+					<#input disabled="disabled" id="transCodeChName" name="交易代码名称" value="${recordEnd.transCodeChName}" underline="true" />
+					<#input disabled="disabled" id="mchCodeIn" name="商户代码" value="${recordEnd.mchCodeIn}" underline="true" />
+					<#input disabled="disabled" id="mchNameOut" name="商户名称" value="${recordEnd.mchNameOut}" underline="true" />
+					<#input disabled="disabled" id="acqInsId" name="受理机构" value="${recordEnd.acqInsId}" underline="true" />
+					<#input disabled="disabled" id="acqInsSeq" name="受理机构流水号" value="${recordEnd.acqInsSeq}" underline="true" />
+					<#input disabled="disabled" id="locTracsTime" name="本地交易时间" value="${recordEnd.locTracsTime}" underline="true" />
+					<#input disabled="disabled" id="locTracsDate" name="本地交易日期" value="${recordEnd.locTracsDate}" underline="true" />
+					<#input disabled="disabled" id="termTransTime" name="终端交易时间" value="${recordEnd.termTransTime}" underline="true" />
+					<#input disabled="disabled" id="termTransDate" name="终端交易日期" value="${recordEnd.termTransDate}" underline="true" />
+					<#input disabled="disabled" id="cardCity" name="城市代码" value="${recordEnd.cardCity}" underline="true" />
+					<#input disabled="disabled" id="csn" name="CSN" value="${recordEnd.csn}" underline="true" />
+					<#input disabled="disabled" id="cardSeqNo" name="卡序列号" value="${recordEnd.cardSeqNo}" underline="true" />
+					<#input disabled="disabled" id="cardCounter" name="卡累计交易次数" value="${recordEnd.cardCounter}" underline="true" />
+					<#input disabled="disabled" id="cardType" name="交易卡类型" value="${recordEnd.cardType}" underline="true" />
+					<#input disabled="disabled" id="cardPhyType" name="卡物理类型" value="${recordEnd.cardPhyType}" underline="true" />
+					<#input disabled="disabled" id="orderNo" name="平台订单号" value="${recordEnd.orderNo}" underline="true" />
+					<#input disabled="disabled" id="cardBramdid" name="卡行业代码" value="${recordEnd.cardBramdid}" underline="true" />
+					<#input disabled="disabled" id="cardClass" name="用户ID" value="${recordEnd.cardClass}" underline="true" />
+					<#input disabled="disabled" id="orderType" name="交易类型" value="${recordEnd.orderType}" underline="true" />
+					<#input disabled="disabled" id="serialNum" name="记录顺序编号" value="${recordEnd.serialNum}" underline="true" />
+					<#input disabled="disabled" id="cardno" name="套票绑定的卡号" value="${recordEnd.cardno}" underline="true" />
+					<#input disabled="disabled" id="cpuCounter" name="脱机交易序号" value="${recordEnd.cpuCounter}" underline="true" />
+					<#input disabled="disabled" id="cardIisCode" name="发卡机构代码" value="${recordEnd.cardIisCode}" underline="true" />
+					<#input disabled="disabled" id="timeCardType" name="时间票类型" value="${recordEnd.timeCardType}" underline="true" />
+					<#input disabled="disabled" id="markCityCode" name="上车城市代码" value="${recordEnd.markCityCode}" underline="true" />
+					<#input disabled="disabled" id="markIisCode" name="上车受理机构代码" value="${recordEnd.markIisCode}" underline="true" />
+					<#input disabled="disabled" id="markCsCode" name="上车运营商代码" value="${recordEnd.markCsCode}" underline="true" />
+					<#input disabled="disabled" id="markLineId" name="上车线路" value="${recordEnd.markLineId}" underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<#input disabled="disabled" id="markStationName" name="上车站名" value="${recordEnd.markStationName}" underline="true" />
+					<#input disabled="disabled" id="lineName" name="线路名称" value="${recordEnd.lineName}" underline="true" />
+					<#input disabled="disabled" id="chargeActual" name="交易金额" value="${recordEnd.chargeActual}" underline="true" />
+					<#input disabled="disabled" id="cardBalance" name="卡内余额" value="${recordEnd.cardBalance}" underline="true" />
+					<#input disabled="disabled" id="preCardBalance" name="交易前卡内余额" value="${recordEnd.preCardBalance}" underline="true" />
+					<#input disabled="disabled" id="chargeIdeal" name="应收金额" value="${recordEnd.chargeIdeal}" underline="true" />
+					<#input disabled="disabled" id="tokenVersion" name="Token版本号" value="${recordEnd.tokenVersion}" underline="true" />
+					<#input disabled="disabled" id="markStation" name="上车站" value="${recordEnd.markStation}" underline="true" />
+					<#input disabled="disabled" id="markBusId" name="上车车辆号" value="${recordEnd.markBusId}" underline="true" />
+					<#input disabled="disabled" id="downCsCode" name="下车运营商代码" value="${recordEnd.downCsCode}" underline="true" />
+					<#input disabled="disabled" id="downLineId" name="下车线路" value="${recordEnd.downLineId}" underline="true" />
+					<#input disabled="disabled" id="downStation" name="下车站" value="${recordEnd.downStation}" underline="true" />
+					<#input disabled="disabled" id="downBusId" name="下车车辆号" value="${recordEnd.downBusId}" underline="true" />
+					<#input disabled="disabled" id="takenLength" name="乘车里程" value="${recordEnd.takenLength}" underline="true" />
+					<#input disabled="disabled" id="dirFlag" name="上下行标志" value="${recordEnd.dirFlag}" underline="true" />
+					<#input disabled="disabled" id="driverCode" name="司机ID" value="${recordEnd.driverCode}" underline="true" />
+					<#input disabled="disabled" id="sellorCode" name="监票员ID" value="${recordEnd.sellorCode}" underline="true" />
+					<#input disabled="disabled" id="sellorCode2" name="监票员ID2" value="${recordEnd.sellorCode2}" underline="true" />
+					<#input disabled="disabled" id="posId" name="支付提供方代码" value="${recordEnd.posId}" underline="true" />
+					<#input disabled="disabled" id="posTradeSeq" name="POS机交易流水号" value="${recordEnd.posTradeSeq}" underline="true" />
+					<#input disabled="disabled" id="posDate" name="POS机交易时间" value="${recordEnd.posDate}" underline="true" />
+					<#input disabled="disabled" id="tac" name="交易TAC" value="${recordEnd.tac}" underline="true" />
+					<#input disabled="disabled" id="tacMode" name="TAC算法标识" value="${recordEnd.tacMode}" underline="true" />
+					<#input disabled="disabled" id="psamId" name="PSAM ID" value="${recordEnd.psamId}" underline="true" />
+					<#input disabled="disabled" id="psamSeq" name="PSAM交易流水号" value="${recordEnd.psamSeq}" underline="true" />
+					<#input disabled="disabled" id="keyVer" name="密钥版本号" value="${recordEnd.keyVer}" underline="true" />
+					<#input disabled="disabled" id="keyIndex" name="密钥索引号" value="${recordEnd.keyIndex}" underline="true" />
+					<#input disabled="disabled" id="keyReqNum" name="密钥请求次数" value="${recordEnd.keyReqNum}" underline="true" />
+					<#input disabled="disabled" id="authSeq" name="密钥授权流水号" value="${recordEnd.authSeq}" underline="true" />
+					<#input disabled="disabled" id="checkCode" name="记录检验码" value="${recordEnd.checkCode}" underline="true" />
+					<#input disabled="disabled" id="recordType" name="交易记录类型" value="${recordEnd.recordType}" underline="true" />
+					<#input disabled="disabled" id="cardFlag" name="卡片标识" value="${recordEnd.cardFlag}" underline="true" />
+					<#input disabled="disabled" id="createTime" name="创建时间" value="${recordEnd.createTime}" underline="true" />
+					<#input disabled="disabled" id="updateTime" name="更新时间" value="${recordEnd.updateTime}" underline="true" />
+					<#input disabled="disabled" id="cardUpload" name="cardUpload" value="${recordEnd.cardUpload}" underline="true" />
+					<#input disabled="disabled" id="tokenId" name="TokenId" value="${recordEnd.tokenId}" underline="true" />
+					<#input disabled="disabled" id="userPhone" name="用户手机号" value="${recordEnd.userPhone}" underline="true" />
+					<#input disabled="disabled" id="markBusName" name="markBusName" value="${recordEnd.markBusName}" underline="true" />
+					<#input disabled="disabled" id="thirdInstid" name="thirdInstid" value="${recordEnd.thirdInstid}" underline="true" />
+					<#input disabled="disabled" id="thirdChannelid" name="thirdChannelid" value="${recordEnd.thirdChannelid}" underline="true" />
+				</div>
+			</div>
+			@}
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="QrcodeRideTransInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/qrcodeRideTrans/qrcodeRideTrans_info.js"></script>
+@}

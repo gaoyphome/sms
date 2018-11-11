@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.basebusiness.dao.BusCompanyDao">
+
+	<sql id="Base_Column_List">
+		id as id,
+		company_id as companyId,
+		company_name as companyName,
+		type as type,
+		parent_company_id as parentCompanyId,
+		create_time as createTime,
+		update_time as updateTime
+	</sql>
+	<select id="selectBusCompanys" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_bus_company where 1 = 1
+		<if test="companyId != null and companyId != ''">
+			and company_Id like CONCAT('%',#{companyId},'%')
+		</if>
+		<if test="companyName != null and companyName != ''">
+			and company_Name like CONCAT('%',#{companyName},'%')
+		</if>
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by create_Time DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="tree" resultType="com.bmac.ffan.core.node.ZTreeNode">
+		select company_id as id,parent_company_id as pId,company_name as name,
+		(
+		CASE
+		WHEN (parent_company_id = 0 OR parent_company_id IS NULL) THEN
+		'true'
+		ELSE
+		'false'
+		END
+		) as isOpen from cc_bus_company
+	</select>
+</mapper>

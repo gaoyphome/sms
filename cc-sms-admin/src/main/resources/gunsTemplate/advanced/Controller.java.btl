@@ -1,0 +1,116 @@
+package ${controller.packageName};
+
+<% for(import in controller.imports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}控制器
+ *
+ * @author 工具生成
+ * @Date ${tool.currentTime()}
+ */
+@Controller
+@RequestMapping("/${context.bizEnName}")
+public class ${context.bizEnBigName}Controller extends BaseController {
+
+    private String PREFIX = "/${context.moduleName}/${context.bizEnName}/";
+
+    @Autowired
+    private I${context.bizEnBigName}Service ${context.bizEnName}Service;
+
+	@Resource
+	${context.bizEnBigName}Dao ${context.bizEnName}Dao;
+	
+    /**
+     * 跳转到${context.bizChName}首页
+     */
+    @RequestMapping("")
+    public String index() {
+        return PREFIX + "${context.bizEnName}.html";
+    }
+
+    /**
+     * 跳转到添加${context.bizChName}
+     */
+    @RequestMapping("/${context.bizEnName}_add")
+    public String ${context.bizEnName}Add() {
+        return PREFIX + "${context.bizEnName}_add.html";
+    }
+
+    /**
+     * 跳转到修改${context.bizChName}
+     */
+    @RequestMapping("/${context.bizEnName}_update/{${context.bizEnName}Id}")
+    public String ${context.bizEnName}Update(@PathVariable Integer ${context.bizEnName}Id, Model model) {
+        ${context.entityName} ${context.bizEnName} = ${context.bizEnName}Service.selectById(${context.bizEnName}Id);
+        model.addAttribute("${context.bizEnName}",${context.bizEnName});
+        LogObjectHolder.me().set(${context.bizEnName});
+        return PREFIX + "${context.bizEnName}_edit.html";
+    }
+
+    /**
+     * 获取${context.bizChName}列表
+     */
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "/list")
+    @ResponseBody
+    public Object list(
+    
+    <% for(sfield in context.searchFields!){ %>
+    @RequestParam(required = false) String ${sfield},
+	<% } %>
+    
+    ) {
+        //return ${context.bizEnName}Service.selectList(null);
+        
+        Page<${context.entityName}> page = new PageFactory<${context.entityName}>().defaultPage();
+		 List<Map<String, Object>> result = ${context.bizEnName}Dao.select${context.bizEnBigName}s(page, 
+		 <% for(sfield in context.searchFields!){ %>
+   		 ${sfield},
+	     <% } %>
+		 page.getOrderByField(), page.isAsc());
+	     page.setRecords((List<${context.entityName}>) new ${context.bizEnBigName}Warpper(result).warp());
+	     return super.packForBT(page);
+	     
+    }
+
+    /**
+     * 新增${context.bizChName}
+     */
+    @RequestMapping(value = "/add")
+    @ResponseBody
+    public Object add(${context.entityName} ${context.bizEnName}) {
+        ${context.bizEnName}Service.insert(${context.bizEnName});
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * 删除${context.bizChName}
+     */
+    @RequestMapping(value = "/delete")
+    @ResponseBody
+    public Object delete(@RequestParam Integer ${context.bizEnName}Id) {
+        ${context.bizEnName}Service.deleteById(${context.bizEnName}Id);
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * 修改${context.bizChName}
+     */
+    @RequestMapping(value = "/update")
+    @ResponseBody
+    public Object update(${context.entityName} ${context.bizEnName}) {
+        ${context.bizEnName}Service.updateById(${context.bizEnName});
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * ${context.bizChName}详情
+     */
+    @RequestMapping(value = "/detail/{${context.bizEnName}Id}")
+    @ResponseBody
+    public Object detail(@PathVariable("${context.bizEnName}Id") Integer ${context.bizEnName}Id) {
+        return ${context.bizEnName}Service.selectById(${context.bizEnName}Id);
+    }
+}

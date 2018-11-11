@@ -1,0 +1,39 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="busCompanyFrom">
+
+			<input type="hidden" id="id" value="">
+
+			<div class="row">
+				<div class="col-sm-6 b-r">
+					<#input id="companyId" name="公司编码" underline="true" />
+
+					<#input id="companyName" name="公司名称" underline="true" />
+				</div>
+
+				<div class="col-sm-6">
+					<#select id="type" name="公司类型">
+						<option value="0">运营公司</option>
+						<option value="1">子运营公司</option>
+					</#select>
+					
+					<#input id="parentCompanyId" name="父公司编码" underline="true" />
+				</div>
+			</div>
+
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+						clickFun="BusCompanyInfoDlg.addSubmit()" />
+					<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+						clickFun="BusCompanyInfoDlg.close()" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/modular/basebusiness/busCompany/busCompany_info.js"></script>
+@}

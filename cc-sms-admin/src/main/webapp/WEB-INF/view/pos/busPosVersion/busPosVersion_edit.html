@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${busPosVersion.id}">
+            <input type="hidden" id="typeH" name="type" value="${busPosVersion.type}"  />
+            <input type="hidden" id="upgradeTypeH" name="upgradeType" value="${busPosVersion.upgradeType}" />
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input disabled="disabled" id="firmVersion" name="版本号" value="${busPosVersion.firmVersion}" underline="true" />
+					<#input disabled="disabled" id="filesize" name="固件大小" value="${busPosVersion.filesize}" underline="true" />
+					<#input disabled="disabled" id="fileId" name="文件索引" value="${busPosVersion.fileId}" underline="true" />
+					<#input id="content" name="版本描述" value="${busPosVersion.content}" underline="true" />
+
+                </div>
+                <div class="col-sm-6">
+                    <#input id="path" name="下载路径" value="${busPosVersion.path}" underline="true" />
+                    <#select id="type" name="升级方式">
+                        <option value="00">自动升级</option>
+                        <option value="01">手动升级</option>
+                    </#select>
+                    <#select id="upgradeType" name="升级类型">
+                        <option value="1">所有POS机</option>
+                        <option value="2">商户POS机</option>
+                        <option value="3">特定POS机</option>
+                    </#select>
+					<#input id="lineId" name="线路ID" value="${busPosVersion.lineId}" underline="true" />
+					<#input id="posId" name="POS-ID" value="${busPosVersion.posId}" underline="true" />
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BusPosVersionInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BusPosVersionInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/pos/busPosVersion/busPosVersion_info.js"></script>
+@}

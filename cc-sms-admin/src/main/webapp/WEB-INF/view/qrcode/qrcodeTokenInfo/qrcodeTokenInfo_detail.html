@@ -1,0 +1,47 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${qrcodeTokenInfo.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input disabled="disabled"  id="id" name="id" value="${qrcodeTokenInfo.id}" underline="true" />
+					<#input disabled="disabled"  id="vsirBmacno" name="虚拟卡号" value="${qrcodeTokenInfo.vsirBmacno}" underline="true" />
+					<#input disabled="disabled"  id="startTime" name="生效时间" value="${qrcodeTokenInfo.startTime}" underline="true" />
+					<#input disabled="disabled"  id="cardCheckDigit" name="卡号校验位" value="${qrcodeTokenInfo.cardCheckDigit}" underline="true" />
+					<#input disabled="disabled"  id="endTime" name="结束时间" value="${qrcodeTokenInfo.endTime}" underline="true" />
+					<#input disabled="disabled"  id="tokenId" name="TokenId" value="${qrcodeTokenInfo.tokenId}" underline="true" />
+					<#input disabled="disabled"  id="cardType" name="虚拟卡类型" value="${qrcodeTokenInfo.cardType}" underline="true" />
+					<#input disabled="disabled"  id="tokenType" name="Token类型" value="${qrcodeTokenInfo.tokenType}" underline="true" />
+					<#input disabled="disabled"  id="tokenVersion" name="Token版本" value="${qrcodeTokenInfo.tokenVersion}" underline="true" />
+					<#input disabled="disabled"  id="tokenChumid" name="Token密钥id" value="${qrcodeTokenInfo.tokenChumid}" underline="true" />
+					<#input disabled="disabled"  id="tokenEnc" name="Token密文" value="${qrcodeTokenInfo.tokenEnc}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+					<#input disabled="disabled"  id="dislocatNorm" name="脱机交易限额" value="${qrcodeTokenInfo.dislocatNorm}" underline="true" />
+					<#input disabled="disabled"  id="createTime" name="创建时间" value="${qrcodeTokenInfo.createTime}" underline="true" />
+					<#input disabled="disabled"  id="identification" name="鉴别码" value="${qrcodeTokenInfo.identification}" underline="true" />
+					<#input disabled="disabled"  id="updateTime" name="更新时间" value="${qrcodeTokenInfo.updateTime}" underline="true" />
+					<#input disabled="disabled"  id="expireType" name="失效方式" value="${qrcodeTokenInfo.expireType}" underline="true" />
+					<#input disabled="disabled"  id="expireTime" name="失效时间" value="${qrcodeTokenInfo.expireTime}" underline="true" />
+					<#input disabled="disabled"  id="space" name="应用场景" value="${qrcodeTokenInfo.space}" underline="true" />
+					<#input disabled="disabled"  id="userPhone" name="用户手机号" value="${qrcodeTokenInfo.userPhone}" underline="true" />
+					<#input disabled="disabled"  id="qrcodeSesq" name="二维码列表" value="${qrcodeTokenInfo.qrcodeSesq}" underline="true" />
+					<#input disabled="disabled"  id="barSesq" name="条形码列表" value="${qrcodeTokenInfo.barSesq}" underline="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="QrcodeTokenInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/qrcodeTokenInfo/qrcodeTokenInfo_info.js"></script>
+@}

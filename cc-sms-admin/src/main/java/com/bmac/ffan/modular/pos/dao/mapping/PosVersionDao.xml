@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.pos.dao.PosVersionDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      firm_version as firmVersion,
+	      filesize as filesize,
+	      file_id as fileId,
+	      content as content,
+	      path as path,
+	      type as type,
+	      upgrade_type as upgradeType,
+	      mchnt_id as mchntId,
+	      pos_id as posId,
+	      create_time as createTime,
+	      update_time as updateTime
+	</sql>
+	
+	<select id="selectPosVersions" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_pos_version where 1 = 1
+		
+		
+	    	<if test="firmVersion != null and firmVersion != ''">
+				and firm_version like CONCAT('%',#{firmVersion},'%')
+			</if>
+	    	<if test="mchntId != null and mchntId != ''">
+				and mchnt_id like CONCAT('%',#{mchntId},'%')
+			</if>
+	    	<if test="posId != null and posId != ''">
+				and pos_id like CONCAT('%',#{posId},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by update_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

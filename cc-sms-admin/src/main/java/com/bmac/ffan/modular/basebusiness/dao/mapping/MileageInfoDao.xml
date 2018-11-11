@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.basebusiness.dao.MileageInfoDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      line_id as lineId,
+	      dir_flag as dirFlag,
+	      mileage_value as mileageValue,
+	      create_time as createTime,
+	      update_time as updateTime
+	</sql>
+	
+	<select id="selectMileageInfos" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_mileage_info where 1 = 1
+		
+		
+	    	<if test="lineId != null and lineId != ''">
+				and line_id like CONCAT('%',#{lineId},'%')
+			</if>
+	    	<if test="mileageValue != null and mileageValue != ''">
+				and mileage_value like CONCAT('%',#{mileageValue},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by update_time DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="selectMileageInfoByLineId" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_mileage_info where 1 = 1
+		<if test="lineId != null and lineId != ''">
+			and line_id = #{lineId}
+		</if>
+		<if test="lineId != null and lineId != ''">
+			and line_id = #{lineId}
+		</if>
+		<choose>
+			<when test="flag == 1">
+				and dir_flag = 1
+			</when>
+			<otherwise>
+				and dir_flag = 0
+			</otherwise>
+		</choose>
+	</select>
+</mapper>

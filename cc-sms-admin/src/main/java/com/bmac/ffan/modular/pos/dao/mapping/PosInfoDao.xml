@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.pos.dao.PosInfoDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      pos_id as posId,
+	      sam_id as samId,
+	      pos_code as posCode,
+	      pos_desc as posDesc,
+	      longitude as longitude,
+	      latitude as latitude,
+	      loc_desc as locDesc,
+	      state as state,
+	      version as version,
+	      firm_version as firmVersion,
+	      blacklist_version as blacklistVersion,
+	      term_version as termVersion,
+	      cardtype_version as cardtypeVersion,
+	      reason as reason,
+	      create_time as createTime,
+	      update_time as updateTime,
+	      line_version as lineVersion,
+	      incr_black_ver as incrBlackVer,
+	      qr_black_ver as qrBlackVer,
+	      inc_qr_black_ver as incQrBlackVer,
+	      ht_black_ver as htBlackVer,
+	      ht_inc_black_ver as htIncBlackVer,
+	      pri_ver as priVer,
+	      miles_ver as milesVer,
+	      ht_white_ver as htWhiteVer
+	</sql>
+	
+	<select id="selectPosInfos" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_pos_info where 1 = 1
+		
+		
+	    	<if test="posId != null and posId != ''">
+				and pos_id like CONCAT('%',#{posId},'%')
+			</if>
+	    	<if test="samId != null and samId != ''">
+				and sam_id like CONCAT('%',#{samId},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by update_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

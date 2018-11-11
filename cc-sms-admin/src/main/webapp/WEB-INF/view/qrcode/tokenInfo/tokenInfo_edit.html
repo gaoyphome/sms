@@ -1,0 +1,51 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${tokenInfo.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input id="id" name="id" value="${tokenInfo.id}" underline="true" />
+					<#input id="tokenId" name="tokenId" value="${tokenInfo.tokenId}" underline="true" />
+					<#input id="userId" name="userId" value="${tokenInfo.userId}" underline="true" />
+					<#input id="tokenType" name="tokenType" value="${tokenInfo.tokenType}" underline="true" />
+					<#input id="startTime" name="startTime" value="${tokenInfo.startTime}" underline="true" />
+					<#input id="endTime" name="endTime" value="${tokenInfo.endTime}" underline="true" />
+					<#input id="space" name="space" value="${tokenInfo.space}" underline="true" />
+					<#input id="tokenLevel" name="tokenLevel" value="${tokenInfo.tokenLevel}" underline="true" />
+					<#input id="ticketId" name="ticketId" value="${tokenInfo.ticketId}" underline="true" />
+					<#input id="ntOrderid" name="ntOrderid" value="${tokenInfo.ntOrderid}" underline="true" />
+				</div>
+
+				<div class="col-sm-6">
+					<#input id="ticketType" name="ticketType" value="${tokenInfo.ticketType}" underline="true" />
+					<#input id="tokenInfo" name="tokenInfo" value="${tokenInfo.tokenInfo}" underline="true" />
+					<#input id="tokenEnc" name="tokenEnc" value="${tokenInfo.tokenEnc}" underline="true" />
+					<#input id="state" name="state" value="${tokenInfo.state}" underline="true" />
+					<#input id="useTime" name="useTime" value="${tokenInfo.useTime}" underline="true" />
+					<#input id="posId" name="posId" value="${tokenInfo.posId}" underline="true" />
+					<#input id="expireType" name="expireType" value="${tokenInfo.expireType}" underline="true" />
+					<#input id="expireTime" name="expireTime" value="${tokenInfo.expireTime}" underline="true" />
+					<#input id="createTime" name="createTime" value="${tokenInfo.createTime}" underline="true" />
+					<#input id="updateTime" name="updateTime" value="${tokenInfo.updateTime}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TokenInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TokenInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/tokenInfo/tokenInfo_info.js"></script>
+@}

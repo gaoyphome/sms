@@ -1,0 +1,131 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+					<#input disabled="disabled" id="pltSsn" name="平台流水号" value="${qrcodeRideTransError.pltSsn}" underline="true" />
+					<#input disabled="disabled" id="reqSsn" name="请求方流水号" value="${qrcodeRideTransError.reqSsn}" underline="true" />
+					<#input disabled="disabled" id="settleDateLoc" name="本地清算日期" value="${qrcodeRideTransError.settleDateLoc}" underline="true" />
+					<#input disabled="disabled" id="transRecvDate" name="接收日期" value="${qrcodeRideTransError.transRecvDate}" underline="true" />
+					<#input disabled="disabled" id="transRecvTime" name="接收时间" value="${qrcodeRideTransError.transRecvTime}" underline="true" />
+					<#input disabled="disabled" id="transCodeOut" name="外部交易代码" value="${qrcodeRideTransError.transCodeOut}" underline="true" />
+					<#input disabled="disabled" id="transCodeChnl" name="渠道交易代码" value="${qrcodeRideTransError.transCodeChnl}" underline="true" />
+					<#input disabled="disabled" id="transCodeChName" name="交易代码名称" value="${qrcodeRideTransError.transCodeChName}" underline="true" />
+					<#input disabled="disabled" id="mchCodeIn" name="商户代码" value="${qrcodeRideTransError.mchCodeIn}" underline="true" />
+					<#input disabled="disabled" id="mchNameOut" name="商户名称" value="${qrcodeRideTransError.mchNameOut}" underline="true" />
+					<#input disabled="disabled" id="acqInsId" name="受理机构" value="${qrcodeRideTransError.acqInsId}" underline="true" />
+					<#input disabled="disabled" id="acqInsSeq" name="受理机构流水号" value="${qrcodeRideTransError.acqInsSeq}" underline="true" />
+					<#input disabled="disabled" id="locTracsTime" name="本地交易时间" value="${qrcodeRideTransError.locTracsTime}" underline="true" />
+					<#input disabled="disabled" id="locTracsDate" name="本地交易日期" value="${qrcodeRideTransError.locTracsDate}" underline="true" />
+					<#input disabled="disabled" id="termTransTime" name="终端交易时间" value="${qrcodeRideTransError.termTransTime}" underline="true" />
+					<#input disabled="disabled" id="termTransDate" name="终端交易日期" value="${qrcodeRideTransError.termTransDate}" underline="true" />
+					<#input disabled="disabled" id="cardCity" name="城市代码" value="${qrcodeRideTransError.cardCity}" underline="true" />
+					<#input disabled="disabled" id="csn" name="CSN" value="${qrcodeRideTransError.csn}" underline="true" />
+					<#input disabled="disabled" id="cardSeqNo" name="卡序列号" value="${qrcodeRideTransError.cardSeqNo}" underline="true" />
+					<#input disabled="disabled" id="cardCounter" name="卡累计交易次数" value="${qrcodeRideTransError.cardCounter}" underline="true" />
+					<#input disabled="disabled" id="cardType" name="交易卡类型" value="${qrcodeRideTransError.cardType}" underline="true" />
+					<#input disabled="disabled" id="cardPhyType" name="卡物理类型" value="${qrcodeRideTransError.cardPhyType}" underline="true" />
+					<#input disabled="disabled" id="orderNo" name="平台订单号" value="${qrcodeRideTransError.orderNo}" underline="true" />
+					<#input disabled="disabled" id="state" name="订单支付状态" value="${qrcodeRideTransError.state}" underline="true" />
+					<#input disabled="disabled" id="cardBramdid" name="卡行业代码" value="${qrcodeRideTransError.cardBramdid}" underline="true" />
+					<#input disabled="disabled" id="cardClass" name="用户ID" value="${qrcodeRideTransError.cardClass}" underline="true" />
+					<#input disabled="disabled" id="orderType" name="交易类型" value="${qrcodeRideTransError.orderType}" underline="true" />
+					<#input disabled="disabled" id="tradeStatus" name="补票交易状态" value="${qrcodeRideTransError.tradeStatus}" underline="true" />
+					<#input disabled="disabled" id="serialNum" name="记录顺序编号" value="${qrcodeRideTransError.serialNum}" underline="true" />
+					<#input disabled="disabled" id="cardno" name="套票绑定的卡号" value="${qrcodeRideTransError.cardno}" underline="true" />
+					<#input disabled="disabled" id="tradeTypeFlag" name="交易类型标识" value="${qrcodeRideTransError.tradeTypeFlag}" underline="true" />
+					<#input disabled="disabled" id="cpuCounter" name="电子钱包脱机交易序号" value="${qrcodeRideTransError.cpuCounter}" underline="true" />
+					<#input disabled="disabled" id="cardIisCode" name="发卡机构代码" value="${qrcodeRideTransError.cardIisCode}" underline="true" />
+					<#input disabled="disabled" id="timeCardType" name="时间票类型" value="${qrcodeRideTransError.timeCardType}" underline="true" />
+					<#input disabled="disabled" id="markTime" name="上车时间" value="${qrcodeRideTransError.markTime}" underline="true" />
+					<#input disabled="disabled" id="markCityCode" name="上车城市代码" value="${qrcodeRideTransError.markCityCode}" underline="true" />
+					<#input disabled="disabled" id="markIisCode" name="上车受理机构代码" value="${qrcodeRideTransError.markIisCode}" underline="true" />
+					<#input disabled="disabled" id="markCsCode" name="上车运营商代码" value="${qrcodeRideTransError.markCsCode}" underline="true" />
+					<#input disabled="disabled" id="markLineId" name="上车线路" value="${qrcodeRideTransError.markLineId}" underline="true" />
+					<#input disabled="disabled" id="markStation" name="上车站" value="${qrcodeRideTransError.markStation}" underline="true" />
+					<#input disabled="disabled" id="markBusId" name="上车车辆号" value="${qrcodeRideTransError.markBusId}" underline="true" />
+					<#input disabled="disabled" id="downCsCode" name="下车运营商代码" value="${qrcodeRideTransError.downCsCode}" underline="true" />
+					<#input disabled="disabled" id="downLineId" name="下车线路" value="${qrcodeRideTransError.downLineId}" underline="true" />
+					<#input disabled="disabled" id="downStation" name="下车站" value="${qrcodeRideTransError.downStation}" underline="true" />
+					<#input disabled="disabled" id="downBusId" name="下车车辆号" value="${qrcodeRideTransError.downBusId}" underline="true" />
+					<#input disabled="disabled" id="takenLength" name="乘车里程" value="${qrcodeRideTransError.takenLength}" underline="true" />
+					<#input disabled="disabled" id="dirFlag" name="上下行标志" value="${qrcodeRideTransError.dirFlag}" underline="true" />
+					<#input disabled="disabled" id="driverCode" name="司机ID" value="${qrcodeRideTransError.driverCode}" underline="true" />
+					<#input disabled="disabled" id="sellorCode" name="监票员ID" value="${qrcodeRideTransError.sellorCode}" underline="true" />
+					<#input disabled="disabled" id="sellorCode2" name="监票员ID2" value="${qrcodeRideTransError.sellorCode2}" underline="true" />
+					<#input disabled="disabled" id="posId" name="支付提供方代码" value="${qrcodeRideTransError.posId}" underline="true" />
+					<#input disabled="disabled" id="posTradeSeq" name="POS机交易流水号" value="${qrcodeRideTransError.posTradeSeq}" underline="true" />
+				</div>
+				<div class="col-sm-6 b-r">
+					<#input disabled="disabled" id="posDate" name="POS机交易时间" value="${qrcodeRideTransError.posDate}" underline="true" />
+					<#input disabled="disabled" id="tac" name="交易TAC" value="${qrcodeRideTransError.tac}" underline="true" />
+					<#input disabled="disabled" id="tacMode" name="TAC算法标识" value="${qrcodeRideTransError.tacMode}" underline="true" />
+					<#input disabled="disabled" id="psamId" name="PSAM ID" value="${qrcodeRideTransError.psamId}" underline="true" />
+					<#input disabled="disabled" id="psamSeq" name="PSAM交易流水号" value="${qrcodeRideTransError.psamSeq}" underline="true" />
+					<#input disabled="disabled" id="chargeActual" name="交易金额" value="${qrcodeRideTransError.chargeActual}" underline="true" />
+					<#input disabled="disabled" id="cardBalance" name="卡内余额" value="${qrcodeRideTransError.cardBalance}" underline="true" />
+					<#input disabled="disabled" id="preCardBalance" name="交易前卡内余额" value="${qrcodeRideTransError.preCardBalance}" underline="true" />
+					<#input disabled="disabled" id="chargeIdeal" name="应收金额" value="${qrcodeRideTransError.chargeIdeal}" underline="true" />
+					<#input disabled="disabled" id="keyVer" name="密钥版本号" value="${qrcodeRideTransError.keyVer}" underline="true" />
+					<#input disabled="disabled" id="keyIndex" name="密钥索引号" value="${qrcodeRideTransError.keyIndex}" underline="true" />
+					<#input disabled="disabled" id="keyReqNum" name="密钥请求次数" value="${qrcodeRideTransError.keyReqNum}" underline="true" />
+					<#input disabled="disabled" id="authSeq" name="密钥授权流水号" value="${qrcodeRideTransError.authSeq}" underline="true" />
+					<#input disabled="disabled" id="checkCode" name="记录检验码" value="${qrcodeRideTransError.checkCode}" underline="true" />
+					<#input disabled="disabled" id="recordType" name="交易记录类型" value="${qrcodeRideTransError.recordType}" underline="true" />
+					<#input disabled="disabled" id="cardFlag" name="卡片标识" value="${qrcodeRideTransError.cardFlag}" underline="true" />
+					<#input disabled="disabled" id="createTime" name="创建时间" value="${qrcodeRideTransError.createTime}" underline="true" />
+					<#input disabled="disabled" id="updateTime" name="更新时间" value="${qrcodeRideTransError.updateTime}" underline="true" />
+					<#input disabled="disabled" id="cardUpload" name="cardUpload" value="${qrcodeRideTransError.cardUpload}" underline="true" />
+					<#input disabled="disabled" id="tokenId" name="tokenId" value="${qrcodeRideTransError.tokenId}" underline="true" />
+					<#input disabled="disabled" id="userPhone" name="用户手机号" value="${qrcodeRideTransError.userPhone}" underline="true" />
+					<#input disabled="disabled" id="tokenVersion" name="token版本号" value="${qrcodeRideTransError.tokenVersion}" underline="true" />
+					<#input disabled="disabled" id="cityInLength" name="市内里程" value="${qrcodeRideTransError.cityInLength}" underline="true" />
+					<#input disabled="disabled" id="cityOutLength" name="市外里程" value="${qrcodeRideTransError.cityOutLength}" underline="true" />
+					<#input disabled="disabled" id="cityInRebate" name="市内折扣率" value="${qrcodeRideTransError.cityInRebate}" underline="true" />
+					<#input disabled="disabled" id="cityOutRebate" name="市外折扣率" value="${qrcodeRideTransError.cityOutRebate}" underline="true" />
+					<#input disabled="disabled" id="downTime" name="下车站时间" value="${qrcodeRideTransError.downTime}" underline="true" />
+					<#input disabled="disabled" id="markStationName" name="上车站名" value="${qrcodeRideTransError.markStationName}" underline="true" />
+					<#input disabled="disabled" id="downStationName" name="下车站名" value="${qrcodeRideTransError.downStationName}" underline="true" />
+					<#input disabled="disabled" id="cityInDiscount" name="市内优惠额度" value="${qrcodeRideTransError.cityInDiscount}" underline="true" />
+					<#input disabled="disabled" id="lineName" name="线路名" value="${qrcodeRideTransError.lineName}" underline="true" />
+					<#input disabled="disabled" id="cityOutDiscount" name="市外优惠额度" value="${qrcodeRideTransError.cityOutDiscount}" underline="true" />
+					<#input disabled="disabled" id="ntOrderId" name="网络平台订单号" value="${qrcodeRideTransError.ntOrderId}" underline="true" />
+					<#input disabled="disabled" id="channelType" name="channelType" value="${qrcodeRideTransError.channelType}" underline="true" />
+					<#input disabled="disabled" id="channelId" name="channelId" value="${qrcodeRideTransError.channelId}" underline="true" />
+					<#input disabled="disabled" id="orderDate" name="orderDate" value="${qrcodeRideTransError.orderDate}" underline="true" />
+					<#input disabled="disabled" id="tradeType" name="tradeType" value="${qrcodeRideTransError.tradeType}" underline="true" />
+					<#input disabled="disabled" id="porderId" name="porderId" value="${qrcodeRideTransError.porderId}" underline="true" />
+					<#input disabled="disabled" id="posMarkTransSeq" name="posMarkTransSeq" value="${qrcodeRideTransError.posMarkTransSeq}" underline="true" />
+					<#input disabled="disabled" id="posDownTransSeq" name="posDownTransSeq" value="${qrcodeRideTransError.posDownTransSeq}" underline="true" />
+					<#input disabled="disabled" id="markPasmId" name="markPasmId" value="${qrcodeRideTransError.markPasmId}" underline="true" />
+					<#input disabled="disabled" id="downPasmId" name="downPasmId" value="${qrcodeRideTransError.downPasmId}" underline="true" />
+					<#input disabled="disabled" id="markPosId" name="markPosId" value="${qrcodeRideTransError.markPosId}" underline="true" />
+					<#input disabled="disabled" id="downPosId" name="downPosId" value="${qrcodeRideTransError.downPosId}" underline="true" />
+					<#input disabled="disabled" id="markTokenId" name="markTokenId" value="${qrcodeRideTransError.markTokenId}" underline="true" />
+					<#input disabled="disabled" id="downTokenId" name="downTokenId" value="${qrcodeRideTransError.downTokenId}" underline="true" />
+					<#input disabled="disabled" id="transState" name="交易状态" value="${qrcodeRideTransError.transState}" underline="true" />
+					<#input disabled="disabled" id="thirdInstid" name="thirdInstid" value="${qrcodeRideTransError.thirdInstid}" underline="true" />
+					<#input disabled="disabled" id="thirdChannelid" name="thirdChannelid" value="${qrcodeRideTransError.thirdChannelid}" underline="true" />
+					<#input disabled="disabled" id="transcode" name="transcode" value="${qrcodeRideTransError.transcode}" underline="true" />
+					<#input disabled="disabled" id="transmsg" name="transmsg" value="${qrcodeRideTransError.transmsg}" underline="true" />
+					<#input disabled="disabled" id="errType" name="错误类型" value="${qrcodeRideTransError.errType}" underline="true" />
+					<#input disabled="disabled" id="errDesc" name="错误描述" value="${qrcodeRideTransError.errDesc}" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="QrcodeRideTransErrorInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/qrcodeRideTransError/qrcodeRideTransError_info.js"></script>
+@}

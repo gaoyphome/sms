@@ -1,0 +1,85 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+						<#input id="pltSsn" name="pltSsn" underline="true" />
+						<#input id="reqSsn" name="reqSsn" underline="true" />
+						<#input id="settleDateLoc" name="settleDateLoc" underline="true" />
+						<#input id="transRecvDate" name="transRecvDate" underline="true" />
+						<#input id="transRecvTime" name="transRecvTime" underline="true" />
+						<#input id="transCodeOut" name="transCodeOut" underline="true" />
+						<#input id="transCodeChnl" name="transCodeChnl" underline="true" />
+						<#input id="transCodeChName" name="transCodeChName" underline="true" />
+						<#input id="mchCodeIn" name="mchCodeIn" underline="true" />
+						<#input id="mchNameOut" name="mchNameOut" underline="true" />
+						<#input id="acqInsId" name="acqInsId" underline="true" />
+						<#input id="acqInsSeq" name="acqInsSeq" underline="true" />
+						<#input id="locTracsTime" name="locTracsTime" underline="true" />
+						<#input id="locTracsDate" name="locTracsDate" underline="true" />
+						<#input id="termTransTime" name="termTransTime" underline="true" />
+						<#input id="termTransDate" name="termTransDate" underline="true" />
+						<#input id="cardCity" name="cardCity" underline="true" />
+						<#input id="txnToken" name="txnToken" underline="true" />
+						<#input id="orderNo" name="orderNo" underline="true" />
+						<#input id="state" name="state" underline="true" />
+						<#input id="ntorderid" name="ntorderid" underline="true" />
+						<#input id="userId" name="userId" underline="true" />
+						<#input id="orderType" name="orderType" underline="true" />
+						<#input id="txnType" name="txnType" underline="true" />
+						<#input id="ticketId" name="ticketId" underline="true" />
+						<#input id="cardno" name="cardno" underline="true" />
+						<#input id="agentId" name="agentId" underline="true" />
+						<#input id="mchntId" name="mchntId" underline="true" />
+						<#input id="spotId" name="spotId" underline="true" />
+						<#input id="termId" name="termId" underline="true" />
+						<#input id="sesq" name="sesq" underline="true" />
+						<#input id="totalCnt" name="totalCnt" underline="true" />
+						<#input id="useCnt" name="useCnt" underline="true" />
+						<#input id="posId" name="posId" underline="true" />
+						<#input id="posTradeSeq" name="posTradeSeq" underline="true" />
+						<#input id="posDate" name="posDate" underline="true" />
+						<#input id="tac" name="tac" underline="true" />
+						<#input id="tacMode" name="tacMode" underline="true" />
+						<#input id="psamId" name="psamId" underline="true" />
+						<#input id="psamSeq" name="psamSeq" underline="true" />
+						<#input id="keyVer" name="keyVer" underline="true" />
+						<#input id="keyIndex" name="keyIndex" underline="true" />
+						<#input id="keyReqNum" name="keyReqNum" underline="true" />
+						<#input id="authSeq" name="authSeq" underline="true" />
+						<#input id="createTime" name="createTime" underline="true" />
+						<#input id="updateTime" name="updateTime" underline="true" />
+						<#input id="chargeActual" name="chargeActual" underline="true" />
+						<#input id="cardBalance" name="cardBalance" underline="true" />
+						<#input id="cardCounter" name="cardCounter" underline="true" />
+						<#input id="cardType" name="cardType" underline="true" />
+						<#input id="cardPhyType" name="cardPhyType" underline="true" />
+						<#input id="preCardBalance" name="preCardBalance" underline="true" />
+						<#input id="serialNum" name="serialNum" underline="true" />
+						<#input id="cpuCounter" name="cpuCounter" underline="true" />
+						<#input id="chargeIdeal" name="chargeIdeal" underline="true" />
+						<#input id="ticketUpload" name="ticketUpload" underline="true" />
+						<#input id="productCode" name="productCode" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TicketOrderInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TicketOrderInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/record/ticketOrder/ticketOrder_info.js"></script>
+@}

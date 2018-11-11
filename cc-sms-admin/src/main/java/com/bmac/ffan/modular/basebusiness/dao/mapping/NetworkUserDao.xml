@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmac.ffan.modular.basebusiness.dao.NetworkUserDao">
+	<sql id="Base_Column_List">
+	      id as id,
+	      user_id as userId,
+	      username as username,
+	      password as password,
+	      user_type as userType,
+	      nickname as nickname,
+	      sex as sex,
+	      birthday as birthday,
+	      mobile as mobile,
+	      email as email,
+	      create_time as createTime,
+	      update_time as updateTime
+	</sql>
+	
+	<select id="selectNetworkUsers" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from cc_network_user where 1 = 1
+		
+		
+	    	<if test="username != null and username != ''">
+				and username like CONCAT('%',#{username},'%')
+			</if>
+	    	<if test="mobile != null and mobile != ''">
+				and mobile like CONCAT('%',#{mobile},'%')
+			</if>
+
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				order by update_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

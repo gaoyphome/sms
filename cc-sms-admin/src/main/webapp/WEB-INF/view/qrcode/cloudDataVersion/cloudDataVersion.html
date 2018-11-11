@@ -1,0 +1,30 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>云卡数据版本管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="col-xs-12 col-md-12" id="CloudDataVersionTableToolbar" role="group">
+                            @if(shiro.hasPermission("/cloudDataVersion/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="CloudDataVersion.openAddCloudDataVersion()"/>
+                            @}
+                            @if(shiro.hasPermission("/cloudDataVersion/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="CloudDataVersion.openCloudDataVersionDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/cloudDataVersion/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="CloudDataVersion.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="CloudDataVersionTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/qrcode/cloudDataVersion/cloudDataVersion.js"></script>
+@}
